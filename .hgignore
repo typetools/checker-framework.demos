@@ -1,0 +1,13 @@
+syntax: glob
+
+# Emacs and other temporary files
+*~
+.#*
+*.swp
+TAGS
+tags
+*.orig
+.DS_Store
+
+# build files
+nonnull-interned-demo/**/*.class
