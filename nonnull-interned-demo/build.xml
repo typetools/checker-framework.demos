@@ -25,9 +25,6 @@
     <echo message="Running Nullness on the lookup demo"/>
     <test-project project="lookup"/>
 
-    <echo message="Running Tainting on the personal-blog demo"/>
-    <test-project project="personalblog-demo"/>
-
     <echo message="All demos work properly"/>
   </target>
 
