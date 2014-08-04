@@ -3,7 +3,7 @@ Michael Ernst loves programmers and wants to make their lives better.  He builds
 As a professor at the University of Washington, his research aims to make software more reliable, more secure, and easier (and more fun!) to produce.  Ernst's research combines strong theoretical foundations with realistic experimentation, with an eye to changing the way that software developers work.
 He publishes in software engineering, programming languages, type theory, security, program analysis, bug prediction, testing, and verification. 
 
-Dr. Ernst was previously a developer at Microsoft, a researcher at Microsoft Research, and and a tenured professor at MIT.
+Dr. Ernst was previously a developer at Microsoft, a researcher at Microsoft Research, and a tenured professor at MIT.
 
 ===========================================================================
 

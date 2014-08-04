@@ -1,3 +1,5 @@
+[This template, taken from the Jazoon website, seems incorrect.  It's missing keywords and other things.]
+
 > Title of the presentation (max. 50 characters including spaces)
 > 
 > Name(s) and affiliation(s) of the presenter(s)
@@ -18,7 +20,7 @@ Michael Ernst loves programmers and wants to make their lives better.  He builds
 As a professor at the University of Washington, his research aims to make software more reliable, more secure, and easier (and more fun!) to produce.  Ernst's research combines strong theoretical foundations with realistic experimentation, with an eye to changing the way that software developers work.
 He publishes in software engineering, programming languages, type theory, security, program analysis, bug prediction, testing, and verification. 
 
-Dr. Ernst was previously a developer at Microsoft, a researcher at Microsoft Research, and and a tenured professor at MIT.
+Dr. Ernst was previously a developer at Microsoft, a researcher at Microsoft Research, and a tenured professor at MIT.
 
 > Link to an online video of the main speaker presenting the abstract of the talk in English. This helps us rate the presenter’s speaking skills. The video will be publicly available for community rating and in the online conference program
 > 

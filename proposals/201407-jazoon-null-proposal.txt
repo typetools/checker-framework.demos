@@ -1,3 +1,5 @@
+"LONG TALK" proposal
+
 > Title of the presentation (max. 50 characters including spaces)
 
 Your last null pointer exception
@@ -36,6 +38,10 @@ Throughout, we will demonstrate a sound methodology for reasoning about these fe
 Then, we will demonstrate how to embed this methodology in a compiler, making use of the Java type system in a way that is compatible with all of your existing code.  You can use a standard Java compiler, together with a tool called the Checker Framework (freely available at http://checkerframework.org/), to give a guarantee of no null pointer exceptions.  This toolset is used daily at Google, and of course at many other companies.
 
  
+> Keywords:
+
+null pointer exception, map keys, initialization, pre- and post-conditions, design by contract
+
 > Prerequisites for your audience: e.g. knowledge/experience in project management, etc.
 
 This talk is appropriate for any programmer who wants to produce reliable, easy-to-understand code.
@@ -47,7 +53,7 @@ Michael Ernst loves programmers and wants to make their lives better.  He builds
 As a professor at the University of Washington, his research aims to make software more reliable, more secure, and easier (and more fun!) to produce.  Ernst's research combines strong theoretical foundations with realistic experimentation, with an eye to changing the way that software developers work.
 He publishes in software engineering, programming languages, type theory, security, program analysis, bug prediction, testing, and verification. 
 
-Dr. Ernst was previously a developer at Microsoft, a researcher at Microsoft Research, and and a tenured professor at MIT.
+Dr. Ernst was previously a developer at Microsoft, a researcher at Microsoft Research, and a tenured professor at MIT.
 
 > Link to an online video of the main speaker presenting the abstract of the talk in English. This helps us rate the presenter’s speaking skills. The video will be publicly available for community rating and in the online conference program
 > 

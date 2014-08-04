@@ -1,3 +1,5 @@
+"SHORT TALK" proposal
+
 > Title of the presentation (max. 50 characters including spaces)
 
 GUI threading, explained and verified
@@ -26,6 +28,10 @@ The JavaUI tool ensures that all direct access to GUI objects occur from the cor
 Attendees will leave the session with a high-level understanding of how to use JavaUI to eliminate an important class of UI-threading bugs from their applications, and a new high-level approach to thinking about related problems.
 
 
+> Keywords
+
+GUI threading, worker thread, UI thread, effect system
+
 > Prerequisites for your audience: e.g. knowledge/experience in project management, etc.
 
 Audience members should be familiar with the standard GUI programming paradigm, in which a GUI application uses multiple threads: an event thread to keep the UI responsive, and worker threads for computationally intensive tasks.
@@ -37,7 +43,7 @@ Michael Ernst loves programmers and wants to make their lives better.  He builds
 As a professor at the University of Washington, his research aims to make software more reliable, more secure, and easier (and more fun!) to produce.  Ernst's research combines strong theoretical foundations with realistic experimentation, with an eye to changing the way that software developers work.
 He publishes in software engineering, programming languages, type theory, security, program analysis, bug prediction, testing, and verification. 
 
-Dr. Ernst was previously a developer at Microsoft, a researcher at Microsoft Research, and and a tenured professor at MIT.
+Dr. Ernst was previously a developer at Microsoft, a researcher at Microsoft Research, and a tenured professor at MIT.
 
 > Link to an online video of the main speaker presenting the abstract of the talk in English. This helps us rate the presenter’s speaking skills. The video will be publicly available for community rating and in the online conference program
 > 
