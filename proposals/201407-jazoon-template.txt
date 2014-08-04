@@ -1,0 +1,42 @@
+> Title of the presentation (max. 50 characters including spaces)
+> 
+> Name(s) and affiliation(s) of the presenter(s)
+
+Michael D. Ernst
+University of Washington
+
+> Abstract (max. 750 characters including spaces)
+> 
+> Description of the general topic/problem, why visitors should attend the presentation, including highlights of the technologies/concepts the presentation will cover. Please make the main arguments of your proposed presentation clear and explain why your topic is important.
+> 
+> Prerequisites for your audience: e.g. knowledge/experience in project management, etc.
+> 
+> Short biography of presenter(s)
+
+Michael Ernst loves programmers and wants to make their lives better.  He builds programming tools and was the specification lead for JSR-308, which extended Java's annotation syntax.
+
+As a professor at the University of Washington, his research aims to make software more reliable, more secure, and easier (and more fun!) to produce.  Ernst's research combines strong theoretical foundations with realistic experimentation, with an eye to changing the way that software developers work.
+He publishes in software engineering, programming languages, type theory, security, program analysis, bug prediction, testing, and verification. 
+
+Dr. Ernst was previously a developer at Microsoft, a researcher at Microsoft Research, and and a tenured professor at MIT.
+
+> Link to an online video of the main speaker presenting the abstract of the talk in English. This helps us rate the presenter’s speaking skills. The video will be publicly available for community rating and in the online conference program
+> 
+> Photo(s) of the main presenter(s) for publication in the program,
+>  at least 800×600 pixels, 300dpi, 4×3 (HxW) aspect ratio
+
+mernst-headshot-200307-2-cropped-4x3.jpg
+[currently in homedir, move it]
+
+> Contact information of the main presenter (postal address, email address, phone and fax numbers)
+
+Michael Ernst
+UW Computer Science & Engineering
+Box 352350, 185 Stevens Way
+Seattle, WA  98195-2350
+USA
+
+mernst@cs.washington.edu
+
+phone: +1-206-221-0965
+fax: +1-206-616-3804

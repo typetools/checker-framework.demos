@@ -1,0 +1,35 @@
+Presentation title
+Maximum length: 125, Required
+
+Summary of your presentation, for the attendee
+Max size is 1200 characters (including Markdown characters, if you want to use it)
+
+Message for the program committee, motivation for your presentation
+Maximum length: 3,500, Required
+
+Type of talk
+
+Track for your proposal
+[Java SE or Methodology & DevOps]
+
+Audience level :
+
+What type of presentation will it be?
+
+Required
+Share my proposal with User Group?
+ Yes, I am also interested to present this talk at other European User Groups
+Is this a sponsor presentation?
+ Yes, this is a sponsor/exhibitor talk
+ Back to home without saving   Preview
+
+
+More info
+Presentation title :
+Think carefully and try to create a title that is descriptive enough. Most Devoxxians selects a talk at the very last minute only based on its title.
+
+Summary of your presentation, for the attendee :
+Describe your proposal as it will appear on our website and mobile apps. You can use Markdown syntax.
+
+Message for the program committee, motivation for your presentation :
+Write here any important details about your presentation, that the program committee should know. You can also set here the URL to your slides, or a link to an existing online talk for example on Parleys.com.

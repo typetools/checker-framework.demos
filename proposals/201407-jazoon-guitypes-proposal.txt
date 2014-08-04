@@ -1,0 +1,63 @@
+> Title of the presentation (max. 50 characters including spaces)
+
+GUI threading, explained and verified
+
+> Name(s) and affiliation(s) of the presenter(s)
+
+Michael D. Ernst
+University of Washington
+
+> Abstract (max. 750 characters including spaces)
+
+A GUI application uses an event thread for the UI and worker threads for computation.  If a worker thread modifies a UI object, the application crashes! Accessing the UI from a worker thread is one of the three most common errors in GUIs.
+
+This talk will explain why this happens and what you can do about it.  We will present an approach to reasoning about threading, based on an effect system that estimates side effects (like a type system estimates values).
+
+We will demo a new open-source tool that implements a GUI effect system in an unobtrusive way.  This tool runs at compile time and guarantees the absence of these errors.  It requires only a small number of annotations that mirror the documentation that programmers already write.
+
+> Description of the general topic/problem, why visitors should attend the presentation, including highlights of the technologies/concepts the presentation will cover. Please make the main arguments of your proposed presentation clear and explain why your topic is important.
+
+GUI threading errors cause program crashes that annoy users.  These errors are subtle and difficult to predict and debug.
+
+The talk will demonstrate an open-source tool called JavaUI (available at http://checkerframework.org/).  JavaUI’s internal technique is an instance of a general approach to static reasoning called type-and-effect systems.  We will explain the general case and show it is not abstruse:  Java programmers are already familiar with it!  We will show how both JavaUI and Java’s checked exceptions are instances of type-and-effect systems.  Thus, the talk covers not only a specific problem and tool, but also a general approach to reasoning about code that must only be called in certain contexts or may have some dangerous behavior.  This way of thinking can be helpful even without tool support, but we have built a tool to make it even easier.
+
+The JavaUI tool ensures that all direct access to GUI objects occur from the correct thread.  Use of JavaUI has uncovered GUI threading errors in real applications, and has verified other programs to always access UI elements from the correct thread.
+
+Attendees will leave the session with a high-level understanding of how to use JavaUI to eliminate an important class of UI-threading bugs from their applications, and a new high-level approach to thinking about related problems.
+
+
+> Prerequisites for your audience: e.g. knowledge/experience in project management, etc.
+
+Audience members should be familiar with the standard GUI programming paradigm, in which a GUI application uses multiple threads: an event thread to keep the UI responsive, and worker threads for computationally intensive tasks.
+
+> Short biography of presenter(s)
+
+Michael Ernst loves programmers and wants to make their lives better.  He builds programming tools and was the specification lead for JSR-308, which extended Java's annotation syntax.
+
+As a professor at the University of Washington, his research aims to make software more reliable, more secure, and easier (and more fun!) to produce.  Ernst's research combines strong theoretical foundations with realistic experimentation, with an eye to changing the way that software developers work.
+He publishes in software engineering, programming languages, type theory, security, program analysis, bug prediction, testing, and verification. 
+
+Dr. Ernst was previously a developer at Microsoft, a researcher at Microsoft Research, and and a tenured professor at MIT.
+
+> Link to an online video of the main speaker presenting the abstract of the talk in English. This helps us rate the presenter’s speaking skills. The video will be publicly available for community rating and in the online conference program
+> 
+> Photo(s) of the main presenter(s) for publication in the program,
+>  at least 800×600 pixels, 300dpi, 4×3 (HxW) aspect ratio
+
+mernst-headshot-200307-2-cropped-4x3.jpg
+[currently in homedir, move it]
+
+> Contact information of the main presenter (postal address, email address, phone and fax numbers)
+
+Michael Ernst
+UW Computer Science & Engineering
+Box 352350, 185 Stevens Way
+Seattle, WA  98195-2350
+USA
+
+mernst@cs.washington.edu
+
+phone: +1-206-221-0965
+fax: +1-206-616-3804
+
+LocalWords:  JavaUI
