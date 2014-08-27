@@ -198,10 +198,7 @@ class InternalAnnotationScanner extends SimpleTreeVisitor<InternalAnnotationGrou
 
     // Returns the annotations on an expression of the form "new C[]".
     @Override
-    public InternalAnnotationGroup visitNewArray(@Nullable NewArrayTree node, @Nullable Void p) {
-        assert root != null: "nullness";
-        assert node != null: "nullness";
-
+    public InternalAnnotationGroup visitNewArray(NewArrayTree node, Void p) {
         TreePath path = trees.getPath(root, node);
         Element method = InternalUtils.enclosingSymbol(path);
 
