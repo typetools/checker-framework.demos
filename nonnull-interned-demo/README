@@ -81,6 +81,8 @@ don't appear in your Eclipse.]
      C-x r l
    To go to a bookmark,
      C-x r b
+   If file .emacs.bmk is updated, you might need to delete or edit the cached
+   version in ~/.emacs.d/bookmarks .
 
    General process:
     * go to bookmark 1
