@@ -1,0 +1,67 @@
+> Presentation title
+> Maximum length: 125, Required
+
+GUI threading:  Explained and verified
+
+> Summary of your presentation, for the attendee
+> Max size is 1200 characters (including Markdown characters, if you want to use it)
+
+A GUI application uses multiple threads: an event thread to keep the UI responsive, and worker threads for computationally intensive tasks.  If a worker thread modifies a UI object, the entire application crashes! This talk will explain why this happens and what you can do about it.  We will demo open-source tools that detect all the threading errors in your code, giving you confidence that they won't affect your users.
+
+A GUI library requires client applications to only access the UI directly from the event thread.  It's easy for a programmer to make a mistake, and accessing the UI from other threads is one of the three most common errors in GUIs.  This talk discusses an approach to reasoning about threading, based on effect systems.  An effect system is like a type system, but it deals with side effects rather than values.
+
+The talk also presents a new tool that implements a GUI effect system in an unobtrusive way that is compatible with Java 8 syntax.  This tool runs at compile time and guarantees the absence of these errors.  It requires only a small number of annotations that mirror the documentation that programmers already write.
+
+> Message for the program committee, motivation for your presentation
+> Maximum length: 3,500, Required
+
+The talk will demonstrate an open-source tool called JavaUI.  JavaUI’s internal technique is an instance of a general approach to static reasoning called type-and-effect systems.  We will explain the general case and show it is not abstruse:  Java programmers are already familiar with it!  We will show how both JavaUI and Java’s checked exceptions are instances of type-and-effect systems.  Thus, the talk covers not only a specific problem and tool, but also a general approach to reasoning about code that must only be called in certain contexts or may have some dangerous behavior.  This way of thinking can be helpful even without tool support, but we have built a tool to make it even easier.
+
+The JavaUI tool ensures that all direct access to GUI objects occur from the correct thread.  Use of JavaUI has uncovered GUI threading errors in real applications, and has verified other programs to always access UI elements from the correct thread.
+
+Attendees will leave the session with a high-level understanding of how to use JavaUI to eliminate an important class of UI-threading bugs from their applications, and a new high-level approach to thinking about related problems.
+
+
+
+> 
+> Type of talk
+> 
+> Track for your proposal
+> [Java SE or Methodology & DevOps
+> 
+> Audience level :
+> 
+> What type of presentation will it be?
+> 
+> Required
+> Share my proposal with User Group?
+>  Yes, I am also interested to present this talk at other European User Groups
+> Is this a sponsor presentation?
+>  Yes, this is a sponsor/exhibitor talk
+>  Back to home without saving   Preview
+> 
+> 
+> More info
+> Presentation title :
+> Think carefully and try to create a title that is descriptive enough. Most Devoxxians selects a talk at the very last minute only based on its title.
+> 
+> Summary of your presentation, for the attendee :
+> Describe your proposal as it will appear on our website and mobile apps. You can use Markdown syntax.
+> 
+> Message for the program committee, motivation for your presentation :
+> Write here any important details about your presentation, that the program committee should know. You can also set here the URL to your slides, or a link to an existing online talk for example on Parleys.com.
+
+
+Proposal: "GUI Threading Explained and Verified"
+
+
+Proposal details
+Proposer
+Colin Gordon (csgordon@cs.washington.edu)
+
+Speakers
+Colin Gordon (csgordon@cs.washington.edu)
+Werner Dietl (wdietl@yahoo.com)
+Michael Ernst (mernst@cs.washington.edu)
+Description
+

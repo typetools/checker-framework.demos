@@ -1,0 +1,12 @@
+<project name="checkerframeworkdemos" default="tests"
+        basedir=".">
+
+  <!-- TODO: configure Checker Framework access. -->
+  <target name="tests"
+          description="Generate javadoc for all subprojects">
+    <ant dir="nonnull-interned-demo">
+      <target name="check-demo"/>
+    </ant>
+  </target>
+
+</project>

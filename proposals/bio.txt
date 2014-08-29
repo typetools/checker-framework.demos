@@ -1,0 +1,14 @@
+Michael Ernst loves programmers and wants to make their lives better.  He builds programming tools and was the specification lead for JSR-308, which extended Java's annotation syntax.
+
+As a professor at the University of Washington, his research aims to make software more reliable, more secure, and easier (and more fun!) to produce.  Ernst's research combines strong theoretical foundations with realistic experimentation, with an eye to changing the way that software developers work.
+He publishes in software engineering, programming languages, type theory, security, program analysis, bug prediction, testing, and verification. 
+
+Dr. Ernst was previously a developer at Microsoft, a researcher at Microsoft Research, and a tenured professor at MIT.
+
+===========================================================================
+
+Michael Ernst has given hundreds of talks programming, computer science, and Java around the world.  He was named a Java Rock Star for his audience-pleasing presentations at JavaOne.  He has given talks at many other Java conferences and user groups.
+
+He also teaches university students, from first-year students to PhD students.
+
+===========================================================================
