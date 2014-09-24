@@ -65,10 +65,6 @@ public class SimpleTreeVisitor <R,P extends @Nullable Object> implements TreeVis
         return defaultAction(node, p);
     }
 
-    public R visitPackage(PackageTree node, P p) {
-        return defaultAction(node, p);
-    }
-
     public R visitImport(ImportTree node, P p) {
         return defaultAction(node, p);
     }
