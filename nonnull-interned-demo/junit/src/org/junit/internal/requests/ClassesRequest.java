@@ -13,7 +13,7 @@ public class ClassesRequest extends Request {
 		fName= name;
 	}
 
-	/** @inheritDoc */
+	/** {@inheritDoc} */
 	@Override 
 	public Runner getRunner() {
 		CompositeRunner runner= new CompositeRunner(fName);
