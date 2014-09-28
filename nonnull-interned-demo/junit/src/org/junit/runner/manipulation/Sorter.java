@@ -33,7 +33,7 @@ public class Sorter implements Comparator<Description> {
 		}
 	}
 
-	/** @inheritDoc */
+	/** {@inheritDoc} */
 	public int compare(Description o1, Description o2) {
 		return fComparator.compare(o1, o2);
 	}
