@@ -64,4 +64,4 @@ A little-known and under-appreciated Java 8 feature is type annotations, an inno
 
 This interactive workshop will explain how and why to use Java 8's type annotations.  After a brief introduction, the audience will dive into using them.  We will start with tutorials, and then the audience will apply them to their own code.
 
-This is a refined version of a tutorial that we have given at Java conferences and user groups.  It uses a toolset, the Checker Framework (http://checker-framework.org/), that is used daily at Google by other advanced developers.
+This is a refined version of a tutorial that we have given at Java conferences and user groups.  It uses a toolset, the Checker Framework (http://checker-framework.org/), that is used daily at Google and by other advanced developers.
