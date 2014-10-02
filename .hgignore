@@ -11,3 +11,9 @@ tags
 
 # build files
 nonnull-interned-demo/**/*.class
+nonnull-interned-demo/checkers-tutorial-icse2010-proposal.aux
+nonnull-interned-demo/checkers-tutorial-icse2010-proposal.log
+nonnull-interned-demo/checkers-tutorial-icse2010-proposal.pdf
+proposals/201410-cibse-tutorial-proposal.aux
+proposals/201410-cibse-tutorial-proposal.log
+proposals/201410-cibse-tutorial-proposal.pdf
