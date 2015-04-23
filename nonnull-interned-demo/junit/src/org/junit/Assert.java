@@ -2,6 +2,7 @@ package org.junit;
 
 import org.junit.internal.ArrayComparisonFailure;
 
+import org.checkerframework.checker.nullness.qual.*;
 import org.checkerframework.framework.qual.*;
 
 /**
