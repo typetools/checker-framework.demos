@@ -2,6 +2,8 @@ package org.junit;
 
 import org.junit.internal.ArrayComparisonFailure;
 
+import org.checkerframework.framework.qual.*;
+
 /**
  * A set of assertion methods useful for writing tests. Only failed assertions are recorded.
  * These methods can be used directly: <code>Assert.assertEquals(...)</code>, however, they

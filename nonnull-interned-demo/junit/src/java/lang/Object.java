@@ -1,6 +1,7 @@
 package java.lang;
 
-@DefaultQualifier(NonNull.class)
+import org.checkerframework.checker.nullness.qual.*;
+
 public class Object{
   public Object() { throw new RuntimeException("skeleton method"); }
   public boolean equals(@Nullable Object a1) { throw new RuntimeException("skeleton method"); }
