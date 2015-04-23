@@ -1,0 +1,62 @@
+> Presentation title
+> Maximum length: 125, Required
+
+Preventing run-time errors at compile time
+
+> Summary of your presentation, for the attendee
+> Max size is 1200 characters (including Markdown characters, if you want to use it)
+
+Are you tired of null pointer exceptions, unintended side effects, SQL injections, concurrency errors, mistaken equality tests, and other run-time errors? Or, are your users tired of them in your code? We will show you how to guarantee, at compile time, that these run-time exceptions cannot occur. You have nothing to lose but your bugs!
+
+The Java type system is insufficiently expressive to capture important properties and prevent bugs like those listed above. We will teach you how to use a pluggable type system, which gives a stronger compile-time guarantee. We will explain what it is, how to use it, and how to create your own. Dozens of pluggable type-checkers already exist for your use, or you can create your own in 2 minutes. These tools have found hundreds of new bugs in well-tested code, including from Oracle, Google, and Apache, and they are in daily use around the world.
+
+This capability is possible because of the type annotations that were introduced in Java 8. We will teach you what type annotations are, how to use them, and how to avoid mis-using them. You will leave the session ready to improve your code by running the compiler instead of poring over the debugger.
+
+> Message for the program committee, motivation for your presentation
+> Maximum length: 3,500, Required
+
+A little-known and under-appreciated Java 8 feature is type annotations, an innovative feature found in no other mainstream language.  Type annotations ease the documentation task by allowing a programmer to write short, precise annotations instead of natural-language Javadoc explanations.  More importantly, they enable a tool to verify that the documentation is correct and up to date, and that the code is free of certain bugs.
+
+This hands-on lab will explain how and why to use Java 8's type annotations.  After a brief introduction, the audience will dive into using them.  We will start with tutorials, and then the audience will apply them to their own code.
+
+This is a refined version of a tutorial that we have given at Java conferences and user groups.  It uses a toolset, the Checker Framework (http://checker-framework.org/), that is used daily at Google and by other advanced developers.
+
+> Type of talk
+Hands-on
+
+> Track for your proposal
+Java SE
+
+> Audience level :
+> 
+> What type of presentation will it be?
+
+Hands-on labs
+
+> Required
+> Share my proposal with User Group?
+>  Yes, I am also interested to present this talk at other European User Groups
+> Is this a sponsor presentation?
+>  Yes, this is a sponsor/exhibitor talk
+>  Back to home without saving   Preview
+> 
+> 
+> More info
+> Presentation title :
+> Think carefully and try to create a title that is descriptive enough. Most Devoxxians selects a talk at the very last minute only based on its title.
+> 
+> Summary of your presentation, for the attendee :
+> Describe your proposal as it will appear on our website and mobile apps. You can use Markdown syntax.
+> 
+> Message for the program committee, motivation for your presentation :
+> Write here any important details about your presentation, that the program committee should know. You can also set here the URL to your slides, or a link to an existing online talk for example on Parleys.com.
+
+
+
+Session Type: "Tutorial"
+
+Session Abstract:
+(The submission abstract will be used in public-facing conference
+material should your submission be selected.)
+(Max length: 750 characters, including spaces.)
+

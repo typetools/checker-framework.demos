@@ -1,0 +1,176 @@
+% -*- Mode: LaTeX -*-
+\documentclass{llncs} % 10pt if not specified
+\usepackage{pslatex}
+\usepackage{relsize}
+\usepackage{url}
+
+% The proposal should include:
+% Title.
+% Authors names.
+% Abstract (up to 300 words).
+% Target audience.
+% Expected added value.
+% Needed Material: please describe the material that the organization is expected to provide. 
+% Name of the events in which the tutorial has already been presented (if any).
+% A short bio of the authors.
+
+% The proposals should be sent in a PDF, until December 15, 2014, by email to:
+% lanto@lifia.info.unlp.edu.ar and ernesto@lcc.uma.es.
+
+\begin{document}
+
+\title{Lightweight software verification \\ with pluggable type-checking}
+\author{Michael D. Ernst}
+\institute{University of Washington \quad and \quad Universidad
+    de Buenos Aires \\ \email{mernst@cs.washington.edu} \\ \url{http://checkerframework.org/}}
+\maketitle
+
+\begin{abstract} % up to 300 words
+
+Software developers often rely on run-time exceptions to indicate bugs
+in their code.  It would be better to use verification to prove the absence
+of bugs, but verification tends to be difficult to use.
+
+We propose a lightweight software verification approach, called \emph{pluggable
+type-checking}, that is easy to use, extensible, and provides a compile-time
+guarantee that certain bugs are not present in the code.  Pluggable
+type-checking permits a software developer to refine the built-in type
+system of a programming language to catch additional errors, such as null
+pointer dereferences or race conditions.
+
+This approach has been implemented for Java and is available in an
+open-source tool, the Checker Framework
+(\url{http://checkerframework.org/}).  Oracle Corporation is so excited
+about this technology that Java 8 contains syntactic support for pluggable
+types.
+
+This verification approach is relevant to multiple constituencies.
+
+\textbf{Researchers} can build upon the framework to quickly create new
+program analysis tools.  Previously, evaluating a new type system required
+building a compiler.  Now, is it easier to experimentally evaluate a new
+type system, because the type-checker implementation is only a few 
+lines of code.
+
+\textbf{Educators} can introduce software verification in a practical
+context, enabling students to learn by doing and bringing theory to life.
+The Checker Framework has been successfully used in
+the first or second programming class for computer science majors, and also
+in more advanced classes.
+
+\textbf{Practitioners} can use pluggable type-checking to find bugs or to
+prove the absence of bugs.  Use of pluggable type-checking improves code
+quality and design, and the types act as machine-checked documentation.
+The Checker Framework is in daily use at corporations such as Google.
+
+
+Attendees will leave the tutorial with a greater appreciation of the theory and
+practice of pluggable type-checking.  They will be prepared to use it
+for research, teaching, or software development.
+
+
+% \keywords{computational geometry, graph theory, Hamilton cycles}
+\end{abstract}
+
+\section{Target audience}
+
+As described in the abstract, this talk is relevant to researchers,
+educators, and practitioners.
+
+To obtain the greatest benefit from the talk, an audience member should be
+familiar with Java and its type system.  The audience member should know
+the basics of object-oriented typing, such as the type hierarchy (also
+called the class hierarchy, which is induced by subtyping or subclassing)
+and the fact that an assignment is legal iff the declared type of the
+left-hand-side is a supertype of the right-hand-side.  The audience does
+not need to know details of the Java language such as the rather obscure
+semantics of wildcards.  Nor does the audience need expertise with type
+systems (such as different varieties of polymorphism and their semantics);
+the tutorial will present any the needed background.
+
+\section{Expected added value}
+
+A little-known and under-appreciated feature of Java 8 is type annotations, an
+innovative feature found in no other mainstream language.  Type annotations
+ease the documentation task by allowing a programmer to write short,
+precise annotations instead of natural-language Javadoc explanations.  More
+importantly, they enable a tool to verify that the documentation is correct
+and up to date, and that the code is free of certain bugs.
+
+This interactive tutorial will explain how and why to use Java 8's type
+annotations.  After a brief introduction, the audience will dive into using
+them.  We will start with tutorials of using existing type-checkers on
+example code.  Afterward, the audience will have two options regarding how
+to proceed:  creating new type-checkers, or applying existing type-checkers
+to real-world code.  By getting practice, the audience will overcome any
+reluctance regarding the difficulty of using either verification tools or
+type-checkers (both of which have gotten a bad reputation).
+
+During a brainstorming session, the audience will come to better understand
+the theory and practice of type-checking, including what sorts of problems
+it is good for (which is far more than most people realize) and what sorts
+of problems it is not appropriate for.
+
+The audience will leave the session prepared to use pluggable type-checking
+for research, teaching, or software development.
+
+
+\section{Needed material}
+
+% Needed Material: please describe the material that the organization is expected to provide. 
+
+\begin{enumerate}
+\item
+A data projector for displaying the presenter's laptop computer --- so the
+audience can view slides and demos.
+\item
+Power and Internet connectivity for the participants --- so the audience
+can participate in exercises on their laptop computers.
+\item
+A whiteboard or a flip chart (large sheet of paper), plus markers --- for
+writing down ideas while brainstorming.
+\end{enumerate}
+
+
+\section{Previous presentations}
+
+I and my colleagues have given a number of presentations on the Checker
+Framework, including at the industry conferences JavaOne (2009, 2012, 2013,
+2014), OSBridge (2011), and OSCON (2012), and at the academic venues such
+as OOPSLA (2009) and TAPAS (2014).  So, part of this tutorial draws on rich
+material that has been well-vetted.  Part of the material is new, however.
+This includes the part about using the Checker Framework in teaching, which
+has never been presented before but seems appropriate for the largely
+academic audience at CibSE\@.
+
+
+\section{Author bio}
+
+Michael D. Ernst is a Professor in the Computer Science \& Engineering
+department at the University of Washington.
+
+Ernst's research aims to make software more reliable, more secure, and
+easier (and more fun!) to produce. His primary technical interests are in
+software engineering, programming languages, type theory, security, program
+analysis, bug prediction, testing, and verification. Ernst's research
+combines strong theoretical foundations with realistic experimentation,
+with an eye to changing the way that software developers work.
+
+Ernst's awards include the inaugural John Backus Award (2009) and the NSF
+CAREER Award (2002). His research has received an ACM SIGSOFT Impact Paper
+Award (2013), 7 ACM Distinguished Paper Awards (ISSTA 2014, ESEC/FSE 2011,
+ISSTA 2009, ESEC/FSE 2007, ICSE 2007, ICSE 2004, ESEC/FSE 2003), an ECOOP
+2011 Best Paper Award, honorable mention in the 2000 ACM doctoral
+dissertation competition, and other honors. In 2013, Microsoft Academic
+Search ranked Ernst \#2 in the world, in software engineering research
+contributions over the past 10 years.  He was honored as a Java Rock Star
+for his well-received presentations at the JavaOne conference, including
+previous versions of this tutorial.
+
+Dr. Ernst was previously a tenured professor at MIT, and before that a researcher at Microsoft Research.
+
+More information is available at his homepage: \url{http://homes.cs.washington.edu/~mernst/}.
+
+\end{document}
+
+%%  LocalWords:  Universidad de wildcards OSBridge TAPAS bio

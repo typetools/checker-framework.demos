@@ -1,0 +1,65 @@
+> Presentation title
+> Maximum length: 125, Required
+
+Your last null pointer exception
+
+> Summary of your presentation, for the attendee
+> Max size is 1200 characters (including Markdown characters, if you want to use it)
+
+This talk will explain why null pointer exceptions happen and how to avoid them.
+
+Null pointer exceptions are common because it is difficult to reason about all the different ways that null is used, from fields that haven't been initialized yet, to terminators in linked lists, to error codes, to other special values.
+
+This talk does not advocate eliminating the null value, nor an Elvis operator that permits dereferencing null.  Such proposals don't fix the problems, but merely make the problems manifest in other ways -- and the proposals may restrict programmer flexibility or make it harder to understand the program.
+
+We will discuss different uses of the null value.  We will tell you which ones are valuable and which ones are evil.  We will present patterns that simplify your code, helping you use null sparingly and responsibly.  And, most important of all, we will present open-source tools that check your code at compile time.  These tools ensure that your code uses the null value correctly, and they guarantee that your code never suffers a null pointer exception.
+
+> Message for the program committee, motivation for your presentation
+> Maximum length: 3,500, Required
+
+It is challenging even for a skilled programmer to avoid null pointer exceptions.  This talk will explain why it is so hard, and will provide participants with tools that make writing correct code much easier.
+
+Null pointer exceptions are common because it is difficult to reason about all the different ways that null is used.  These uses include initialzation, data structure terminators, method return codes, and other special cases.  It’s almost inevitable that a programmer trying to keep all this straight will make mistakes.  But a programmer shouldn’t have to: instead, the compiler should warn you about your errors.
+
+This talk will discuss different uses of the null value, including those noted above and more.  We will discuss subtleties related to:
+
+- static fields
+- initialization
+- map keys
+- side effects
+- pre- and post-condition contracts
+
+Throughout, we will demonstrate a sound methodology for reasoning about these features to guarantee lack of null pointer exceptions.  In many cases, this includes a discussion how to replace complex paradigms by simpler ones.
+
+Then, we will demonstrate how to embed this methodology in a compiler, making use of the Java type system in a way that is compatible with all of your existing code.  You can use a standard Java compiler, together with a tool called the Checker Framework (freely available at http://checker-framework.org/), to give a guarantee of no null pointer exceptions.  This toolset is used daily at Google, and of course at many other companies.
+
+
+
+
+> 
+> Type of talk
+> 
+> Track for your proposal
+> [Java SE or Methodology & DevOps
+> 
+> Audience level :
+> 
+> What type of presentation will it be?
+> 
+> Required
+> Share my proposal with User Group?
+>  Yes, I am also interested to present this talk at other European User Groups
+> Is this a sponsor presentation?
+>  Yes, this is a sponsor/exhibitor talk
+>  Back to home without saving   Preview
+> 
+> 
+> More info
+> Presentation title :
+> Think carefully and try to create a title that is descriptive enough. Most Devoxxians selects a talk at the very last minute only based on its title.
+> 
+> Summary of your presentation, for the attendee :
+> Describe your proposal as it will appear on our website and mobile apps. You can use Markdown syntax.
+> 
+> Message for the program committee, motivation for your presentation :
+> Write here any important details about your presentation, that the program committee should know. You can also set here the URL to your slides, or a link to an existing online talk for example on Parleys.com.
