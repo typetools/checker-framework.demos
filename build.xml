@@ -3,7 +3,7 @@
 
   <!-- TODO: configure Checker Framework access. -->
   <target name="tests"
-          description="Generate javadoc for all subprojects">
+          description="Test the demos">
     <ant dir="nonnull-interned-demo">
       <target name="check-demo"/>
     </ant>
