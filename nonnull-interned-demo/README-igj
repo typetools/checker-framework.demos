@@ -32,6 +32,10 @@ represented the same value!
 
 2. Verify correctness of an optimization (hashing)
 
+[[[WARNING!
+This example has been broken by the refactoring of the Checker Framework that changed package names.
+It should be re-generated from scratch.]]]
+
 * View AnnotatedTypeFactory.elementCache, of type
     Map<Element, AnnotatedTypeMirror>.
   It is a cache to map elements to their corresponding types.  The cache
