@@ -85,7 +85,7 @@ don't appear in your Eclipse.]
    version in ~/.emacs.d/bookmarks .
 
    General process:
-    * go to bookmark 1
+    * go to bookmark 1 with C-x r b 1
     * compile with C-c C-c
     * make fixes
     * re-compile
