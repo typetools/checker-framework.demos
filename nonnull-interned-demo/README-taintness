@@ -30,8 +30,10 @@ which is in the main Checker Framework repository, not this one.
 * Run the checker one more time.  There are no errors.
 
 
-When you finish demoing the Basic Checker, as with previous scripts,  
-you can do the following:
+[You can't do this because there is no pblog-tainting ant target any more.]
+When you finish demoing the Basic Checker, you can show how the real
+tainting checker handles string concatenation even though the Basic Checker
+does not:
 
 1. Note that constructQuery is only a helper function to suppress a  
 tainting false error, because the Basic Checker doesn't handle it.
