@@ -1,5 +1,3 @@
-syntax: glob
-
 # Emacs and other temporary files
 *~
 .#*
