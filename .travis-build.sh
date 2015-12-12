@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Fail the whole script if any command fails
+set -e
+
 ROOT=$TRAVIS_BUILD_DIR/..
 
 ## Build Checker Framework
