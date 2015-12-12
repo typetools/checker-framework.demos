@@ -12,4 +12,4 @@ ROOT=$TRAVIS_BUILD_DIR/..
 export CHECKERFRAMEWORK=$ROOT/checker-framework
 
 ## Run test
-ant
+ant -Djsr308.home=$ROOT
