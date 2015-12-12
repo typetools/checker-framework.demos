@@ -10,7 +10,7 @@
   </macrodef>
 
   <target name="check-demo" depends="touch-files">
-    <echo message="Runing IGJ on the checker demo"/>
+    <echo message="Running IGJ on the checker demo"/>
     <test-project project="IGJChecker"/>
 
     <echo message="Running Nullness on the checker demo"/>
