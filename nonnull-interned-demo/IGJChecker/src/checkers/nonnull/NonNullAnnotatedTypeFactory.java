@@ -185,8 +185,8 @@ public class NonNullAnnotatedTypeFactory extends AnnotatedTypeFactory {
             if (d != null && d.value().equals(NonNull.class.getName())) {
 
                 // Get the default locations from the Default annotation.
-                final Set<DefaultLocation> locations = 
-                    new HashSet<DefaultLocation>(Arrays.asList(d.types()));
+                final Set<TypeUseLocation> locations = 
+                    new HashSet<TypeUseLocation>(Arrays.asList(d.types()));
 
                 new AnnotatedTypeScanner<Void, AnnotationMirror>() {
 
@@ -203,7 +203,7 @@ public class NonNullAnnotatedTypeFactory extends AnnotatedTypeFactory {
                         // - we are applying defaults to a local
                         // - and the type is a raw type
                         if (elt.getKind() == ElementKind.LOCAL_VARIABLE
-                                && locations.contains(DefaultLocation.ALL_EXCEPT_LOCALS)
+                                && locations.contains(TypeUseLocation.ALL_EXCEPT_LOCALS)
                                 && t == type)
                             return super.scan(t, p);
                          
