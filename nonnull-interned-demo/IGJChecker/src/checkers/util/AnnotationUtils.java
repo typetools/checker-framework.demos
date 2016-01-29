@@ -41,11 +41,11 @@ public class AnnotationUtils {
      *
      * @param path the tree path from which to start searching
      * @return a mapping from annotations (as {@link TypeElement}s) to the
-     *         {@link TypeUseLocation}s for those annotations
+     *         {@link DefaultLocation}s for those annotations
      *
      * @see #findDefaultLocations(Element)
      */
-    public Map<TypeElement, Set<TypeUseLocation>> findDefaultLocations(TreePath path) { 
+    public Map<TypeElement, Set<DefaultLocation>> findDefaultLocations(TreePath path) { 
 
         // Attempt to find a starting search point. If the tree itself has an
         // element, start there. Otherwise, try the enclosing method and
@@ -75,18 +75,18 @@ public class AnnotationUtils {
      * 
      * @param elt the element from which to start searching
      * @return a mapping from annotations (as {@link TypeElement}s) to the
-     *         {@link TypeUseLocations}s for those annotations
+     *         {@link DefaultLocation}s for those annotations
      * 
      * @see #findDefaultLocations(TreePath)
      */
-    public Map<TypeElement, Set<TypeUseLocation>> findDefaultLocations(Element elt) {
+    public Map<TypeElement, Set<DefaultLocation>> findDefaultLocations(Element elt) {
 
         /*@Nullable*/ TypeElement defaultElt =
             elements.getTypeElement("checkers.quals.Default");
         assert defaultElt != null : "couldn't get element for @DefaultQualifier";
 
-        Map<TypeElement, Set</*@NonNull*/ TypeUseLocation>> locations
-            = new HashMap<TypeElement, Set<TypeUseLocation>>();
+        Map<TypeElement, Set</*@NonNull*/ DefaultLocation>> locations
+            = new HashMap<TypeElement, Set<DefaultLocation>>();
 
         List<? extends AnnotationMirror> annos = elt.getAnnotationMirrors();
         for (AnnotationMirror a : annos) {
@@ -99,12 +99,12 @@ public class AnnotationUtils {
             if (aElt == null)
                 throw new RuntimeException("illegal annotation name: " + name);
 
-            /*@Nullable*/ Set<TypeUseLocation> locs =
+            /*@Nullable*/ Set<DefaultLocation> locs =
                 this.parseEnumConstantArrayValue(a, "types",
-                        TypeUseLocation.class);
+                        DefaultLocation.class);
 
             if (!locations.containsKey(aElt))
-                locations.put(aElt, new HashSet<TypeUseLocation>());
+                locations.put(aElt, new HashSet<DefaultLocation>());
             if (locs == null) continue; /*nnbug*/
             locations.get(aElt).addAll(locs);
         }
@@ -113,7 +113,7 @@ public class AnnotationUtils {
         if (encl != null)
             locations.putAll(findDefaultLocations(encl));
 
-        return Collections.</*@NonNull*/ TypeElement, /*@NonNull*/ Set<TypeUseLocation>>unmodifiableMap(locations);
+        return Collections.</*@NonNull*/ TypeElement, /*@NonNull*/ Set<DefaultLocation>>unmodifiableMap(locations);
     }
     
 

@@ -281,7 +281,7 @@ public class AnnotatedTypeFactory {
 
         AnnotationUtils aUtils = new AnnotationUtils(this.env);
 
-        Map<TypeElement, Set<TypeUseLocation>> defaults 
+        Map<TypeElement, Set<DefaultLocation>> defaults 
             = aUtils.findDefaultLocations(elt);
 
         applyDefaults(defaults, elt.asType(), cls);
@@ -301,7 +301,7 @@ public class AnnotatedTypeFactory {
         if (type == null)
             return;
 
-        Map<TypeElement, Set<TypeUseLocation>> defaults 
+        Map<TypeElement, Set<DefaultLocation>> defaults 
             = aUtils.findDefaultLocations(path);
 
         applyDefaults(defaults, type, cls);
@@ -316,7 +316,7 @@ public class AnnotatedTypeFactory {
      *        generic type information)
      * @param cls the type to which the default annotations should be added
      */
-    private final void applyDefaults(Map<TypeElement, Set<TypeUseLocation>> defaults,
+    private final void applyDefaults(Map<TypeElement, Set<DefaultLocation>> defaults,
             TypeMirror type, AnnotatedClassType cls) {
 
         TypesUtils tUtils = new TypesUtils(this.env);
@@ -327,15 +327,15 @@ public class AnnotatedTypeFactory {
             theType = type;
         assert theType != null; /*nninvariant*/
 
-        for (Map.Entry<TypeElement, Set<TypeUseLocation>> entry : 
+        for (Map.Entry<TypeElement, Set<DefaultLocation>> entry : 
                 defaults.entrySet()) {
 
             TypeElement aElt = entry.getKey();
             String aName = aElt.getQualifiedName().toString();
 
-            Set<TypeUseLocation> locations = entry.getValue();
+            Set<DefaultLocation> locations = entry.getValue();
 
-            if (locations.contains(TypeUseLocation.ALL)) {
+            if (locations.contains(DefaultLocation.ALL)) {
                 if (!cls.hasAnnotationAt(Nullable.class, AnnotationLocation.RAW))
                     cls.include(annotations.createAnnotation(aName, AnnotationLocation.RAW));
                 for (AnnotationLocation loc : tUtils.allLocations(theType))
