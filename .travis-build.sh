@@ -3,6 +3,8 @@
 # Fail the whole script if any command fails
 set -e
 
+export SHELLOPTS
+
 ROOT=$TRAVIS_BUILD_DIR/..
 
 ## Build Checker Framework
