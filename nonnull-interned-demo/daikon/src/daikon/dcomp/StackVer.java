@@ -273,7 +273,7 @@ public final class StackVer {
 				icq.remove(0);
 			}
 
-			ArrayList<?> oldchain = (ArrayList<?>) (ec.clone());
+			ArrayList<InstructionContext> oldchain = (ArrayList<InstructionContext>) (ec.clone());
       // this makes Java 5.0 grumpy
 			// ArrayList<InstructionContext> newchain = (ArrayList) (ec.clone());
       ArrayList<InstructionContext> newchain = new ArrayList<InstructionContext>(ec);
