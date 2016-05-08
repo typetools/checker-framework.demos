@@ -17,3 +17,6 @@ jdk:
 notifications:
   email:
     - checker-framework-dev@googlegroups.com 
+
+git:
+  depth: 3
