@@ -8,7 +8,7 @@ export SHELLOPTS
 ROOT=$TRAVIS_BUILD_DIR/..
 
 ## Build Checker Framework
-(cd $ROOT && git clone https://github.com/typetools/checker-framework.git)
+(cd $ROOT && git clone --depth 1 https://github.com/typetools/checker-framework.git)
 # This also builds jsr308-langtools
 (cd $ROOT/checker-framework && ./.travis-build-without-test.sh)
 export CHECKERFRAMEWORK=$ROOT/checker-framework
