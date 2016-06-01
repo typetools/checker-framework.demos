@@ -1,0 +1,22 @@
+Title:
+Disciplined Locking: No More Concurrency Errors
+
+Abstract (750 character limit):
+
+A locking discipline prevents certain concurrency errors by indicating which locks must be held when a given operation occurs.  For instance, a lock may protect accesses to a shared resource, preventing race conditions that can result in corrupted data.
+
+The @GuardedBy annotation (from Java Concurrency In Practice) is a common way to express a locking discipline in a Java.  This talk will show that in the presence of aliasing (two references to the same object), it does not prevent concurrency errors.  We introduce a value-based interpretation that is consistent with the JVM and prevents concurrency errors.  We also present a tool that verifies @GuardedBy annotations, giving you a practical way to prevent concurrency errors in your code.
+
+Session type: conference session
+
+Summary:
+
+This talk contains two parts.  The first can be thought of as theoretical or as a tutorial -- it explains the fundamentals of race conditions and explains what a locking discipline is.  It discusses that the JVM does locking on values, and therefore a locking discipline based on names cannot provide a correctness guarantee, whereas a locking discipline based on values can provide a guarantee.
+
+The second part of the talk can be thought of as practical or as a demo.  It gives concrete examples of concurrency errors in real-world code.  It explains how a publicly-available open-source tool can detect and prevent concurrency errors in Java programs, including ones not detected by previous tools.
+
+The semantics for locking specifications will be presented in the paper "Semantics for locking specifications" at the NASA Formal Methods conference in June 2016.  The paper is available at http://homes.cs.washington.edu/~mernst/pubs/locking-semantics-nfm2016.pdf
+
+A description of tools that infer and verify Java code with respect to locking semantics, and case studies of them, will be presented in the paper "Locking discipline inference and checking" at International Conference on Software Engineering in May 2016.  The paper is available at http://homes.cs.washington.edu/~mernst/pubs/locking-inference-checking-icse2016.pdf
+
+The verification tool is publicly available at http://checkerframework.org/.
