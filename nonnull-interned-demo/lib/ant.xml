@@ -73,7 +73,6 @@
     <attribute name="ignore-matching-lines"/>
     <sequential>
       <exec executable="diff" outputproperty="diff-output" resultproperty="diff-result"> <!-- not  failonerror="true because that prevents user-friendly error message below -->
-        <arg value="-q"/>
         <arg line="-I '@{ignore-matching-lines}'"/>
         <!-- ignore lint results -->
         <arg line="-I 'Note:'"/>
