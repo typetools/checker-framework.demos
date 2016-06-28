@@ -25,6 +25,17 @@
     <echo message="All demos work properly"/>
   </target>
 
+  <target name="check-demo-travis" depends="touch-files">
+
+    <echo message="Running Nullness on the daikon demo"/>
+    <test-project project="junit"/>
+
+    <echo message="Running Nullness on the lookup demo"/>
+    <test-project project="lookup"/>
+
+    <echo message="All demos that work on Travis work properly"/>
+  </target>
+
   <target name="touch-files">
     <touch>
       <fileset dir=".">

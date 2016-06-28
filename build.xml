@@ -8,5 +8,11 @@
       <target name="check-demo"/>
     </ant>
   </target>
+  <target name="check-demos-travis"
+          description="The demos that do not fail on Travis">
+    <ant dir="nonnull-interned-demo">
+      <target name="check-demo-travis"/>
+    </ant>
+  </target>
 
 </project>
