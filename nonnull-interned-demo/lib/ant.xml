@@ -36,6 +36,7 @@
         <arg line="-Alint=@{lint}"/>
         <arg line="-Anocheckjdk"/>
         <arg line="-AsuppressWarnings=purity"/>
+        <jvmarg value="-Xmx3G"/>
       </java>
     </sequential>
   </macrodef>
