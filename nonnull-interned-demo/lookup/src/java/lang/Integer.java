@@ -3,7 +3,7 @@ package java.lang;
 public final class Integer extends java.lang.Number implements java.lang.Comparable<java.lang.Integer> {
   public final static int MIN_VALUE = -2147483648;
   public final static int MAX_VALUE = 2147483647;
-  public final static java.lang.Class<Integer> TYPE;
+  public final static java.lang.Class<Integer> TYPE = Integer.class;
   public final static int SIZE = 32;
   public static @NonNull String toString(int a1, int a2) { throw new RuntimeException("skeleton method"); }
   public static @NonNull String toHexString(int a1) { throw new RuntimeException("skeleton method"); }

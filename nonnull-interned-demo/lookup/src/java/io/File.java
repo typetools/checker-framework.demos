@@ -3,10 +3,10 @@ package java.io;
 @DefaultQualifier(NonNull.class)
 public class File implements java.io.Serializable, java.lang.Comparable<java.io.File> {
   private static final long serialVersionUID = 0;
-  public final static char separatorChar;
-  public final static java.lang.String separator;
-  public final static char pathSeparatorChar;
-  public final static java.lang.String pathSeparator;
+  public final static char separatorChar = '/';
+  public final static java.lang.String separator = "/";
+  public final static char pathSeparatorChar = ':';
+  public final static java.lang.String pathSeparator = ":";
   public File(java.lang.String a1) { throw new RuntimeException("skeleton method"); }
   public File(@Nullable String a1, java.lang.String a2) { throw new RuntimeException("skeleton method"); }
   public File(@Nullable File a1, java.lang.String a2) { throw new RuntimeException("skeleton method"); }

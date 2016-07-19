@@ -3,7 +3,7 @@ package java.lang;
 @DefaultQualifier(NonNull.class)
 public final class String implements java.io.Serializable, java.lang.Comparable<java.lang.String>, java.lang.CharSequence {
   private static final long serialVersionUID = 0;
-  public final static java.util.Comparator<java.lang.String> CASE_INSENSITIVE_ORDER;
+  public final static java.util.Comparator<java.lang.String> CASE_INSENSITIVE_ORDER = (java.util.Comparator<java.lang.String>) new Object();
   public String() { throw new RuntimeException("skeleton method"); }
   public String(java.lang.String a1) { throw new RuntimeException("skeleton method"); }
   public String(char[] a1) { throw new RuntimeException("skeleton method"); }
