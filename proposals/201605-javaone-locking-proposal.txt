@@ -25,7 +25,15 @@ The verification tool is publicly available at http://checkerframework.org/.
 
 Michael Ernst was the specification co-lead for Java's Type Annotations feature ("JSR 308"), which was awarded the "most innovative JSR" award in 2007.  Ernst was honored as a Java Rock Star for a crowd-pleasing JavaOne presentation.  He maintains many open-source projects, including the Checker Framework, Daikon, and Randoop, and he contributes to others.
 
-He is also a Professor at the University of Washington.  His research aims to make software more reliable, more secure, and easier (and more fun!) to produce. His primary technical interests are in software engineering and related areas, including programming languages, type theory, security, program analysis, bug prediction, testing, and verification. Ernst's research combines strong theoretical foundations with realistic experimentation, with an eye to changing the way that software developers work.  He programs every day and gets inspiration for his research from the mistakes he makes during development.
+He is also a Professor at the University of Washington.  His research aims to make software more reliable, more secure, and easier (and more fun!) to produce. Dr. Ernst was previously a tenured professor at MIT, and before that a researcher at Microsoft Research.  More information is available at his homepage:  http://homes.cs.washington.edu/~mernst/.
+
+----------------
+
+There's a length limit and the below was too long:
+
+Michael Ernst was the specification co-lead for Java's Type Annotations feature ("JSR 308"), which was awarded the "most innovative JSR" award in 2007.  Ernst was honored as a Java Rock Star for a crowd-pleasing JavaOne presentation.  He maintains many open-source projects, including the Checker Framework, Daikon, and Randoop, and he contributes to others.
+
+He is also a Professor at the University of Washington.  His research aims to make software more reliable, more secure, and easier (and more fun!) to produce. His primary technical interests are in software engineering and related areas, including programming languages, type theory, security, program analysis, bug prediction, testing, and verification.  Ernst's research combines strong theoretical foundations with realistic experimentation, with an eye to changing the way that software developers work.  He programs every day and gets inspiration for his research from the mistakes he makes during development.
 
 Dr. Ernst was previously a tenured professor at MIT, and before that a
 researcher at Microsoft Research.
