@@ -1,7 +1,7 @@
 [
 IMPORTANT:
 
-As of July 2012, the demos are not working.
+As of July 2012, the Daikon demos are not working.
 Fixing them requires updating annotations in daikon.jar.  We can't simply
 use a new version of daikon.jar because some methods (that are used by the
 version of the code in the demo) have been removed.
