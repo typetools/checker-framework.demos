@@ -28,7 +28,7 @@
    (rear-context-string . "he(CACHE_SIZE);\n")
    (position . 2230)))
  ("6 taintness"
-  ((filename . "~/research/types/checker-framework/tutorial/eclipse-projects/personalblog-demo/src/net/eyde/personalblog/service/PersonalBlogService.java")
+  ((filename . "~/research/types/checker-framework/docs/tutorial/eclipse-projects/personalblog-demo/src/net/eyde/personalblog/service/PersonalBlogService.java")
    (front-context-string . "    private <T> ")
    (rear-context-string . "({\"unchecked\"})\n")
    (position . 6750)))
