@@ -32,4 +32,4 @@
    (front-context-string . "    private <T> ")
    (rear-context-string . "({\"unchecked\"})\n")
    (position . 6750)))
-)
+ )
