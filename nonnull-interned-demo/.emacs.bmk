@@ -12,21 +12,11 @@
    (front-context-string . "		Assert.assertE")
    (rear-context-string . "estEquality() {\n")
    (position . 193)))
- ("3 junit"
+ ("3 JUnit 4.3"
   ((filename . "~/research/types/checker-framework-demos/nonnull-interned-demo/junit/src/org/junit/Assert.java")
    (front-context-string . "package org.juni")
    (rear-context-string)
    (position . 1)))
- ("4 AnnotationLocation"
-  ((filename . "~/research/types/checker-framework-demos/nonnull-interned-demo/IGJChecker/src/checkers/types/AnnotationLocation.java")
-   (front-context-string . "@Immutable\npubli")
-   (rear-context-string . "</table>\n *\n */\n")
-   (position . 1287)))
- ("5 AnnotatedTypeFactory"
-  ((filename . "~/research/types/checker-framework-demos/nonnull-interned-demo/IGJChecker/src/checkers/types/AnnotatedTypeFactory.java")
-   (front-context-string . "    private Map<")
-   (rear-context-string . "he(CACHE_SIZE);\n")
-   (position . 2230)))
  ("6 taintness"
   ((filename . "~/research/types/checker-framework/docs/tutorial/eclipse-projects/personalblog-demo/src/net/eyde/personalblog/service/PersonalBlogService.java")
    (front-context-string . "    private <T> ")
