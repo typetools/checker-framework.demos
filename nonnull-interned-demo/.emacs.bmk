@@ -32,4 +32,9 @@
    (front-context-string . "    private <T> ")
    (rear-context-string . "({\"unchecked\"})\n")
    (position . 6750)))
+ ("7 iCalendar preconditions"
+  ((filename . "~/bin/src/plume-lib-for-demo/java/src/plume/ICalAvailable.java")
+   (front-context-string . " * Given one or ")
+   (rear-context-string . "see below)\n\n/**\n")
+   (position . 1507)))
  )
