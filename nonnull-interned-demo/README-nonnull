@@ -1,7 +1,7 @@
 Notes for the NonNull demos.
 
 
-1. nonnull
+0. nonnull
 [Not in the Emacs bookmarks.]
 
 Open checkers/src/checkers/nonnull/NonNullAnnotatedTypeFactory.java:201.
@@ -21,7 +21,7 @@ the checker issues one error, since we're dereferencing "elt", which is
 @Nullable. We can fix it by adding an (elt != null) if in the if condition,
 and re-run the checker to ensure that there are no more nullness errors.
 
-2. framework
+1. framework
 
 (I realize that this one isn't really that different from the previous example,
 so it can be omitted for a shorter demo.
@@ -65,7 +65,7 @@ and the error will go away and will not recur.  (This is weird behavior
 that suggests there is a bug somewhere.)
 
 
-3. lookup
+0. lookup
 [Not in the Emacs bookmarks.]
 
 * Open lookup/src/utilMDE/UtilMDE.java:563.
@@ -98,7 +98,7 @@ that suggests there is a bug somewhere.)
 
 * Re-run the checker to verify that there are no errors.
 
-4. junit
+2 & 3. JUnit
 
 Open file JUnitTests.java.  Ask the audience what happens when you run the
 code:  does the test pass or does it fail?
@@ -134,3 +134,38 @@ Run the checker.  There are three errors
 
 
 Verify the correctness of the fixes by re-running the 'test' task of build.xml.
+
+
+7. Pre- and post-condition demo, using plume-lib's ICalAvailable.
+
+First, run it to show what it does.
+(But, I can't currently run it.
+See my file system at CSE and whether I can run it there.
+Or, find an example of a past execution.)
+
+Prep:
+run:
+make -C ~/bin/src/plume-lib-for-demo/ tags
+(progn
+  (visit-tags-table (expand-file-name "~/bin/src/plume-lib-for-demo/java/") nil)
+  (find-file "~/bin/src/plume-lib-for-demo/java/src/plume/ICalAvailable.java")
+  (compile "make typecheck-only" nil))
+
+There are 5 warnings.
+ 1. Fix the first one by adding @RequiresNonNull("tz1")
+ 2. Skip over the second one, which is in main(); save this error and method it for later.
+ 3. Don't fix it yet (it's in main() too), but
+    When examining this line, note that no warning is printed about tz2.
+    Note the check just above.
+          "Timezone: %s  [Timezone: %s]%n", printedTimezone(tz1), printedTimezone(tz2));
+ 4. Skip over the fourth one.
+ 5. Fix the fifth one by adding @RequiresNonNull("tz1")
+
+Compile again.
+Note a different problem earlier in main(). This is due to one of the added annotations.
+
+Fix the problem by adding @EnsuresNonNull("tz1") in `processOptions`.
+The whole program typechecks, so we have verified that there are no possible null pointer exceptions.
+
+Try strengthening the processOptions() specification to @EnsuresNonNull({"tz1","tz2"}).
+Note the error:  the typechecker doesn't just blindly trust your claims, it checks them all.
