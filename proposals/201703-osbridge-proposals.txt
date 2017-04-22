@@ -35,7 +35,7 @@ Optional should be prohibited: it is an overreaction to a problem that already h
 
 Description
 
-Many programming languages have a typed named Optional, which is a container that is either empty or contains a non-null value. The Web and blogosphere are full of claims that the Optional class solves the problem of null pointer exceptions. This is not true. In this talk, you will learn that Optional has numerous problems without countervailing benefits. Optional does not make your code more correct or robust. However, Optional does have these effects:
+Many programming languages have a type named Optional, which is a container that is either empty or contains a non-null value. The Web and blogosphere are full of claims that the Optional class solves the problem of null pointer exceptions. This is not true. In this talk, you will learn that Optional has numerous problems without countervailing benefits. Optional does not make your code more correct or robust. However, Optional does have these effects:
 
  * It transforms a NullPointerException into a NoSuchElementException, which still crashes your program.
  * It creates new problems that were not a danger before.
@@ -62,13 +62,13 @@ You never need to suffer an array indexing error again.  With tools that allow y
 
 Description
 
-A classic error that plagues programmers is an index-out-of-bounds error when trying to access an element in an array, list, or string. Typically, this causes a crash or a security vulnerability.
+When a program tries to access an element in an array, list, or string, the program may suffer an index-out-of-bounds error. This causes a crash or a security vulnerability.
 
-Up until now, the most effective way to prevent array bounds errors has been testing, coupled with extra run-time checking to detect bounds violations. This improves the robustness of your code, but there is still the possibility that your program will fail in the field.
+Up until now, the most effective way to prevent array bounds errors has been testing, coupled with extra run-time checking to detect bounds violations. This improves the robustness of your code, but there is still the possibility that your program will fail in the field, and it reduces performance.
 
-We have built a program verification tool that guarantees that your program will never suffer an array bound exception. This tool differs from previous work in several ways. It runs at compile time, so there is no run-time overhead and is not dependent on your test suite. It is sound rather than heuristic: it gives a guarantee, in the form of a proof of correctness. It is scalable, able to quickly analyze part of your program at a time rather than doing an expensive analysis requiring the whole program. The tool is based on a theoretical foundation called dependent types.
+We have built a program verification tool that guarantees that your program will never suffer an array bound exception. This tool differs from previous work in several ways. It runs at compile time, so there is no run-time overhead and it is not dependent on your test suite. It is sound rather than heuristic: it gives a guarantee, in the form of a proof of correctness. It is scalable, able to quickly analyze part of your program at a time rather than doing an expensive analysis requiring the whole program. The tool is based on a theoretical foundation called dependent types.
 
-The tool is open-source and works for the Java programming language. Although very new (it has not yet reached version 1.0), it has already detected dozens of indexing bugs in real-world programs.
+The tool is open-source and works for the Java programming language. It has already detected dozens of indexing bugs in real-world programs.
 
 We will demonstrate the tool and will explain how it works. You will leave the session with a better understanding of how to prevent bounds errors, which you can put into practice right away.
 
