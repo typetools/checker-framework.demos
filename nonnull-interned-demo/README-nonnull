@@ -1,25 +1,43 @@
 Notes for the NonNull demos.
 
 
-0. nonnull
-[Not in the Emacs bookmarks.]
+2 & 3. JUnit
 
-Open checkers/src/checkers/nonnull/NonNullAnnotatedTypeFactory.java:201.
+Open file JUnitTests.java.  Ask the audience what happens when you run the
+code:  does the test pass or does it fail?
 
-Note that the default is @NonNull -- all unannotated types are @NonNull types,
-and this default is overridden via the @Nullable annotation.
+Now run the "test" task of build.xml.
+JUnit itself throws a null pointer exception!
 
-(The method we're looking at is part of the NonNull typechecker itself. It's
-responsible for putting an implicit @NonNull on enum constants.)
 
-Run the checker and see that the checker issues one error on the assignment of
-a @Nullable Element to a @NonNull (by default) Element; the symbol() method,
-contrary to the programmer's understanding, returns a @Nullable Element.
+Open junit/src/org/junit/Assert.java
 
-Add a @Nullable to the declaration of elt on 201, and re-run the checker. Now,
-the checker issues one error, since we're dereferencing "elt", which is
-@Nullable. We can fix it by adding an (elt != null) if in the if condition,
-and re-run the checker to ensure that there are no more nullness errors.
+Note that @Nullable is the default in this file.  Or don't mention it
+explicitly and discuss it only if it comes up in the course of a question?
+[Discussing defaults during the demo may be confusing and distracting.
+Would it be possible to not override the defaults during the demo?
+A problem might be that that increases clutter. -MDE]
+
+These were all real problems in a previous version of JUnit (4.3, I think).
+(They have since been corrected.)
+
+Run the checker.  There are three errors
+ - at line 105 - expected parameter might be null
+    Fix: add @NonNull to 'Object expected'
+
+ - at line 152 - o1 and o2 might be null
+    assertEquals checks the nullness of array parameters but not the array
+    elements
+    Fix: uncomment the commened code which checks for o1 and o2 nullness
+
+ - at line 359,362 - expected and actual parameters might be null
+    format() tries to output a meaningful message if both parameters have
+    the same toString() representation but are of different classes.
+    Fix: replace .getClass().getName() lines with the commented lines
+
+
+Verify the correctness of the fixes by re-running the 'test' task of build.xml.
+
 
 1. framework
 
@@ -97,44 +115,6 @@ that suggests there is a bug somewhere.)
   clutter.
 
 * Re-run the checker to verify that there are no errors.
-
-2 & 3. JUnit
-
-Open file JUnitTests.java.  Ask the audience what happens when you run the
-code:  does the test pass or does it fail?
-
-Now run the "test" task of build.xml.
-JUnit itself throws a null pointer exception!
-
-
-Open junit/src/org/junit/Assert.java
-
-Note that @Nullable is the default in this file.  Or don't mention it
-explicitly and discuss it only if it comes up in the course of a question?
-[Discussing defaults during the demo may be confusing and distracting.
-Would it be possible to not override the defaults during the demo?
-A problem might be that that increases clutter. -MDE]
-
-These were all real problems in a previous version of JUnit (4.3, I think).
-(They have since been corrected.)
-
-Run the checker.  There are three errors
- - at line 105 - expected parameter might be null
-    Fix: add @NonNull to 'Object expected'
-
- - at line 152 - o1 and o2 might be null
-    assertEquals checks the nullness of array parameters but not the array
-    elements
-    Fix: uncomment the commened code which checks for o1 and o2 nullness
-
- - at line 359,362 - expected and actual parameters might be null
-    format() tries to output a meaningful message if both parameters have
-    the same toString() representation but are of different classes.
-    Fix: replace .getClass().getName() lines with the commented lines
-
-
-Verify the correctness of the fixes by re-running the 'test' task of build.xml.
-
 
 7. Pre- and post-condition demo, using plume-lib's ICalAvailable.
 
