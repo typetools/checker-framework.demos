@@ -1,0 +1,100 @@
+jpacman-framework lets you play the classic Pac-Man game.
+
+# Run the program to see its behavior:
+cd $t/cf-case-studies/jpacman-framework-fork-mernst/
+java -classpath target/jpacman-framework-7.0.0-SNAPSHOT.jar nl.tudelft.jpacman.Launcher
+
+# The levels are read from a file.  Here is an example board:
+$t/cf-case-studies/jpacman-framework-fork-mernst/src/main/resources/board.txt
+
+# You can define your own boards, too.  When doing so, you might give the file an incorrect name.  Here is an example.
+$t/cf-case-studies/jpacman-framework-fork-mernst-branch-parseMap-bug/src/main/resources/
+
+# If you do so, you will get an obscure error when you run the program:
+cd $t/cf-case-studies/jpacman-framework-fork-mernst-branch-parseMap-bug/
+java -classpath target/jpacman-framework-7.0.0-SNAPSHOT.jar nl.tudelft.jpacman.Launcher
+
+# Running a pluggable type-checker would have revealed the error before you deployed the program:
+cd $t/cf-case-studies/jpacman-framework-fork-mernst-branch-parseMap-bug/
+mvn compile
+# To see the bug, search for parseMap or boardStream in
+# $t/cf-case-studies/jpacman-framework-fork-mernst-branch-parseMap-bug/src/main/java/nl/tudelft/jpacman/Launcher.java
+
+# Show the fixed version of the code (search for parseMap or boardStream):
+$t/cf-case-studies/jpacman-framework-fork-mernst-branch-parseMap-bug-fixed/src/main/java/nl/tudelft/jpacman/Launcher.java
+
+# Run the program:
+cd $t/cf-case-studies/jpacman-framework-fork-mernst-branch-parseMap-bug-fixed/
+java -classpath target/jpacman-framework-7.0.0-SNAPSHOT.jar nl.tudelft.jpacman.Launcher
+
+===========================================================================
+
+jpacman is 1935 LOC
+Here are the annotations that were written:
+Nullness: 29
+Initialization: 3
+Map keys: 1
+
+(visit-tags-table "~/research/types/cf-case-studies/jpacman-framework-fork-mernst/TAGS" nil)
+
+===========================================================================
+
+# To build the buggy jar file:
+cd $t/cf-case-studies/jpacman-framework-fork-mernst-branch-parseMap-bug/
+## Make changes to permit compiling:
+\cp -pf src/main/resources/boord.txt src/main/resources/board.txt
+# Add this annotation in $t/cf-case-studies/jpacman-framework-fork-mernst-branch-parseMap-bug/src/main/java/nl/tudelft/jpacman/Launcher.java
+#   @SuppressWarnings("nullness")	// suppress warning to illustrate bug
+#   public Level makeLevel() {
+## Actual compilation
+mvn package
+zip -d target/jpacman-framework-7.0.0-SNAPSHOT.jar board.txt
+## Undo local changes:
+rm -f src/main/resources/board.txt
+# Undo edits in Launcher.java
+
+===========================================================================
+
+# To build the fixed jar file:
+cd $t/cf-case-studies/jpacman-framework-fork-mernst-branch-parseMap-bug-fixed/
+## Make changes to permit compiling:
+\cp -pf src/main/resources/boord.txt src/main/resources/board.txt
+## Actual compilation
+mvn package
+zip -d target/jpacman-framework-7.0.0-SNAPSHOT.jar board.txt
+## Undo local changes:
+rm -f src/main/resources/board.txt
+
+# Don't try to typecheck this version.
+# Run the typechecker on the mainline.
+
+===========================================================================
+
+To run master:
+
+cd $t/cf-case-studies/jpacman-framework-fork-mernst/
+java -classpath target/jpacman-framework-7.0.0-SNAPSHOT.jar nl.tudelft.jpacman.Launcher
+
+===========================================================================
+
+Arie says:
+
+The only real error was here:
+
+https://github.com/SERG-Delft/jpacman-framework/pull/101/files#diff-90ae0bb66146b0e27f87214dd9426b85L87
+
+
+		try (InputStream boardStream = Launcher.class.getResourceAsStream(getLevelMap())) {
+			return parser.parseMap(boardStream);
+		} catch (IOException e) {
+			throw new PacmanConfigurationException("Unable to create level.", e);
+
+Here I was expecting that the getResource would give an IOException if the resource would not exist — instead it can return null (as your framework figured out), which then would give a null pointer exception.
+
+Creating a Launcher object with a non-existing file resource would trigger the null pointer exception.
+
+(Interestingly I had an Ignored test somewhere which covered this case already — I think I postponed the fix since it was during the semester and it would confuse the students if I would change things halfway. But I had forgotten all about that).
+
+If the resource would not be found, the boardStream would be null, and the parseMap method implicitly was expecting something non-null. Actually, I myself was expecting that the old code 
+
+===========================================================================
