@@ -15,6 +15,12 @@ cd $t/cf-case-studies/jpacman-framework-fork-mernst-branch-parseMap-bug/
 java -classpath target/jpacman-framework-7.0.0-SNAPSHOT.jar nl.tudelft.jpacman.Launcher
 
 # Running a pluggable type-checker would have revealed the error before you deployed the program:
+(let ((default-directory (substitute-in-file-name
+     "$t/cf-case-studies/jpacman-framework-fork-mernst-branch-parseMap-bug/")))
+   (if (not (member 'maven compilation-error-regexp-alist))
+     (setq compilation-error-regexp-alist (cons 'maven compilation-error-regexp-alist)))
+   (compile "mvn compile"))
+# From command line:
 cd $t/cf-case-studies/jpacman-framework-fork-mernst-branch-parseMap-bug/
 mvn compile
 # To see the bug, search for parseMap or boardStream in
