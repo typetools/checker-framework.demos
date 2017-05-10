@@ -1,2 +1,5 @@
 This repository contains demos of the Checker Framework
 that have been presented at various conferences.
+
+The Encrypted Checker Demo from JavaOne 2016 can be found at
+https://github.com/typetools/checker-framework/tree/master/docs/examples/subtyping-extension
