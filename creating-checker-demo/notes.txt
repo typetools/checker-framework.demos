@@ -1,0 +1,123 @@
+The presentation shows how to create a checker.
+It creates a simple variant of the Optional Checker.
+
+===========================================================================
+
+PRESENTATION:
+
+----------------
+
+Preparation:
+
+Link the $t/checker-framework alias to a version of the Checker Framework with some changes undone:
+ * undo changes to Optional JDK class
+ * remove all files: OptionalChecker, OptionalVisitor, qualifiers.
+ * Leave the messages.properties file; it ensures that the needed directory exists.
+(It might have extra annotations in the Optional JDK class.  Check.)
+
+# Prepare annotated JDK, without annotations:
+\cp -pf $t/checker-framework-REAL/checker/dist/jdk8.jar $ch/dist/
+
+# Ensure that Javadoc exists.
+
+;; Open manual in two browser tabs:  one for creating a checker, one for the
+;; optional checker manual section.
+(progn
+(browse-url "/home/mernst/research/types/checker-framework-REAL/docs/manual/manual.html")
+(browse-url "file:///home/mernst/research/types/checker-framework-fork-mernst-branch-optional-checker/docs/manual/manual.html#optional-checker"))
+;; Open presentation in a different browser window (not just a different tab):
+https://docs.google.com/presentation/d/1crV1_vXPqrp5j4FDZRGAIOBdy1xgRhB2FMMDADEU_Rc
+
+----------------
+
+Source code:
+$t/checker-framework-fork-mernst-branch-optional-checker/checker/src/org/checkerframework/checker/optional/
+Test cases:
+$t/checker-framework-fork-mernst-branch-optional-checker/checker/tests/optional/
+
+----------------
+
+After presenting the slides, follow the "How to Create a Checker" chapter of the manual.
+
+----------------
+
+Show the user manual.
+
+----------------
+
+Create qualifiers by cut-and-paste-and edit from the manual:
+Present, MaybePresent
+
+Compile:
+ant -f $ch/build.xml build-checker-only
+(cd $ch && ant build-checker-only)
+
+Test with Subtyping Checker
+
+cd $ch/tests/optional
+$ch/bin/javac -processor org.checkerframework.common.subtyping.SubtypingChecker -Aquals=org.checkerframework.checker.optional.qual.Present,org.checkerframework.checker.optional.qual.MaybePresent SubtypeCheck.java 
+
+----------------
+
+Create OptionalChecker.java, then test the same file:
+
+cd $ch/tests/optional
+$ch/bin/javac -processor optional SubtypeCheck.java 
+
+----------------
+
+Create library annotations:
+(Don't use a stub file because it uses non-standard syntax for the "this" formal parameter.)
+
+# First, show the JdkCheck.java test file, and run the checker to show
+# what error messages get output without any JDK annotations:
+cd $ch/tests/optional
+$ch/bin/javac -processor optional JdkCheck.java 
+
+# Annotate the receiver formal parameter of these methods:
+get
+orElseThrow
+
+# Annotate the return value of these methods:
+of
+
+# Don't recompile the JDK because it takes too long.
+\cp -pf $t/checker-framework-fork-mernst-branch-optional-checker/checker/dist/jdk8.jar $ch/dist/
+
+# Test it:
+cd $ch/tests/optional
+$ch/bin/javac -processor optional JdkCheck.java 
+
+----------------
+
+Flow-sensitivity:  add library annotation for
+
+isPresent
+
+It's already in the annotated JDK that I previously copied.
+
+# Test it:
+cd $ch/tests/optional
+$ch/bin/javac -processor optional FlowSensitivity.java 
+
+----------------
+
+Notice that we still haven't written any code!  That's remarkable.
+
+That takes 45 minutes so far.
+
+----------------
+
+Add Nullness annotations to Optional.java
+public final @NonNull class Optional<T extends @NonNull Object> {
+    private final @Nullable T value;
+    public static <T extends @NonNull Object> Optional<T> ofNullable(@Nullable T value) {
+    public @PolyNull T orElse(@PolyNull T other) {
+
+----------------
+
+If I have more time, implement rule #7 about which occurrences of Optional are permitted.
+
+Create a TypeValidator
+
+===========================================================================
