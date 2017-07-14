@@ -3,6 +3,11 @@ It creates a simple variant of the Optional Checker.
 
 ===========================================================================
 
+Google Docs Slides are at:
+https://docs.google.com/presentation/d/1crV1_vXPqrp5j4FDZRGAIOBdy1xgRhB2FMMDADEU_Rc/edit
+
+===========================================================================
+
 PRESENTATION:
 
 ----------------
