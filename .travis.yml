@@ -10,9 +10,8 @@ sudo: false
 #       - jtreg
 
 jdk:
-  - oraclejdk8
-#  - oraclejdk7
-  - openjdk7
+#  - oraclejdk8
+  - openjdk8
 
 git:
   depth: 3
