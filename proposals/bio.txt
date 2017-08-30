@@ -1,4 +1,4 @@
-Michael Ernst loves programmers and wants to make their lives better.  He builds programming tools and was the specification lead for JSR-308, which extended Java's annotation syntax.
+Michael Ernst loves programmers and wants to make their lives better by building programming tools.  A notable example is the Checker Framework, which stregthens Java's type system in order to prevent more bugs.  He was also the specification lead for JSR-308, which extended Java's annotation syntax and won a Most Innovative JSR award.  His engaging talks have multiple times won the JavaOne Rock Star designation.
 
 As a professor at the University of Washington, his research aims to make software more reliable, more secure, and easier (and more fun!) to produce.  Ernst's research combines strong theoretical foundations with realistic experimentation, with an eye to changing the way that software developers work.
 He publishes in software engineering, programming languages, type theory, security, program analysis, bug prediction, testing, and verification. 
