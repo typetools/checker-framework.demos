@@ -81,6 +81,8 @@
         <!-- ignore ant headers and empty lines -->
 	<arg line="-I '^ *$'"/>
 	<arg line="-I '^[^ ]*:$'"/>
+        <!-- ignore _JAVA_OPTIONS -->
+	<arg line="-I '^Picked up _JAVA_OPTIONS:'"/>
 
         <!-- ignore paths -->
         <arg line="-I '.java'"/>
