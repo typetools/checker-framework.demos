@@ -23,6 +23,20 @@ Although our example will use Java, the ideas translate to other languages. Even
 
 ===========================================================================
 
+[Variant of the above, used for SeaJUG talk in February 2018.]
+
+Implement your own type system in 1 hour
+
+Don't let programming language designers have all the fun: you can design your own type system that is better than the current one.
+
+Many developers view type theory as abstruse and confusing. It's not! This talk will show you the four simple components of a type system: the types, their subtyping relationships, how to give a type to each expression in your program, and what operations are illegal. If you specify these four things, you have designed a type system.
+
+We will do exactly that during the course of the presentation. Starting from nothing, in 1 hour we will create a full-fledged type-checker that detects real errors in real programs. For concreteness, we will implement our type-checker for the Java language, and it will handle all Java constructs, such as generics, subtyping, and lambdas. Our type system will be better than the built-in Java type system: it will detect errors in the use of the Optional type that the Java compiler permits and that would go undetected until run time.
+
+Although our example will use Java, the ideas translate to other languages. Even if you don't want to implement your own type system, you will come away with a better understanding of type systems and of compile-time verification in general.  And, you will be ready to use the dozens of available pluggable type-systems that others have already implemented and that are in use at companies such as Amazon, Google, and Uber to improve code quality.
+
+===========================================================================
+
 Nothing is better than the Optional type
 
 PRACTICE
