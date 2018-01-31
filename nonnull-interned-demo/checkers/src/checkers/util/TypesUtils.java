@@ -13,6 +13,7 @@ import java.util.Set;
 import javax.annotation.processing.ProcessingEnvironment;
 import javax.lang.model.element.*;
 import javax.lang.model.type.*;
+import javax.lang.model.type.TypeKind;
 import javax.lang.model.util.*;
 
 

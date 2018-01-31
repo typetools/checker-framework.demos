@@ -12,6 +12,7 @@ import java.util.*;
 import javax.annotation.processing.*;
 import javax.lang.model.element.*;
 import javax.lang.model.type.*;
+import javax.lang.model.type.TypeKind;
 import javax.lang.model.util.*;
 
 /**
