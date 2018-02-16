@@ -4,7 +4,7 @@ It creates a simple variant of the Optional Checker.
 ===========================================================================
 
 Google Docs Slides are at:
-https://docs.google.com/presentation/d/1crV1_vXPqrp5j4FDZRGAIOBdy1xgRhB2FMMDADEU_Rc/edit
+https://docs.google.com/presentation/d/1xafCywcSumKuoVqvwENtZQhmjzmv_B07j9oEPFuNMDg
 
 ===========================================================================
 
@@ -14,24 +14,29 @@ PRESENTATION:
 
 Preparation:
 
-Link the $t/checker-framework alias to a version of the Checker Framework with some changes undone:
+Create a version of the Checker Framework with some changes undone:
  * undo changes to Optional JDK class
  * remove all files: OptionalChecker, OptionalVisitor, qualifiers.
  * Leave the messages.properties file; it ensures that the needed directory exists.
 (It might have extra annotations in the Optional JDK class.  Check.)
 
-# Prepare annotated JDK, without annotations:
-\cp -pf $t/checker-framework-REAL/checker/dist/jdk8.jar $ch/dist/
+Link the $t/checker-framework alias to the version with some changes undone.
 
-# Ensure that Javadoc exists.
+# Prepare annotated JDK, without @Present annotations:
+\cp -pf $t/checker-framework-branch-master/checker/dist/jdk8.jar $ch/dist/
+# During the demo, I will show a type-checking failure with this one; then
+# I will download or copy a prebuilt annotated JDK and show that it fixes the problems.
+
+# Ensure that Javadoc exists.  [For the Optional Checker, or for other parts
+# of the Checker Framework?]
 
 ;; Open manual in two browser tabs:  one for creating a checker, one for the
 ;; optional checker manual section.
 (progn
-(browse-url "/home/mernst/research/types/checker-framework-REAL/docs/manual/manual.html")
+(browse-url "/home/mernst/research/types/checker-framework-branch-master/docs/manual/manual.html")
 (browse-url "file:///home/mernst/research/types/checker-framework-fork-mernst-branch-optional-checker/docs/manual/manual.html#optional-checker"))
 ;; Open presentation in a different browser window (not just a different tab):
-https://docs.google.com/presentation/d/1crV1_vXPqrp5j4FDZRGAIOBdy1xgRhB2FMMDADEU_Rc
+https://docs.google.com/presentation/d/1xafCywcSumKuoVqvwENtZQhmjzmv_B07j9oEPFuNMDg
 
 ----------------
 
@@ -39,6 +44,8 @@ Source code:
 $t/checker-framework-fork-mernst-branch-optional-checker/checker/src/org/checkerframework/checker/optional/
 Test cases:
 $t/checker-framework-fork-mernst-branch-optional-checker/checker/tests/optional/
+
+Open the JDK's Optional in a file too?
 
 ----------------
 
@@ -52,6 +59,7 @@ Show the user manual.
 
 Create qualifiers by cut-and-paste-and edit from the manual:
 Present, MaybePresent
+[Skip polymorphism.]
 
 Compile:
 ant -f $ch/build.xml build-checker-only
@@ -71,23 +79,17 @@ $ch/bin/javac -processor optional SubtypeCheck.java
 
 ----------------
 
-Create library annotations:
-(Don't use a stub file because it uses non-standard syntax for the "this" formal parameter.)
+Create annotated library: a stub file.
 
 # First, show the JdkCheck.java test file, and run the checker to show
 # what error messages get output without any JDK annotations:
 cd $ch/tests/optional
 $ch/bin/javac -processor optional JdkCheck.java 
 
-# Annotate the receiver formal parameter of these methods:
-get
-orElseThrow
-
-# Annotate the return value of these methods:
-of
-
-# Don't recompile the JDK because it takes too long.
-\cp -pf $t/checker-framework-fork-mernst-branch-optional-checker/checker/dist/jdk8.jar $ch/dist/
+# Just 3 @Present annotations:
+get  receiver
+orElseThrow  receiver
+of  return type
 
 # Test it:
 cd $ch/tests/optional
@@ -95,11 +97,12 @@ $ch/bin/javac -processor optional JdkCheck.java
 
 ----------------
 
-Flow-sensitivity:  add library annotation for
+Flow-sensitivity:  add @EnsuresQualifierIf library annotation for
 
 isPresent
 
-It's already in the annotated JDK that I previously copied.
+It's already in the annotated JDK that I previously copied;
+I don't want to write it anew.
 
 # Test it:
 cd $ch/tests/optional
@@ -113,7 +116,8 @@ That takes 45 minutes so far.
 
 ----------------
 
-Add Nullness annotations to Optional.java
+To handle rule #1,
+add Nullness annotations to Optional.java in the nullness JDK, not optional JDK.
 public final @NonNull class Optional<T extends @NonNull Object> {
     private final @Nullable T value;
     public static <T extends @NonNull Object> Optional<T> ofNullable(@Nullable T value) {
@@ -124,5 +128,7 @@ public final @NonNull class Optional<T extends @NonNull Object> {
 If I have more time, implement rule #7 about which occurrences of Optional are permitted.
 
 Create a TypeValidator
+
+More likely, just show the source code.
 
 ===========================================================================
