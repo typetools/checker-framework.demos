@@ -14,77 +14,88 @@ PRESENTATION:
 
 Preparation:
 
-Create a version of the Checker Framework with some changes undone:
- * undo changes to Optional JDK class
- * remove all files: OptionalChecker, OptionalVisitor, qualifiers.
- * Leave the messages.properties file; it ensures that the needed directory exists.
-(It might have extra annotations in the Optional JDK class.  Check.)
+Create a version of the Optional Checker with some changes undone.
+But the Javadoc should include the Optional Checker
 
-Link the $t/checker-framework alias to the version with some changes undone.
+## Create the new version; make Javadoc that includes the new version
+# Optionally, first blow away the old version:
+# \rm -rf $t/checker-framework-optional-demo
+cd $t && \
+cp -R checker-framework-fork-mernst-branch-optional-checker checker-framework-optional-demo && \
+rm -f checker-framework && \
+ln -s checker-framework-optional-demo checker-framework && \
+(cd $ch && ant clean) && \
+(cd $ch && ant download-jdk) && \
+(cd $cf && ant dist-nobuildjdk) && \
+(cd $cf && ant javadoc) && \
+(make -C $cf/docs/manual) && \
+(cd && javadoc-index-to-alist > ~/.javadoc-index.el)
 
-# Prepare annotated JDK, without @Present annotations:
-\cp -pf $t/checker-framework-branch-master/checker/dist/jdk8.jar $ch/dist/
-# During the demo, I will show a type-checking failure with this one; then
-# I will download or copy a prebuilt annotated JDK and show that it fixes the problems.
+## Stub file with @Present annotations removed.
+cp $ch/jdk/optional/src/java/util/Optional.java $ch/src/org/checkerframework/checker/optional/jdk.astub
+sed -i 's/@Present //' $ch/src/org/checkerframework/checker/optional/jdk.astub
+sed -i 's/@EnsuresQualifierIf/\/\/ @EnsuresQualifierIf/' $ch/src/org/checkerframework/checker/optional/jdk.astub
 
-# Ensure that Javadoc exists.  [For the Optional Checker, or for other parts
-# of the Checker Framework?]
+## Move orginal .java files aside (leave messages.properties file).
+cd $ch/src/org/checkerframework/checker/optional/
+for FILE in `find . -name '*.java'`; do mv $FILE $FILE-ORIG; done
+(cd $cf && ant tags)
 
 ;; Open manual in two browser tabs:  one for creating a checker, one for the
 ;; optional checker manual section.
 (progn
-(browse-url "/home/mernst/research/types/checker-framework-branch-master/docs/manual/manual.html")
-(browse-url "file:///home/mernst/research/types/checker-framework-fork-mernst-branch-optional-checker/docs/manual/manual.html#optional-checker"))
-;; Open presentation in a different browser window (not just a different tab):
+(browse-url "/home/mernst/research/types/checker-framework-optional-demo/docs/manual/manual.html")
+(browse-url "file:///home/mernst/research/types/checker-framework-optional-demo/docs/manual/manual.html#optional-checker"))
+
+----------------
+
+Open some files in my editor:
+(progn
+;; Source code directory
+(find-file (substitute-in-file-name "$t/checker-framework-optional-demo/checker/src/org/checkerframework/checker/optional/"))
+;; Test cases
+(find-file (substitute-in-file-name "$t/checker-framework-optional-demo/checker/tests/optional/")))
+
+----------------
+
+;; Open presentation in a different browser window (not just a different tab (why?)):
 https://docs.google.com/presentation/d/1xafCywcSumKuoVqvwENtZQhmjzmv_B07j9oEPFuNMDg
+After presenting the slides, follow the "How to Create a Checker" chapter of the manual;
+either section "The parts of a checker" or, better, "Tips for creating a checker".
 
 ----------------
 
-Source code:
-$t/checker-framework-fork-mernst-branch-optional-checker/checker/src/org/checkerframework/checker/optional/
-Test cases:
-$t/checker-framework-fork-mernst-branch-optional-checker/checker/tests/optional/
+QUALIFIERS
 
-Open the JDK's Optional in a file too?
-
-----------------
-
-After presenting the slides, follow the "How to Create a Checker" chapter of the manual.
-
-----------------
-
-Show the user manual.
-
-----------------
-
-Create qualifiers by cut-and-paste-and edit from the manual:
-Present, MaybePresent
+create Present, MaybePresent by cut-and-paste-and edit from the manual.
 [Skip polymorphism.]
 
 Compile:
 ant -f $ch/build.xml build-checker-only
 (cd $ch && ant build-checker-only)
 
-Test with Subtyping Checker
+Test with Subtyping Checker:
 
 cd $ch/tests/optional
-$ch/bin/javac -processor org.checkerframework.common.subtyping.SubtypingChecker -Aquals=org.checkerframework.checker.optional.qual.Present,org.checkerframework.checker.optional.qual.MaybePresent SubtypeCheck.java 
+$ch/bin/javac -processor org.checkerframework.common.subtyping.SubtypingChecker -Aquals=org.checkerframework.checker.optional.qual.Present,org.checkerframework.checker.optional.qual.MaybePresent SubtypeCheck.java
 
 ----------------
+
+COMPILER INTERFACE
 
 Create OptionalChecker.java, then test the same file:
 
 cd $ch/tests/optional
-$ch/bin/javac -processor optional SubtypeCheck.java 
+javacheck -processor optional SubtypeCheck.java
+$ch/bin/javac -processor optional SubtypeCheck.java
 
 ----------------
 
-Create annotated library: a stub file.
+ANNOTATED LIBRARY
 
 # First, show the JdkCheck.java test file, and run the checker to show
 # what error messages get output without any JDK annotations:
-cd $ch/tests/optional
-$ch/bin/javac -processor optional JdkCheck.java 
+cd $ch/tests/optional && javacheck -processor optional JdkCheck.java
 
 # Just 3 @Present annotations:
 get  receiver
@@ -92,43 +103,39 @@ orElseThrow  receiver
 of  return type
 
 # Test it:
-cd $ch/tests/optional
-$ch/bin/javac -processor optional JdkCheck.java 
+cd $ch/tests/optional && javacheck -processor optional JdkCheck.java
+cd $ch/tests/optional && javacheck -processor org.checkerframework.checker.optional.OptionalChecker JdkCheck.java
 
 ----------------
 
-Flow-sensitivity:  add @EnsuresQualifierIf library annotation for
+FLOW-SENSITIVITY
+
+# Test:
+cd $ch/tests/optional && javacheck -processor org.checkerframework.checker.optional.OptionalChecker FlowSensitivity.java
+
+Uncomment @EnsuresQualifierIf library annotation for
 
 isPresent
 
-It's already in the annotated JDK that I previously copied;
-I don't want to write it anew.
-
 # Test it:
-cd $ch/tests/optional
-$ch/bin/javac -processor optional FlowSensitivity.java 
+cd $ch/tests/optional && javacheck -processor org.checkerframework.checker.optional.OptionalChecker FlowSensitivity.java
 
 ----------------
 
-Notice that we still haven't written any code!  That's remarkable.
+Notice that we still haven't written any code!
+The talk slot is probably finished by now.
 
-That takes 45 minutes so far.
+If there is more time, implement rule #7 about which occurrences of Optional are permitted.
+Show the source code for the TypeValidator, in OptionalVisitor.java
 
 ----------------
 
 To handle rule #1,
 add Nullness annotations to Optional.java in the nullness JDK, not optional JDK.
+
 public final @NonNull class Optional<T extends @NonNull Object> {
     private final @Nullable T value;
     public static <T extends @NonNull Object> Optional<T> ofNullable(@Nullable T value) {
     public @PolyNull T orElse(@PolyNull T other) {
-
-----------------
-
-If I have more time, implement rule #7 about which occurrences of Optional are permitted.
-
-Create a TypeValidator
-
-More likely, just show the source code.
 
 ===========================================================================
