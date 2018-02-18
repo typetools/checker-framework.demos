@@ -15,7 +15,7 @@ PRESENTATION:
 Preparation:
 
 Create a version of the Optional Checker with some changes undone.
-But the Javadoc should include the Optional Checker
+But the Javadoc should include the Optional Checker.
 
 ## Create the new version; make Javadoc that includes the new version
 # Optionally, first blow away the old version:
@@ -58,7 +58,7 @@ Open some files in my editor:
 
 ----------------
 
-;; Open presentation in a different browser window (not just a different tab (why?)):
+Open presentation in a different browser window (not just a different tab (why?)):
 https://docs.google.com/presentation/d/1xafCywcSumKuoVqvwENtZQhmjzmv_B07j9oEPFuNMDg
 After presenting the slides, follow the "How to Create a Checker" chapter of the manual;
 either section "The parts of a checker" or, better, "Tips for creating a checker".
@@ -71,8 +71,8 @@ create Present, MaybePresent by cut-and-paste-and edit from the manual.
 [Skip polymorphism.]
 
 Compile:
-ant -f $ch/build.xml build-checker-only
-(cd $ch && ant build-checker-only)
+ant -f $ch/build.xml build
+(cd $ch && ant build)
 
 Test with Subtyping Checker:
 
@@ -137,5 +137,10 @@ public final @NonNull class Optional<T extends @NonNull Object> {
     private final @Nullable T value;
     public static <T extends @NonNull Object> Optional<T> ofNullable(@Nullable T value) {
     public @PolyNull T orElse(@PolyNull T other) {
+
+----------------
+
+The Optional Checker checks all the rules; this demo has only shown how to
+handle some of the rules.
 
 ===========================================================================
