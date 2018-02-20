@@ -39,6 +39,7 @@ sed -i 's/@EnsuresQualifierIf/\/\/ @EnsuresQualifierIf/' $ch/src/org/checkerfram
 ## Move orginal .java files aside (leave messages.properties file).
 cd $ch/src/org/checkerframework/checker/optional/
 for FILE in `find . -name '*.java'`; do mv $FILE $FILE-ORIG; done
+(cd $cf && ant clean-nocleanjdk dist-nobuildjdk)
 (cd $cf && ant tags)
 
 ;; Open manual in two browser tabs:  one for creating a checker, one for the
@@ -117,6 +118,7 @@ Uncomment @EnsuresQualifierIf library annotation for
 
 isPresent
 
+ant -e -find build.xml build
 # Test it:
 cd $ch/tests/optional && javacheck -processor org.checkerframework.checker.optional.OptionalChecker FlowSensitivity.java
 
