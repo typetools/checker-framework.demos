@@ -39,8 +39,7 @@ sed -i 's/@EnsuresQualifierIf/\/\/ @EnsuresQualifierIf/' $ch/src/org/checkerfram
 ## Move orginal .java files aside (leave messages.properties file).
 cd $ch/src/org/checkerframework/checker/optional/
 for FILE in `find . -name '*.java'`; do mv $FILE $FILE-ORIG; done
-(cd $cf && ant clean-nocleanjdk dist-nobuildjdk)
-(cd $cf && ant tags)
+(cd $cf && ant clean-nocleanjdk dist-nobuildjdk tags)
 
 ;; Open manual in two browser tabs:  one for creating a checker, one for the
 ;; optional checker manual section.
@@ -63,6 +62,12 @@ Open presentation in a different browser window (not just a different tab (why?)
 https://docs.google.com/presentation/d/1xafCywcSumKuoVqvwENtZQhmjzmv_B07j9oEPFuNMDg
 After presenting the slides, follow the "How to Create a Checker" chapter of the manual;
 either section "The parts of a checker" or, better, "Tips for creating a checker".
+
+----------------
+
+Notes:
+ * in general, show the test case failing first, then passing.
+ * start compilation early because it sometimes takes a long time.
 
 ----------------
 
