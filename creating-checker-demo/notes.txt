@@ -20,32 +20,35 @@ before undoing the changes, so it includes the Optional Checker.
 
 ## Create the new version; make Javadoc that includes the new version
 # Optionally, first blow away the old version:
-# \rm -rf $t/checker-framework-optional-demo
+# \rm -rf $t/checker-framework-optional-demo && \
 cd $t && \
-cp -R checker-framework-fork-mernst-branch-optional-checker checker-framework-optional-demo && \
+cp -R checker-framework-branch-master checker-framework-optional-demo && \
 rm -f checker-framework && \
 ln -s checker-framework-optional-demo checker-framework && \
-(cd $ch && ant clean) && \
-(cd $ch && ant download-jdk) && \
-(cd $cf && ant dist-nobuildjdk) && \
-(cd $cf && ant javadoc) && \
+(cd $cf && ./gradlew build javadoc) && \
 (make -C $cf/docs/manual) && \
 (cd && javadoc-index-to-alist > ~/.javadoc-index.el)
 
+## Warm up the gradle daemon:
+(let ((default-directory "/home/mernst/research/types/checker-framework-optional-demo"))
+  (compile "./gradlew assemble"))
+
 ## Stub file with @Present annotations removed.
-cp $ch/jdk/optional/src/java/util/Optional.java $ch/src/org/checkerframework/checker/optional/jdk.astub
-sed -i 's/@Present //' $ch/src/org/checkerframework/checker/optional/jdk.astub
-sed -i 's/@EnsuresQualifierIf/\/\/ @EnsuresQualifierIf/' $ch/src/org/checkerframework/checker/optional/jdk.astub
+cp $ch/jdk/optional/src/java/util/Optional.java $ch/src/main/java/org/checkerframework/checker/optional/jdk.astub
+sed -i 's/@Present //' $ch/src/main/java/org/checkerframework/checker/optional/jdk.astub
+sed -i 's/@EnsuresQualifierIf/\/\/ @EnsuresQualifierIf/' $ch/src/main/java/org/checkerframework/checker/optional/jdk.astub
 
 ## Move orginal .java files aside (leave messages.properties file).
-cd $ch/src/org/checkerframework/checker/optional/
+## Leave compiler interface, since test references it.
+cd $ch/src/main/java/org/checkerframework/checker/optional/
 for FILE in `find . -name '*.java'`; do mv $FILE $FILE-ORIG; done
-(cd $cf && ant clean-nocleanjdk dist-nobuildjdk tags)
-
+mv OptionalChecker.java-ORIG OptionalChecker.java
+(cd $cf && ./gradlew assemble tags)
 ;; Open manual in two browser tabs:  one for creating a checker, one for the
-;; optional checker manual section.
+;; Optional Checker manual chapter.
 (progn
 (browse-url "/home/mernst/research/types/checker-framework-optional-demo/docs/manual/manual.html")
+(sit-for 1)
 (browse-url "file:///home/mernst/research/types/checker-framework-optional-demo/docs/manual/manual.html#optional-checker"))
 
 ----------------
@@ -53,7 +56,7 @@ for FILE in `find . -name '*.java'`; do mv $FILE $FILE-ORIG; done
 Open some files in my editor:
 (progn
 ;; Source code directory
-(find-file (substitute-in-file-name "$t/checker-framework-optional-demo/checker/src/org/checkerframework/checker/optional/"))
+(find-file (substitute-in-file-name "$t/checker-framework-optional-demo/checker/src/main/java/org/checkerframework/checker/optional/"))
 ;; Test cases
 (find-file (substitute-in-file-name "$t/checker-framework-optional-demo/checker/tests/optional/")))
 
@@ -74,14 +77,23 @@ Notes:
 
 QUALIFIERS
 
-create Present, MaybePresent by cut-and-paste-and edit from the manual.
-[Skip polymorphism.]
+create Present, MaybePresent [skip polymorphism]
+by cut-and-paste-and edit from the manual.  Change:
+ * package
+ * Javadoc
+ * @SubtypeOf
+ * interface name
+
+Save them in this directory:
+$ch/src/main/java/org/checkerframework/checker/optional/qual/
 
 Compile:
-ant -f $ch/build.xml build
-(cd $ch && ant build)
+(cd $cf && ./gradlew assemble)
+gradle -p $cf assemble
 
 Test with Subtyping Checker:
+
+# Show the file $ch/tests/optional/SubtypeCheck.java
 
 cd $ch/tests/optional
 $ch/bin/javac -processor org.checkerframework.common.subtyping.SubtypingChecker -Aquals=org.checkerframework.checker.optional.qual.Present,org.checkerframework.checker.optional.qual.MaybePresent SubtypeCheck.java
@@ -90,28 +102,40 @@ $ch/bin/javac -processor org.checkerframework.common.subtyping.SubtypingChecker 
 
 COMPILER INTERFACE
 
-Create OptionalChecker.java, then test the same file:
+Create
+$ch/src/main/java/org/checkerframework/checker/optional/OptionalChecker
+then re-compile and run the same test:
 
 cd $ch/tests/optional
-javacheck -processor optional SubtypeCheck.java
 $ch/bin/javac -processor optional SubtypeCheck.java
+[javacheck -processor optional SubtypeCheck.java] [not working at the moment]
 
 ----------------
 
 ANNOTATED LIBRARY
 
-# First, show the JdkCheck.java test file, and run the checker to show
-# what error messages get output without any JDK annotations:
-cd $ch/tests/optional && javacheck -processor optional JdkCheck.java
+# First, show this test file: $ch/tests/optional/JdkCheck.java
+# and run the checker to show what error messages get output without any JDK annotations:
+cd $ch/tests/optional && $ch/bin/javac -processor optional JdkCheck.java
+# There are 5 errors, of which #3 is not expected.
 
-# Just 3 @Present annotations:
+# Add just 3 @Present annotations to
+# $ch/src/main/java/org/checkerframework/checker/optional/jdk.astub
+of  return type
 get  receiver
 orElseThrow  receiver
-of  return type
 
 # Test it:
-cd $ch/tests/optional && javacheck -processor optional JdkCheck.java
-cd $ch/tests/optional && javacheck -processor org.checkerframework.checker.optional.OptionalChecker JdkCheck.java
+cd $ch/tests/optional && $ch/bin/javac -processor optional JdkCheck.java
+cd $ch/tests/optional && $ch/bin/javac -processor org.checkerframework.checker.optional.OptionalChecker JdkCheck.java
+
+----------------
+
+TYPE RULES: Nothing to do, was in annotated JDK.
+
+----------------
+
+TYPE INTRODUCTION RULES: Nothing to do, was in annotated JDK.
 
 ----------------
 
