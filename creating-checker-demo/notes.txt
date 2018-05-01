@@ -18,7 +18,8 @@ This section tells how to create a version of the Optional Checker with
 some changes undone.  The API documentation is generated from Javadoc
 before undoing the changes, so it includes the Optional Checker.
 
-## Create the new version; make Javadoc that includes the new version
+## Create the new version; make Javadoc that includes the new version.
+## This takes a long time because it runs all the tests.
 # Optionally, first blow away the old version:
 # \rm -rf $t/checker-framework-optional-demo && \
 cd $t && \
@@ -87,7 +88,7 @@ by cut-and-paste-and edit from the manual.  Change:
 Save them in this directory:
 $ch/src/main/java/org/checkerframework/checker/optional/qual/
 
-Compile:
+Compile [don't compile within $ch]:
 (cd $cf && ./gradlew assemble)
 gradle -p $cf assemble
 
@@ -126,6 +127,7 @@ get  receiver
 orElseThrow  receiver
 
 # Test it:
+(cd $cf && ./gradlew assemble)
 cd $ch/tests/optional && $ch/bin/javac -processor optional JdkCheck.java
 cd $ch/tests/optional && $ch/bin/javac -processor org.checkerframework.checker.optional.OptionalChecker JdkCheck.java
 
@@ -148,7 +150,7 @@ Uncomment @EnsuresQualifierIf library annotation for
 
 isPresent
 
-ant -e -find build.xml build
+(cd $cf && ./gradlew assemble)
 # Test it:
 cd $ch/tests/optional && javacheck -processor org.checkerframework.checker.optional.OptionalChecker FlowSensitivity.java
 
