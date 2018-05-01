@@ -43,11 +43,12 @@ sed -i 's/@EnsuresQualifierIf/\/\/ @EnsuresQualifierIf/' $ch/src/main/java/org/c
 ## Leave compiler interface, since test references it.
 cd $ch/src/main/java/org/checkerframework/checker/optional/
 for FILE in `find . -name '*.java'`; do mv $FILE $FILE-ORIG; done
-mv OptionalChecker.java-ORIG OptionalChecker.java
 (cd $cf && ./gradlew assemble tags)
-;; Open manual in two browser tabs:  one for creating a checker, one for the
-;; Optional Checker manual chapter.
+;; Open presentation, then manual in two browser tabs:  one for creating a
+;; checker, one for the Optional Checker manual chapter.
 (progn
+(browse-url "https://docs.google.com/presentation/d/1xafCywcSumKuoVqvwENtZQhmjzmv_B07j9oEPFuNMDg")
+(sit-for 1)
 (browse-url "/home/mernst/research/types/checker-framework-optional-demo/docs/manual/manual.html")
 (sit-for 1)
 (browse-url "file:///home/mernst/research/types/checker-framework-optional-demo/docs/manual/manual.html#optional-checker"))
@@ -63,10 +64,8 @@ Open some files in my editor:
 
 ----------------
 
-Open presentation in a different browser window (not just a different tab (why?)):
-https://docs.google.com/presentation/d/1xafCywcSumKuoVqvwENtZQhmjzmv_B07j9oEPFuNMDg
-After presenting the slides, follow the "How to Create a Checker" chapter of the manual;
-either section "The parts of a checker" or, better, "Tips for creating a checker".
+Present the slides.
+Then, follow the "Tips for creating a checker" chapter of the manual.
 
 ----------------
 
@@ -103,10 +102,12 @@ $ch/bin/javac -processor org.checkerframework.common.subtyping.SubtypingChecker 
 
 COMPILER INTERFACE
 
-Create
-$ch/src/main/java/org/checkerframework/checker/optional/OptionalChecker
-then re-compile and run the same test:
+# Create
+# $ch/src/main/java/org/checkerframework/checker/optional/OptionalChecker
+# then re-compile:
+gradle -p $cf assemble
 
+# After that, run the same test:
 cd $ch/tests/optional
 $ch/bin/javac -processor optional SubtypeCheck.java
 [javacheck -processor optional SubtypeCheck.java] [not working at the moment]
@@ -118,7 +119,7 @@ ANNOTATED LIBRARY
 # First, show this test file: $ch/tests/optional/JdkCheck.java
 # and run the checker to show what error messages get output without any JDK annotations:
 cd $ch/tests/optional && $ch/bin/javac -processor optional JdkCheck.java
-# There are 5 errors, of which #3 is not expected.
+# There are 5 errors, two of which (including #3) are not expected.
 
 # Add just 3 @Present annotations to
 # $ch/src/main/java/org/checkerframework/checker/optional/jdk.astub
@@ -126,10 +127,12 @@ of  return type
 get  receiver
 orElseThrow  receiver
 
+# Recompile:
+gradle -p $cf assemble
+
 # Test it:
 (cd $cf && ./gradlew assemble)
 cd $ch/tests/optional && $ch/bin/javac -processor optional JdkCheck.java
-cd $ch/tests/optional && $ch/bin/javac -processor org.checkerframework.checker.optional.OptionalChecker JdkCheck.java
 
 ----------------
 
@@ -144,11 +147,47 @@ TYPE INTRODUCTION RULES: Nothing to do, was in annotated JDK.
 FLOW-SENSITIVITY
 
 # Test:
-cd $ch/tests/optional && javacheck -processor org.checkerframework.checker.optional.OptionalChecker FlowSensitivity.java
+cd $ch/tests/optional && javacheck -processor optional FlowSensitivity.java
 
-Uncomment @EnsuresQualifierIf library annotation for
+## OK: cd $ch/tests/optional && $ch/bin/javac -processor org.checkerframework.checker.optional.OptionalChecker FlowSensitivity.java
+## FAILS: cd $ch/tests/optional && $ch/bin-devel/javac -processor org.checkerframework.checker.optional.OptionalChecker FlowSensitivity.java
 
-isPresent
+## PROBLEM:
+# cd $ch/tests/optional && javacheck -processor org.checkerframework.checker.optional.OptionalChecker FlowSensitivity.java
+# error: Unexpected NoSuchMethodError when invoking BaseAnnotatedTypeFactory for checker OptionalChecker
+#   Exception: java.lang.NoSuchMethodError: com.github.javaparser.ast.body.CallableDeclaration.isMethodDeclaration()Z; Stack trace: org.checkerframework.framework.stub.StubParser.processCallableDeclaration(StubParser.java:653)
+#   org.checkerframework.framework.stub.StubParser.processTypeDecl(StubParser.java:495)
+#   org.checkerframework.framework.stub.StubParser.processCompilationUnit(StubParser.java:439)
+#   org.checkerframework.framework.stub.StubParser.processStubUnit(StubParser.java:410)
+#   org.checkerframework.framework.stub.StubParser.process(StubParser.java:404)
+#   org.checkerframework.framework.stub.StubParser.parse(StubParser.java:363)
+#   org.checkerframework.framework.type.AnnotatedTypeFactory.parseStubFiles(AnnotatedTypeFactory.java:2938)
+#   org.checkerframework.framework.type.GenericAnnotatedTypeFactory.postInit(GenericAnnotatedTypeFactory.java:246)
+#   org.checkerframework.common.basetype.BaseAnnotatedTypeFactory.<init>(BaseAnnotatedTypeFactory.java:24)
+#   org.checkerframework.common.basetype.BaseAnnotatedTypeFactory.<init>(BaseAnnotatedTypeFactory.java:29)
+#   org.checkerframework.common.basetype.BaseTypeVisitor.createTypeFactory(BaseTypeVisitor.java:241)
+#   org.checkerframework.common.basetype.BaseTypeVisitor.<init>(BaseTypeVisitor.java:184)
+#   org.checkerframework.common.basetype.BaseTypeChecker.createSourceVisitor(BaseTypeChecker.java:208)
+#   org.checkerframework.common.basetype.BaseTypeChecker.createSourceVisitor(BaseTypeChecker.java:81)
+#   org.checkerframework.framework.source.SourceChecker.initChecker(SourceChecker.java:879)
+#   org.checkerframework.common.basetype.BaseTypeChecker.initChecker(BaseTypeChecker.java:96)
+#   org.checkerframework.framework.source.SourceChecker.typeProcessingStart(SourceChecker.java:836)
+#   org.checkerframework.javacutil.AbstractTypeProcessor$AttributionTaskListener.finished(AbstractTypeProcessor.java:157)
+#   com.sun.tools.javac.api.ClientCodeWrapper$WrappedTaskListener.finished(ClientCodeWrapper.java:681)
+#   com.sun.tools.javac.api.MultiTaskListener.finished(MultiTaskListener.java:111)
+#   com.sun.tools.javac.main.JavaCompiler.flow(JavaCompiler.java:1342)
+#   com.sun.tools.javac.main.JavaCompiler.flow(JavaCompiler.java:1296)
+#   com.sun.tools.javac.main.JavaCompiler.compile2(JavaCompiler.java:901)
+#   com.sun.tools.javac.main.JavaCompiler.compile(JavaCompiler.java:860)
+#   com.sun.tools.javac.main.Main.compile(Main.java:523)
+#   com.sun.tools.javac.main.Main.compile(Main.java:381)
+#   com.sun.tools.javac.main.Main.compile(Main.java:370)
+#   com.sun.tools.javac.main.Main.compile(Main.java:361)
+#   com.sun.tools.javac.Main.compile(Main.java:56)
+#   com.sun.tools.javac.Main.main(Main.java:42)
+# 1 error
+
+Uncomment @EnsuresQualifierIf library annotation for isPresent
 
 (cd $cf && ./gradlew assemble)
 # Test it:
