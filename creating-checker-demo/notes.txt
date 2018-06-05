@@ -46,6 +46,7 @@ for FILE in `find . -name '*.java'`; do mv $FILE $FILE-ORIG; done
 (cd $cf && ./gradlew assemble tags)
 ;; Open presentation, then manual in two browser tabs:  one for creating a
 ;; checker, one for the Optional Checker manual chapter.
+;; Note that these URLs do not work in WSL.
 (progn
 (browse-url "https://docs.google.com/presentation/d/1xafCywcSumKuoVqvwENtZQhmjzmv_B07j9oEPFuNMDg")
 (sit-for 1)
@@ -65,7 +66,8 @@ Open some files in my editor:
 ----------------
 
 Present the slides.
-Then, follow the "Tips for creating a checker" chapter of the manual.
+Then, follow the "Tips for creating a checker" chapter of the manual:
+https://checkerframework.org/manual/#creating-a-checker
 
 ----------------
 
@@ -96,7 +98,10 @@ Test with Subtyping Checker:
 # Show the file $ch/tests/optional/SubtypeCheck.java
 
 cd $ch/tests/optional
-$ch/bin/javac -processor org.checkerframework.common.subtyping.SubtypingChecker -Aquals=org.checkerframework.checker.optional.qual.Present,org.checkerframework.checker.optional.qual.MaybePresent SubtypeCheck.java
+$ch/bin/javac \
+  -processor org.checkerframework.common.subtyping.SubtypingChecker \
+  -Aquals=org.checkerframework.checker.optional.qual.Present,org.checkerframework.checker.optional.qual.MaybePresent \
+  SubtypeCheck.java
 
 ----------------
 
@@ -127,7 +132,7 @@ of  return type
 get  receiver
 orElseThrow  receiver
 
-# Recompile:
+# RECOMPILE:
 gradle -p $cf assemble
 
 # Test it:
@@ -146,46 +151,10 @@ TYPE INTRODUCTION RULES: Nothing to do, was in annotated JDK.
 
 FLOW-SENSITIVITY
 
-# Test:
-cd $ch/tests/optional && javacheck -processor optional FlowSensitivity.java
+# Test: $ch/tests/optional/FlowSensitivity.java
+cd $ch/tests/optional && $ch/bin/javac -processor optional FlowSensitivity.java
 
-## OK: cd $ch/tests/optional && $ch/bin/javac -processor org.checkerframework.checker.optional.OptionalChecker FlowSensitivity.java
-## FAILS: cd $ch/tests/optional && $ch/bin-devel/javac -processor org.checkerframework.checker.optional.OptionalChecker FlowSensitivity.java
-
-## PROBLEM:
-# cd $ch/tests/optional && javacheck -processor org.checkerframework.checker.optional.OptionalChecker FlowSensitivity.java
-# error: Unexpected NoSuchMethodError when invoking BaseAnnotatedTypeFactory for checker OptionalChecker
-#   Exception: java.lang.NoSuchMethodError: com.github.javaparser.ast.body.CallableDeclaration.isMethodDeclaration()Z; Stack trace: org.checkerframework.framework.stub.StubParser.processCallableDeclaration(StubParser.java:653)
-#   org.checkerframework.framework.stub.StubParser.processTypeDecl(StubParser.java:495)
-#   org.checkerframework.framework.stub.StubParser.processCompilationUnit(StubParser.java:439)
-#   org.checkerframework.framework.stub.StubParser.processStubUnit(StubParser.java:410)
-#   org.checkerframework.framework.stub.StubParser.process(StubParser.java:404)
-#   org.checkerframework.framework.stub.StubParser.parse(StubParser.java:363)
-#   org.checkerframework.framework.type.AnnotatedTypeFactory.parseStubFiles(AnnotatedTypeFactory.java:2938)
-#   org.checkerframework.framework.type.GenericAnnotatedTypeFactory.postInit(GenericAnnotatedTypeFactory.java:246)
-#   org.checkerframework.common.basetype.BaseAnnotatedTypeFactory.<init>(BaseAnnotatedTypeFactory.java:24)
-#   org.checkerframework.common.basetype.BaseAnnotatedTypeFactory.<init>(BaseAnnotatedTypeFactory.java:29)
-#   org.checkerframework.common.basetype.BaseTypeVisitor.createTypeFactory(BaseTypeVisitor.java:241)
-#   org.checkerframework.common.basetype.BaseTypeVisitor.<init>(BaseTypeVisitor.java:184)
-#   org.checkerframework.common.basetype.BaseTypeChecker.createSourceVisitor(BaseTypeChecker.java:208)
-#   org.checkerframework.common.basetype.BaseTypeChecker.createSourceVisitor(BaseTypeChecker.java:81)
-#   org.checkerframework.framework.source.SourceChecker.initChecker(SourceChecker.java:879)
-#   org.checkerframework.common.basetype.BaseTypeChecker.initChecker(BaseTypeChecker.java:96)
-#   org.checkerframework.framework.source.SourceChecker.typeProcessingStart(SourceChecker.java:836)
-#   org.checkerframework.javacutil.AbstractTypeProcessor$AttributionTaskListener.finished(AbstractTypeProcessor.java:157)
-#   com.sun.tools.javac.api.ClientCodeWrapper$WrappedTaskListener.finished(ClientCodeWrapper.java:681)
-#   com.sun.tools.javac.api.MultiTaskListener.finished(MultiTaskListener.java:111)
-#   com.sun.tools.javac.main.JavaCompiler.flow(JavaCompiler.java:1342)
-#   com.sun.tools.javac.main.JavaCompiler.flow(JavaCompiler.java:1296)
-#   com.sun.tools.javac.main.JavaCompiler.compile2(JavaCompiler.java:901)
-#   com.sun.tools.javac.main.JavaCompiler.compile(JavaCompiler.java:860)
-#   com.sun.tools.javac.main.Main.compile(Main.java:523)
-#   com.sun.tools.javac.main.Main.compile(Main.java:381)
-#   com.sun.tools.javac.main.Main.compile(Main.java:370)
-#   com.sun.tools.javac.main.Main.compile(Main.java:361)
-#   com.sun.tools.javac.Main.compile(Main.java:56)
-#   com.sun.tools.javac.Main.main(Main.java:42)
-# 1 error
+## Do not use $ch/bin-devel/javac nor javacheck above.  I don't know why.
 
 Uncomment @EnsuresQualifierIf library annotation for isPresent
 
@@ -198,18 +167,23 @@ cd $ch/tests/optional && javacheck -processor org.checkerframework.checker.optio
 Notice that we still haven't written any code!
 The talk slot (45-60 minutes) is probably finished by now.
 
-If there is more time, implement rule #7 about which occurrences of Optional are permitted.
-Show the source code for the TypeValidator, in OptionalVisitor.java
-
 ----------------
 
 To handle rule #1,
 add Nullness annotations to Optional.java in the nullness JDK, not optional JDK.
 
+Show  ofNullable  and  orElse  in the NULLNESS annotated JDK:
+$ch/jdk/nullness/src/java/util/Optional.java
+
 public final @NonNull class Optional<T extends @NonNull Object> {
     private final @Nullable T value;
     public static <T extends @NonNull Object> Optional<T> ofNullable(@Nullable T value) {
     public @PolyNull T orElse(@PolyNull T other) {
+
+----------------
+
+If there is more time, implement rule #7 about which occurrences of Optional are permitted.
+Show the source code for the TypeValidator, in OptionalVisitor.java
 
 ----------------
 
