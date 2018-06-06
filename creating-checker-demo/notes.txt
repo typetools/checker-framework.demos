@@ -79,15 +79,13 @@ Notes:
 
 QUALIFIERS
 
-create Present, MaybePresent [skip polymorphism]
+Create Present, MaybePresent [skip polymorphism]
+in $ch/src/main/java/org/checkerframework/checker/optional/qual/
 by cut-and-paste-and edit from the manual.  Change:
  * package
  * Javadoc
  * @SubtypeOf
  * interface name
-
-Save them in this directory:
-$ch/src/main/java/org/checkerframework/checker/optional/qual/
 
 Compile [don't compile within $ch]:
 (cd $cf && ./gradlew assemble)
@@ -108,7 +106,7 @@ $ch/bin/javac \
 COMPILER INTERFACE
 
 # Create
-# $ch/src/main/java/org/checkerframework/checker/optional/OptionalChecker
+# $ch/src/main/java/org/checkerframework/checker/optional/OptionalChecker.java
 # then re-compile:
 gradle -p $cf assemble
 
@@ -182,8 +180,9 @@ public final @NonNull class Optional<T extends @NonNull Object> {
 
 ----------------
 
-If there is more time, implement rule #7 about which occurrences of Optional are permitted.
+If there is more time, implement rule #7 "Don’t use Optional to wrap any collection type".
 Show the source code for the TypeValidator, in OptionalVisitor.java
+$ch/src/main/java/org/checkerframework/checker/optional/OptionalVisitor.java-ORIG
 
 ----------------
 
