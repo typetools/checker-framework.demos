@@ -29,7 +29,7 @@ else
 fi
 
 # This also builds annotation-tools and jsr308-langtools
-(cd ../checker-framework/ && ./.travis-build-without-test.sh downloadjdk jdk8)
+(cd $CHECKERFRAMEWORK && ./.travis-build-without-test.sh downloadjdk jdk8)
 
 ## Run test
 ant -Djsr308.home=$ROOT
