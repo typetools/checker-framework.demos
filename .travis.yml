@@ -1,6 +1,6 @@
 language: java
 
-script: travis_wait 120 ./.travis-build.sh
+script: ./.travis-build.sh
 
 sudo: false
 ## Reinstate when the build can use a standard jtreg install
