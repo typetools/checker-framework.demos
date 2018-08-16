@@ -92,7 +92,7 @@ public final class VarInfoAux
    * Parse allow for quoted elements.  White space to the left and
    * right of keys and values do not matter, but inbetween does.
    **/
-  public static /*@Interned*/ VarInfoAux parse (String inString) throws IOException {
+  public static @Interned VarInfoAux parse (String inString) throws IOException {
     Reader inStringReader = new StringReader(inString);
     StreamTokenizer tok = new StreamTokenizer (inStringReader);
     tok.resetSyntax();
@@ -100,7 +100,7 @@ public final class VarInfoAux
     tok.quoteChar('\"');
     tok.ordinaryChars(',', ',');
     tok.ordinaryChars('=', '=');
-    Map</*@Interned*/ String,/*@Interned*/ String> map = theDefault.map;
+    Map<@Interned String,@Interned String> map = theDefault.map;
 
     String key = "";
     String value = "";
@@ -113,10 +113,10 @@ public final class VarInfoAux
         // We use default values if none are specified.  We initialize
         // here rather than above to save time when there are no tokens.
 
-        map = new HashMap</*@Interned*/ String,/*@Interned*/ String>(theDefault.map);
+        map = new HashMap<@Interned String,@Interned String>(theDefault.map);
       }
 
-      /*@Interned*/ String token;
+      @Interned String token;
       if (tok.ttype == StreamTokenizer.TT_WORD || tok.ttype == '\"') {
         token = tok.sval.trim().intern();
       } else {
@@ -151,7 +151,7 @@ public final class VarInfoAux
 
     // Interning
     VarInfoAux resultUninterned = new VarInfoAux(map);
-    /*@Interned*/ VarInfoAux result = resultUninterned.intern();
+    @Interned VarInfoAux result = resultUninterned.intern();
     if (debug.isLoggable(Level.FINE)) {
       debug.fine ("New parse " + result);
       debug.fine ("Intern table size: " + new Integer(interningMap.size()));
@@ -163,12 +163,12 @@ public final class VarInfoAux
   /**
    * Interned default options.
    **/
-  private static /*@Interned*/ VarInfoAux theDefault = new VarInfoAux().intern();
+  private static @Interned VarInfoAux theDefault = new VarInfoAux().intern();
 
   /**
    * Create a new VarInfoAux with default options.
    **/
-  public static /*@Interned*/ VarInfoAux getDefault () {
+  public static @Interned VarInfoAux getDefault () {
     return theDefault;
   }
 
@@ -177,14 +177,14 @@ public final class VarInfoAux
   /**
    * Map for interning.
    **/
-  private static Map<VarInfoAux,/*@Interned*/ VarInfoAux> interningMap = null;
+  private static Map<VarInfoAux,@Interned VarInfoAux> interningMap = null;
 
 
 
   /**
    * Special handler for deserialization.
    **/
-  private /*@Interned*/ Object readResolve() throws ObjectStreamException {
+  private @Interned Object readResolve() throws ObjectStreamException {
     return this.intern();
   }
 
@@ -192,7 +192,7 @@ public final class VarInfoAux
   /**
    * Contains the actual hashMap for this.
    **/
-  private Map</*@Interned*/ String, /*@Interned*/ String> map;
+  private Map<@Interned String, @Interned String> map;
 
 
   /**
@@ -204,7 +204,7 @@ public final class VarInfoAux
    * Make the default map here.
    **/
   private VarInfoAux () {
-    HashMap</*@Interned*/ String, /*@Interned*/ String> defaultMap = new HashMap</*@Interned*/ String,/*@Interned*/ String>();
+    HashMap<@Interned String, @Interned String> defaultMap = new HashMap<@Interned String,@Interned String>();
     // The following are default values.
     defaultMap.put (HAS_DUPLICATES, TRUE);
     defaultMap.put (HAS_ORDER, TRUE);
@@ -221,7 +221,7 @@ public final class VarInfoAux
   /**
    * Create a new VarInfoAux with default options.
    **/
-  private VarInfoAux (Map</*@Interned*/ String,/*@Interned*/ String> map) {
+  private VarInfoAux (Map<@Interned String,@Interned String> map) {
     this.map = map;
     this.isInterned = false;
   }
@@ -258,20 +258,20 @@ public final class VarInfoAux
    * called by outside classes because these are always interned.
    **/
   @SuppressWarnings("interned") // intern method
-  private /*@Interned*/ VarInfoAux intern() {
-    if (this.isInterned) return (/*@Interned*/ VarInfoAux) this; // cast is redundant (except in JSR 308)
+  private @Interned VarInfoAux intern() {
+    if (this.isInterned) return (@Interned VarInfoAux) this; // cast is redundant (except in JSR 308)
 
     if (interningMap == null) {
-      interningMap = new HashMap<VarInfoAux,/*@Interned*/ VarInfoAux>();
+      interningMap = new HashMap<VarInfoAux,@Interned VarInfoAux>();
     }
 
-    /*@Interned*/ VarInfoAux result;
+    @Interned VarInfoAux result;
     if (interningMap.containsKey(this)) {
       result = interningMap.get(this);
     } else {
       // Intern values in map
-      interningMap.put (this, (/*@Interned*/ VarInfoAux) this); // cast is redundant (except in JSR 308)
-      result = (/*@Interned*/ VarInfoAux) this; // cast is redundant (except in JSR 308)
+      interningMap.put (this, (@Interned VarInfoAux) this); // cast is redundant (except in JSR 308)
+      result = (@Interned VarInfoAux) this; // cast is redundant (except in JSR 308)
       this.isInterned = true;
     }
     return result;
@@ -299,7 +299,7 @@ public final class VarInfoAux
    * Return a new VarInfoAux with the desired value set.
    * Does not modify this.
    **/
-  public /*@Interned*/ VarInfoAux setValue (String key, String value) {
+  public @Interned VarInfoAux setValue (String key, String value) {
     HashMap<String,String> newMap = new HashMap<String,String> (this.map);
     newMap.put (key.intern(), value.intern());
     return new VarInfoAux(newMap).intern();

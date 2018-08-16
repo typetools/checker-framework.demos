@@ -411,7 +411,7 @@ public class AnnotatedTypes {
             new HashMap<AnnotatedDeclaredType, ExecutableElement>();
         
         for (AnnotatedDeclaredType supertype : supertypes) {
-            /*@Nullable*/ TypeElement superElement = 
+            @Nullable TypeElement superElement = 
                 (TypeElement) supertype.getUnderlyingType().asElement();
             assert superElement != null; /*nninvariant*/
             // For all method in the supertype, add it to the set if
@@ -426,8 +426,8 @@ public class AnnotatedTypes {
             }
         }
 
-        return Collections.</*@NonNull*/ AnnotatedDeclaredType,
-            /*@NonNull*/ ExecutableElement>unmodifiableMap(overrides);
+        return Collections.<@NonNull AnnotatedDeclaredType,
+            @NonNull ExecutableElement>unmodifiableMap(overrides);
     }
 
     /**

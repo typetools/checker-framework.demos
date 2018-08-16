@@ -47,7 +47,7 @@ public abstract class SourceVisitor<R, P> extends TreePathScanner<R, P> {
         // Use the checker's processing environment to get the helpers we need.
         ProcessingEnvironment env = checker.getProcessingEnvironment();
 
-        /*@Nullable*/ Trees trees = Trees.instance(env);
+        @Nullable Trees trees = Trees.instance(env);
         assert trees != null; /*nninvariant*/
         this.trees = trees;
 

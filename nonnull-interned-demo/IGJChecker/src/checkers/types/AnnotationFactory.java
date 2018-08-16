@@ -73,7 +73,7 @@ public class AnnotationFactory {
      */
     protected DeclaredType typeFromName(CharSequence name) {
 
-        /*@Nullable*/ TypeElement typeElt = elements.getTypeElement(name);
+        @Nullable TypeElement typeElt = elements.getTypeElement(name);
         if (typeElt == null)
             throw new IllegalArgumentException("invalid name: " + name);
 

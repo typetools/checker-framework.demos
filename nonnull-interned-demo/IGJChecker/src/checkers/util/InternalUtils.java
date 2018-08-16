@@ -33,7 +33,7 @@ public class InternalUtils {
      * @return the {@code {@link Symbol}} for the given tree, or null if one
      *         could not be found
      */
-    public static /*@Nullable*/ Element symbol(/*@Nullable*/ Tree tree) {
+    public static @Nullable Element symbol(@Nullable Tree tree) {
         
         if (tree == null)
             throw new IllegalArgumentException("tree is null");
@@ -77,11 +77,11 @@ public class InternalUtils {
      *         if it does not
      */
     public static boolean isAnonymousConstructor(final MethodTree method) {
-        /*@Nullable*/ Element e = InternalUtils.symbol(method);
+        @Nullable Element e = InternalUtils.symbol(method);
         if (e == null || !(e instanceof Symbol))
             return false;
         
-        if ((((/*@NonNull*/ Symbol)e).flags() & Flags.ANONCONSTR) != 0)
+        if ((((@NonNull Symbol)e).flags() & Flags.ANONCONSTR) != 0)
             return true;
         
         return false;

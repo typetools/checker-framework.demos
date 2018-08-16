@@ -135,7 +135,7 @@ public class DeclReader {
     /**
      * Reads a single value for this variable and returns it.
      */
-    public /*@Interned*/ Object read_data (MultiReader reader) throws IOException {
+    public @Interned Object read_data (MultiReader reader) throws IOException {
       String var_name = reader.readLine();
       if (!var_name.equals (this.name))
         throw new Error (var_name + " found where " + this.name
@@ -192,7 +192,7 @@ public class DeclReader {
      * entry is a list of the values for each variable in the same
      * order as the variables were defined
      **/
-    List<List</*@Interned*/ Object>> data_values = new ArrayList<List</*@Interned*/ Object>>();
+    List<List<@Interned Object>> data_values = new ArrayList<List<@Interned Object>>();
 
     public DeclPpt (String name) {
       this.name = name;
@@ -220,12 +220,12 @@ public class DeclReader {
      * Adds a record of data for this ppt.  The data must have one element
      * for each variable in the ppt and be ordered in the same way
      */
-    public void add_var_data (List</*@Interned*/ Object> var_data_list) {
+    public void add_var_data (List<@Interned Object> var_data_list) {
       assert var_data_list.size() == vars.size();
       data_values.add (var_data_list);
     }
 
-    public List<List</*@Interned*/ Object>> get_var_data() {
+    public List<List<@Interned Object>> get_var_data() {
       return data_values;
     }
 

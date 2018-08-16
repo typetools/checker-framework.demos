@@ -23,13 +23,13 @@ public class PptName
   // Any of these except fullname can be null.  All but fullname are
   // derived from fullname.
   // These cannot be "final": they must be re-interned upon deserialization.
-  private /*@Interned*/ String fullname;   // interned full program point name
+  private @Interned String fullname;   // interned full program point name
   // fn_name and point together comprise fullname
-  private /*@Interned*/ String fn_name;    // interned; the part of fullname before ":::"
-  private /*@Interned*/ String point;      // interned post-separator (separator is ":::")
+  private @Interned String fn_name;    // interned; the part of fullname before ":::"
+  private @Interned String point;      // interned post-separator (separator is ":::")
   // cls and method together comprise fn_name
-  private /*@Interned*/ String cls;        // interned fully-qualified class name
-  private /*@Interned*/ String method;     // interned method signature, including types
+  private @Interned String cls;        // interned fully-qualified class name
+  private @Interned String method;     // interned method signature, including types
 
   // Representation invariant:
   //
@@ -190,7 +190,7 @@ public class PptName
    * May be null.
    * e.g. "DataStructures.StackAr.pop()Ljava/lang/Object;"
    **/
-  public /*@Interned*/ String getNameWithoutPoint() {
+  public @Interned String getNameWithoutPoint() {
     return fn_name;
     // if (cls == null && method == null) return null;
     // if (cls == null) return method;
