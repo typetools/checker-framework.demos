@@ -28,7 +28,7 @@ public class AnnotationUtils {
         this.env = env; 
         this.elements = env.getElementUtils();
         this.types = env.getTypeUtils();
-        /*@Nullable*/ Trees trees = Trees.instance(env);
+        @Nullable Trees trees = Trees.instance(env);
         assert trees != null; /*nninvariant*/
         this.trees = trees;
         this.annoFactory = new AnnotationFactory(env);
@@ -50,15 +50,15 @@ public class AnnotationUtils {
         // Attempt to find a starting search point. If the tree itself has an
         // element, start there. Otherwise, try the enclosing method and
         // enclosing class.
-        /*@Nullable*/ Element typeElt = trees.getElement(path);
+        @Nullable Element typeElt = trees.getElement(path);
         
         // FIXME: eventually replace this with Scope
         if (typeElt == null) {
-            /*@Nullable*/ MethodTree method = TreeUtils.enclosingMethod(path);
+            @Nullable MethodTree method = TreeUtils.enclosingMethod(path);
             if (method != null) typeElt = InternalUtils.symbol(method);
         }
         if (typeElt == null) {
-            /*@Nullable*/ ClassTree cls = TreeUtils.enclosingClass(path);
+            @Nullable ClassTree cls = TreeUtils.enclosingClass(path);
             if (cls != null) typeElt = InternalUtils.symbol(cls);
         }
 
@@ -81,11 +81,11 @@ public class AnnotationUtils {
      */
     public Map<TypeElement, Set<TypeUseLocation>> findDefaultLocations(Element elt) {
 
-        /*@Nullable*/ TypeElement defaultElt =
+        @Nullable TypeElement defaultElt =
             elements.getTypeElement("checkers.quals.Default");
         assert defaultElt != null : "couldn't get element for @DefaultQualifier";
 
-        Map<TypeElement, Set</*@NonNull*/ TypeUseLocation>> locations
+        Map<TypeElement, Set<@NonNull TypeUseLocation>> locations
             = new HashMap<TypeElement, Set<TypeUseLocation>>();
 
         List<? extends AnnotationMirror> annos = elt.getAnnotationMirrors();
@@ -94,12 +94,12 @@ public class AnnotationUtils {
             if (!defaultElt.equals(a.getAnnotationType().asElement()))
                 continue;
 
-            /*@Nullable*/ String name = this.parseStringValue(a, "value");
-            /*@Nullable*/ TypeElement aElt = elements.getTypeElement(name);
+            @Nullable String name = this.parseStringValue(a, "value");
+            @Nullable TypeElement aElt = elements.getTypeElement(name);
             if (aElt == null)
                 throw new RuntimeException("illegal annotation name: " + name);
 
-            /*@Nullable*/ Set<TypeUseLocation> locs =
+            @Nullable Set<TypeUseLocation> locs =
                 this.parseEnumConstantArrayValue(a, "types",
                         TypeUseLocation.class);
 
@@ -109,11 +109,11 @@ public class AnnotationUtils {
             locations.get(aElt).addAll(locs);
         }
 
-        /*@Nullable*/ Element encl = elt.getEnclosingElement();
+        @Nullable Element encl = elt.getEnclosingElement();
         if (encl != null)
             locations.putAll(findDefaultLocations(encl));
 
-        return Collections.</*@NonNull*/ TypeElement, /*@NonNull*/ Set<TypeUseLocation>>unmodifiableMap(locations);
+        return Collections.<@NonNull TypeElement, @NonNull Set<TypeUseLocation>>unmodifiableMap(locations);
     }
     
 
@@ -129,7 +129,7 @@ public class AnnotationUtils {
         public abstract A getValue();
 
         @Override
-        public /*@Nullable*/ Void visitArray(List<? extends AnnotationValue> vals, Boolean p) {
+        public @Nullable Void visitArray(List<? extends AnnotationValue> vals, Boolean p) {
             if (p != null && p)
                 return null;
 
@@ -155,11 +155,11 @@ public class AnnotationUtils {
         }
         
         @Override
-        public /*@Nullable*/ Void visitEnumConstant(VariableElement c, Boolean p) {
+        public @Nullable Void visitEnumConstant(VariableElement c, Boolean p) {
             if (p == null || !p)
                 return null;
 
-            /*@Nullable*/ R r = Enum.<R>valueOf(enumType, (/*@NonNull*/ String)c.getSimpleName().toString());
+            @Nullable R r = Enum.<R>valueOf(enumType, (@NonNull String)c.getSimpleName().toString());
             assert r != null; /*nninvariant*/
             values.add(r);
             return null;
@@ -167,7 +167,7 @@ public class AnnotationUtils {
 
         @Override
         public Set<R> getValue() {
-            return Collections.</*@NonNull*/ R>unmodifiableSet(values);
+            return Collections.<@NonNull R>unmodifiableSet(values);
         }
     }
     
@@ -177,10 +177,10 @@ public class AnnotationUtils {
     private static class StringValueParser
         extends AbstractAnnotationValueParser<String> {
 
-        private /*@Nullable*/ String value = null;
+        private @Nullable String value = null;
 
         @Override
-        public /*@Nullable*/ Void visitString(String s, Boolean p) {
+        public @Nullable Void visitString(String s, Boolean p) {
             value = s;
             return null;
         }
@@ -201,7 +201,7 @@ public class AnnotationUtils {
         private final Set<String> values = new HashSet<String>();
 
         @Override
-        public /*@Nullable*/ Void visitString(String s, Boolean p) {
+        public @Nullable Void visitString(String s, Boolean p) {
             if (p == null || !p)
                 return null;
 
@@ -212,7 +212,7 @@ public class AnnotationUtils {
 
         @Override
         public Set<String> getValue() {
-            return Collections.</*@NonNull*/ String>unmodifiableSet(values);
+            return Collections.<@NonNull String>unmodifiableSet(values);
         }
     }
 
@@ -227,7 +227,7 @@ public class AnnotationUtils {
      * @return the value of {@code fieldName} in {@code ad} as determined by
      *         {@code parser}, with type {@code R}
      */
-    private <R> /*@Nullable*/ R parseAnnotationValue(AbstractAnnotationValueParser<R> parser,
+    private <R> @Nullable R parseAnnotationValue(AbstractAnnotationValueParser<R> parser,
             AnnotationMirror ad, String fieldName) {
 
         Map<? extends ExecutableElement, ? extends AnnotationValue> values =
@@ -259,7 +259,7 @@ public class AnnotationUtils {
      * @param enumType the type of the enum
      * @return the enum constant values of the given field
      */
-    public <R extends Enum<R>> /*@Nullable*/ Set<R> parseEnumConstantArrayValue(AnnotationMirror ad, String field, Class<R> enumType) {
+    public <R extends Enum<R>> @Nullable Set<R> parseEnumConstantArrayValue(AnnotationMirror ad, String field, Class<R> enumType) {
         return parseAnnotationValue(new EnumConstantArrayValueParser<R>(enumType), ad, field);
     }
     
@@ -268,7 +268,7 @@ public class AnnotationUtils {
      * @param field the name of the field to parse
      * @return the String value of the given field
      */
-    public /*@Nullable*/ String parseStringValue(AnnotationMirror ad, String field) {
+    public @Nullable String parseStringValue(AnnotationMirror ad, String field) {
         return parseAnnotationValue(new StringValueParser(), ad, field);
     }
 
@@ -277,14 +277,14 @@ public class AnnotationUtils {
      * @param field the name of the field to parse
      * @return the String values of the given field
      */
-    public /*@Nullable*/ Set<String> parseStringArrayValue(AnnotationMirror ad, String field) {
-        return this.<Set</*@NonNull*/ String>>parseAnnotationValue(new StringArrayValueParser(), ad, field);
+    public @Nullable Set<String> parseStringArrayValue(AnnotationMirror ad, String field) {
+        return this.<Set<@NonNull String>>parseAnnotationValue(new StringArrayValueParser(), ad, field);
     }
     
     /**
      * @return the fully-qualified name of an annotation as a String
      */
-    public static final /*@Nullable*/ String annotationName(/*@Nullable*/ AnnotationMirror annotation) {
+    public static final @Nullable String annotationName(@Nullable AnnotationMirror annotation) {
         if (annotation == null) return null;
         final DeclaredType annoType = annotation.getAnnotationType();
         final TypeElement elm = (TypeElement) annoType.asElement();
@@ -296,7 +296,7 @@ public class AnnotationUtils {
      * 
      * @return true iff a1 and a2 are the same annotation
      */
-    public static boolean isSame(/*@Nullable*/ AnnotationMirror a1, /*@Nullable*/ AnnotationMirror a2) {
+    public static boolean isSame(@Nullable AnnotationMirror a1, @Nullable AnnotationMirror a2) {
         if (a1 != null && a2 != null)
             return annotationName(a1).equals(annotationName(a2)) &&
                 a1.getElementValues().equals(a2.getElementValues());

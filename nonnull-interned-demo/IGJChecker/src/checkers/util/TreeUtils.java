@@ -85,7 +85,7 @@ public final class TreeUtils {
      * @return true iff tree describes a call to super
      */
     public static boolean isSuperCall(MethodInvocationTree tree) {
-        /*@Nullable*/ ExpressionTree mst = tree.getMethodSelect();
+        @Nullable ExpressionTree mst = tree.getMethodSelect();
         assert mst != null; /*nninvariant*/
         if (mst.getKind() != Tree.Kind.MEMBER_SELECT)
             return false;
@@ -133,7 +133,7 @@ public final class TreeUtils {
      * @return the enclosing class (or interface) as given by the path, or null
      *         if one does not exist.
      */
-    public static /*@Nullable*/ ClassTree enclosingClass(final /*@Nullable*/ TreePath path) {
+    public static @Nullable ClassTree enclosingClass(final @Nullable TreePath path) {
         return (ClassTree) enclosingOfKind(path, Tree.Kind.CLASS);
     }
 
@@ -158,7 +158,7 @@ public final class TreeUtils {
      * @return the enclosing method as given by the path, or null if one does
      *         not exist
      */
-    public static /*@Nullable*/ MethodTree enclosingMethod(final /*@Nullable*/ TreePath path) {
+    public static @Nullable MethodTree enclosingMethod(final @Nullable TreePath path) {
         return (MethodTree) enclosingOfKind(path, Tree.Kind.METHOD);
     }
     

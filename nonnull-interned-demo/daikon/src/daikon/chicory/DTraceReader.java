@@ -60,9 +60,9 @@ public class DTraceReader extends DeclReader {
 
     List<DeclVarInfo> vars = ppt.get_all_vars();
 
-    List</*@Interned*/ Object> var_data_list = new ArrayList</*@Interned*/ Object>();
+    List<@Interned Object> var_data_list = new ArrayList<@Interned Object>();
     for (DeclVarInfo vi : vars) {
-      /*@Interned*/ Object obj = vi.read_data (dtrace_file);
+      @Interned Object obj = vi.read_data (dtrace_file);
       var_data_list.add (obj);
     }
 
@@ -78,7 +78,7 @@ public class DTraceReader extends DeclReader {
       System.out.printf ("Ppt: %s%n", ppt_name);
       DeclPpt ppt = ppts.get (ppt_name);
       List<DeclVarInfo> vis = ppt.get_all_vars();
-      for (List</*@Interned*/ Object> var_data_list : ppt.get_var_data()) {
+      for (List<@Interned Object> var_data_list : ppt.get_var_data()) {
         System.out.println ("----------------------\n");
         for (int ii = 0; ii < vis.size(); ii++) {
           System.out.printf ("  %-20s: %s%n", vis.get(ii).name,

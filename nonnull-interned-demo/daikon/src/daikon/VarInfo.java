@@ -30,7 +30,7 @@ import java.io.*;
  * also includes info about the variable's name, its declared type, its
  * file representation type, its internal type, and its comparability.
  **/
-public final /*@Interned*/ class VarInfo implements Cloneable, Serializable {
+public final @Interned class VarInfo implements Cloneable, Serializable {
   // We are Serializable, so we specify a version to allow changes to
   // method signatures without breaking serialization.  If you add or
   // remove fields, you should change this number to the current date.
@@ -73,10 +73,10 @@ public final /*@Interned*/ class VarInfo implements Cloneable, Serializable {
    * sometimes changes this name as part of parsing so that
    * VarInfoName.name() doesn't return the original name.
    */
-  private /*@Interned*/ String str_name; // interned
+  private @Interned String str_name; // interned
 
   /** returns the interned name of the variable **/
-  public /*@Interned*/ String name() {
+  public @Interned String name() {
     if (FileIO.new_decl_format)
       return str_name;
     else
@@ -84,7 +84,7 @@ public final /*@Interned*/ class VarInfo implements Cloneable, Serializable {
   }
 
   /** Returns the original name of the variable from the program point declaration. **/
-  public /*@Interned*/ String str_name() {
+  public @Interned String str_name() {
     return str_name;
   }
 
@@ -142,7 +142,7 @@ public final /*@Interned*/ class VarInfo implements Cloneable, Serializable {
   public boolean is_static_constant;
 
   /** Null if not statically constant. **/
-  /*@Interned*/ Object static_constant_value;
+  @Interned Object static_constant_value;
 
   /** Whether and how derived.  Null if this is not derived. **/
   public Derivation derived;
@@ -502,7 +502,7 @@ public final /*@Interned*/ class VarInfo implements Cloneable, Serializable {
   /** Create the specified VarInfo **/
   private VarInfo (VarInfoName name, ProglangType type,
                    ProglangType file_rep_type, VarComparability comparability,
-                   boolean is_static_constant, /*@Interned*/ Object static_constant_value,
+                   boolean is_static_constant, @Interned Object static_constant_value,
                    VarInfoAux aux) {
 
     assert name != null;
@@ -552,7 +552,7 @@ public final /*@Interned*/ class VarInfo implements Cloneable, Serializable {
   /** Create the specified VarInfo **/
   public VarInfo (String name, ProglangType type,
                   ProglangType file_rep_type, VarComparability comparability,
-                  boolean is_static_constant, /*@Interned*/ Object static_constant_value,
+                  boolean is_static_constant, @Interned Object static_constant_value,
                   VarInfoAux aux) {
     this (VarInfoName.parse(name), type, file_rep_type, comparability,
           is_static_constant, static_constant_value, aux);
@@ -1131,7 +1131,7 @@ public final /*@Interned*/ class VarInfo implements Cloneable, Serializable {
    * Get the value of this variable from a particular sample (ValueTuple).
    * @param vt the ValueTuple from which to extract the value
    **/
-  public /*@Interned*/ Object getValue(ValueTuple vt) {
+  public @Interned Object getValue(ValueTuple vt) {
     if (is_static_constant)
       return static_constant_value;
     else
@@ -2987,7 +2987,7 @@ public final /*@Interned*/ class VarInfo implements Cloneable, Serializable {
   /**
    * Return the name of this variable in its prestate (orig)
    */
-  public /*@Interned*/ String prestate_name() {
+  public @Interned String prestate_name() {
     return ("orig(" + name() + ")").intern();
   }
 
@@ -3000,7 +3000,7 @@ public final /*@Interned*/ class VarInfo implements Cloneable, Serializable {
    * (it seems) the same length approach for both, so we don't check isArray()
    */
   public String get_simplify_size_name() {
-    /*@Interned*/ String result = null;
+    @Interned String result = null;
     if (!file_rep_type.isArray() || isDerived())
       result = null;
     else {
@@ -3009,7 +3009,7 @@ public final /*@Interned*/ class VarInfo implements Cloneable, Serializable {
       result = get_length().simplify_name().intern();
     }
 
-    /*@Interned*/ String old_result = null;
+    @Interned String old_result = null;
     if (!var_info_name.isApplySizeSafe()) // vin ok
       old_result = null;
     else
@@ -3691,7 +3691,7 @@ public final /*@Interned*/ class VarInfo implements Cloneable, Serializable {
    */
   public static VarInfo make_function (String function_name, VarInfo... vars) {
 
-    VarInfoName /*@Interned*/ [] vin = new VarInfoName /*@Interned*/ [vars.length];
+    VarInfoName @Interned [] vin = new VarInfoName @Interned [vars.length];
     for (int ii = 0; ii < vars.length; ii++)
       vin[ii] = vars[ii].var_info_name;
 

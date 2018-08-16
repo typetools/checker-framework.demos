@@ -339,7 +339,7 @@ public final class Daikon {
    * <samp>(a != null) ==> (a.b == 5)</samp>.
    **/
   // Perhaps a better default would be "missing".
-  public static /*@Interned*/ String dkconfig_guardNulls = "default";
+  public static @Interned String dkconfig_guardNulls = "default";
 
   /**
    * When true compilation errors during splitter file generation

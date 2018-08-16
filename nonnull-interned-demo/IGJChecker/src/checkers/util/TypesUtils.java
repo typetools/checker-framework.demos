@@ -73,7 +73,7 @@ public final class TypesUtils {
             }
         }
 
-        return Collections.</*@NonNull*/ TypeMirror>unmodifiableSet(supertypes);
+        return Collections.<@NonNull TypeMirror>unmodifiableSet(supertypes);
     }
 
     /**
@@ -115,7 +115,7 @@ public final class TypesUtils {
             new HashMap<DeclaredType, ExecutableElement>();
         
         for (TypeMirror supertype : supertypes) {
-            /*@Nullable*/ TypeElement superElement = 
+            @Nullable TypeElement superElement = 
                 (TypeElement) env.getTypeUtils().asElement(supertype);
             assert superElement != null; /*nninvariant*/
             // For all method in the supertype, add it to the set if
@@ -130,8 +130,8 @@ public final class TypesUtils {
             }
         }
 
-        return Collections.</*@NonNull*/ DeclaredType,
-            /*@NonNull*/ ExecutableElement>unmodifiableMap(overrides);
+        return Collections.<@NonNull DeclaredType,
+            @NonNull ExecutableElement>unmodifiableMap(overrides);
     }
 
     /**

@@ -497,20 +497,20 @@ public class WSMatch {
     //                   var2, var2.index);
 
     @SuppressWarnings("interned") // checker bug
-    List<List</*@Interned*/ Object>> data1 = ppt1.get_var_data();
+    List<List<@Interned Object>> data1 = ppt1.get_var_data();
     @SuppressWarnings("interned") // checker bug
-    List<List</*@Interned*/ Object>> data2 = ppt2.get_var_data();
+    List<List<@Interned Object>> data2 = ppt2.get_var_data();
 
     MatchInfo m = new MatchInfo (ppt1, var1, ppt2, var2, 0.0);
 
     int possible_matches = Math.min (data1.size(), data2.size());
     int match_cnt = 0;
     for (int ii = 0; ii < data1.size(); ii++) {
-      List</*@Interned*/ Object> var_data1 = data1.get(ii);
+      List<@Interned Object> var_data1 = data1.get(ii);
       int mcnt1 = 0;
       int row = -1;
       for (int jj = 0; jj < data2.size(); jj++) {
-        List</*@Interned*/ Object> var_data2 = data2.get(jj);
+        List<@Interned Object> var_data2 = data2.get(jj);
         boolean match = compare_val (var1, var_data1.get(var1.index),
                                      var2, var_data2.get(var2.index));
         if (match) {
@@ -538,8 +538,8 @@ public class WSMatch {
    * Returns whether or not the two values are at least approximately
    * the same.  Nonsensical values are always different.
    */
-  public static boolean compare_val (DeclVarInfo var1, /*@Interned*/ Object data1,
-                                     DeclVarInfo var2, /*@Interned*/ Object data2) {
+  public static boolean compare_val (DeclVarInfo var1, @Interned Object data1,
+                                     DeclVarInfo var2, @Interned Object data2) {
 
     // System.out.printf ("Comparing %s = %s against %s = %s\n", var1, data1,
     //                   var2, data2);
@@ -614,16 +614,16 @@ public class WSMatch {
                                   DeclVarInfo var1, DeclPpt ppt2, DeclVarInfo var2) {
 
     @SuppressWarnings("interned") // checker bug
-    List<List</*@Interned*/ Object>> data1 = ppt1.get_var_data();
+    List<List<@Interned Object>> data1 = ppt1.get_var_data();
     @SuppressWarnings("interned") // checker bug
-    List<List</*@Interned*/ Object>> data2 = ppt2.get_var_data();
+    List<List<@Interned Object>> data2 = ppt2.get_var_data();
 
     MatchInfo result = new MatchInfo (ppt1, var1, ppt2, var2, 0.0);
 
     int match_cnt = 0;
     for (RowMatch row : match.matching_rows) {
-      List</*@Interned*/ Object> var_data1 = data1.get(row.index1);
-      List</*@Interned*/ Object> var_data2 = data2.get(row.index2);
+      List<@Interned Object> var_data1 = data1.get(row.index1);
+      List<@Interned Object> var_data2 = data2.get(row.index2);
       boolean val_match = compare_val (var1, var_data1.get(var1.index),
                                        var2, var_data2.get(var2.index));
       if (val_match) {
@@ -645,7 +645,7 @@ public class WSMatch {
 
     List<DeclVarInfo> constants = new ArrayList<DeclVarInfo>();
     @SuppressWarnings("interned") // checker bug
-    List<List</*@Interned*/ Object>> data = ppt.get_var_data();
+    List<List<@Interned Object>> data = ppt.get_var_data();
 
     // Loop through each variable
     for (DeclVarInfo v : ppt.get_all_vars()) {
@@ -686,7 +686,7 @@ public class WSMatch {
 
     List<DeclVarInfo> dups = new ArrayList<DeclVarInfo>();
     @SuppressWarnings("interned") // checker bug
-    List<List</*@Interned*/ Object>> data = ppt.get_var_data();
+    List<List<@Interned Object>> data = ppt.get_var_data();
 
     // Find the input and output variables
     List<DeclVarInfo> inputs = new ArrayList<DeclVarInfo>();
@@ -704,9 +704,9 @@ public class WSMatch {
       for (DeclVarInfo output : outputs) {
         boolean duplicate = true;
         boolean always_missing = true;
-        for (List</*@Interned*/ Object> samples : data) {
-          /*@Interned*/ Object input_val = samples.get (input.index);
-          /*@Interned*/ Object output_val = samples.get (output.index);
+        for (List<@Interned Object> samples : data) {
+          @Interned Object input_val = samples.get (input.index);
+          @Interned Object output_val = samples.get (output.index);
           if (output_val != null)
             always_missing = false;
           if ((input_val == null) || (output_val == null))

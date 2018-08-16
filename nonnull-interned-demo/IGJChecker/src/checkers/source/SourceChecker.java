@@ -430,7 +430,7 @@ public abstract class SourceChecker extends AbstractProcessor {
         if (!this.getSupportedLintOptions().contains(name))
             throw new IllegalArgumentException("illegal lint option: " + name);
 
-        Map<String, /*@Nullable*/ String> options = this.env.getOptions();
+        Map<String, @Nullable String> options = this.env.getOptions();
 
         @Nullable String lintString = options.get("lint");
         if (lintString == null)
@@ -462,7 +462,7 @@ public abstract class SourceChecker extends AbstractProcessor {
         options.add("filenames");
         options.add("showchecks");
         options.addAll(super.getSupportedOptions());
-        return Collections.</*@NonNull*/ String>unmodifiableSet(options);
+        return Collections.<@NonNull String>unmodifiableSet(options);
     }
 
     /*
@@ -470,7 +470,7 @@ public abstract class SourceChecker extends AbstractProcessor {
      */
     @Override
     public Set<String> getSupportedAnnotationTypes() {
-        return Collections.</*@NonNull*/ String>singleton("*");
+        return Collections.<@NonNull String>singleton("*");
     }
     
     /**
@@ -486,16 +486,16 @@ public abstract class SourceChecker extends AbstractProcessor {
             this.getClass().getAnnotation(SupportedLintOptions.class);
 
         if (sl == null)
-            return Collections.</*@NonNull*/ String>emptySet();
+            return Collections.<@NonNull String>emptySet();
 
-        @Nullable String[/*@Nullable*/] slValue = sl.value();
+        @Nullable String[@Nullable] slValue = sl.value();
         assert slValue != null; /*nninvariant*/
 
-        String[/*@Nullable*/] lintArray = slValue;
+        String[@Nullable] lintArray = slValue;
         Set<String> lintSet = new HashSet<String>(lintArray.length);
         for (String s : lintArray)
             lintSet.add(s);
-        return Collections.</*@NonNull*/ String>unmodifiableSet(lintSet);
+        return Collections.<@NonNull String>unmodifiableSet(lintSet);
 
     }
 

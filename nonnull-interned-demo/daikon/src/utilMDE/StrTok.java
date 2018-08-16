@@ -63,7 +63,7 @@ public class StrTok {
    * returns an empty string.  Delimiters are returned as one character
    * strings.  Quoted strings and words are returned as strings.
    */
-  public /*@Interned*/ String nextToken() {
+  public @Interned String nextToken() {
 
     // Get the next token.  Turn IO exceptions into runtime exceptions
     // so that callers don't have to catch them.
@@ -81,7 +81,7 @@ public class StrTok {
    * Returns the current token.
    * @see #nextToken()
    */
-  public /*@Interned*/ String token() {
+  public @Interned String token() {
 
     int ttype = stok.ttype;
 

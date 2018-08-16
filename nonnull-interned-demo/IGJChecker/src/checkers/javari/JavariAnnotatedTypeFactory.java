@@ -54,7 +54,7 @@ public class JavariAnnotatedTypeFactory extends AnnotatedTypeFactory {
     /**
      * Returns the annotation specifying the immutability type of {@code type}.
      */
-    private AnnotationMirror getImmutabilityAnnotation(/*@ReadOnly*/ AnnotatedTypeMirror type) {
+    private AnnotationMirror getImmutabilityAnnotation(@ReadOnly AnnotatedTypeMirror type) {
         if (type.hasAnnotation(READONLY))
             return READONLY;
         else if (type.hasAnnotation(MUTABLE))
@@ -74,18 +74,18 @@ public class JavariAnnotatedTypeFactory extends AnnotatedTypeFactory {
      * @return  true iff the type is specified an immutability type other than this-mutable,
      *          false otherwise
      */
-    public boolean hasImmutabilityAnnotation(/*@ReadOnly*/ AnnotatedTypeMirror type) {
+    public boolean hasImmutabilityAnnotation(@ReadOnly AnnotatedTypeMirror type) {
         return getImmutabilityAnnotation(type) != null && !type.hasAnnotation(THISMUTABLE);
     }
 
 
     @Override
-    protected void annotateImplicit(Tree tree, /*@Mutable*/ AnnotatedTypeMirror type) {
+    protected void annotateImplicit(Tree tree, @Mutable AnnotatedTypeMirror type) {
         treePre.visit(tree, type);
     }
 
     @Override
-    protected void annotateInheritedFromClass(/*@Mutable*/ AnnotatedTypeMirror type) {
+    protected void annotateInheritedFromClass(@Mutable AnnotatedTypeMirror type) {
         typePost.visit(type);
     }
 

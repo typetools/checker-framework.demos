@@ -919,7 +919,7 @@ public class AnnotatedTypeFactory {
      * @param expression
      * @return  the type of the receiver of this expression
      */
-    public /*@Nullable*/ AnnotatedTypeMirror getReceiver(ExpressionTree expression) {
+    public @Nullable AnnotatedTypeMirror getReceiver(ExpressionTree expression) {
 
         if (!(expression.getKind() == Tree.Kind.METHOD_INVOCATION
                 || expression.getKind() == Tree.Kind.MEMBER_SELECT

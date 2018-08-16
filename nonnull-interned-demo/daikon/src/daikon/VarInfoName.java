@@ -36,7 +36,7 @@ import java.util.*;
  * "a" with the function "sin" applied to it.
  **/
 @SuppressWarnings("interned")
-public abstract /*@Interned*/ class VarInfoName
+public abstract @Interned class VarInfoName
   implements Serializable, Comparable<VarInfoName>
 {
 
@@ -176,7 +176,7 @@ public abstract /*@Interned*/ class VarInfoName
    * @return the string representation (interned) of this name, in the
    * default output format
    **/
-  public /*@Interned*/ String name() {
+  public @Interned String name() {
     if (name_cached == null) {
       try {
         name_cached = name_impl().intern();
@@ -187,7 +187,7 @@ public abstract /*@Interned*/ class VarInfoName
     }
     return name_cached;
   }
-  private /*@Interned*/ String name_cached = null; // interned
+  private @Interned String name_cached = null; // interned
 
   /**
    * Returns the String representation of this name in the default output
@@ -202,7 +202,7 @@ public abstract /*@Interned*/ class VarInfoName
    * @return the string representation (interned) of this name, in the
    * esc style output format
    **/
-  public /*@Interned*/ String esc_name() {
+  public @Interned String esc_name() {
     if (esc_name_cached == null) {
       try {
         esc_name_cached = esc_name_impl().intern();
@@ -214,7 +214,7 @@ public abstract /*@Interned*/ class VarInfoName
     // System.out.println("esc_name = " + esc_name_cached + " for " + name() + " of class " + this.getClass().getName());
     return esc_name_cached;
   }
-  private /*@Interned*/ String esc_name_cached = null; // interned
+  private @Interned String esc_name_cached = null; // interned
 
 
   /**
@@ -227,7 +227,7 @@ public abstract /*@Interned*/ class VarInfoName
    * @return the string representation (interned) of this name, in the
    * Simplify tool output format in the pre-state context.
    **/
-  public /*@Interned*/ String simplify_name() {
+  public @Interned String simplify_name() {
     return simplify_name(false);
   }
 
@@ -235,7 +235,7 @@ public abstract /*@Interned*/ class VarInfoName
    * @return the string representation (interned) of this name, in the
    * Simplify tool output format, in the given pre/post-state context.
    **/
-  protected /*@Interned*/ String simplify_name(boolean prestate) {
+  protected @Interned String simplify_name(boolean prestate) {
     int which = prestate ? 0 : 1;
     if (simplify_name_cached[which] == null) {
       try {
@@ -247,8 +247,8 @@ public abstract /*@Interned*/ class VarInfoName
     }
     return simplify_name_cached[which];
   }
-  private String /*@Interned*/ [] simplify_name_cached
-    = new String /*@Interned*/ [2]; // each interned
+  private String @Interned [] simplify_name_cached
+    = new String @Interned [2]; // each interned
 
   /**
    * Returns the String representation of this name in the simplify
@@ -261,7 +261,7 @@ public abstract /*@Interned*/ class VarInfoName
    * @return the string representation (interned) of this name, in the
    * IOA style output format
    **/
-  public /*@Interned*/ String ioa_name() {
+  public @Interned String ioa_name() {
     if (debug.isLoggable(Level.FINE)) {
       debug.fine ("ioa_name: " + this.toString());
     }
@@ -276,7 +276,7 @@ public abstract /*@Interned*/ class VarInfoName
     }
     return ioa_name_cached;
   }
-  private /*@Interned*/ String ioa_name_cached = null; // interned
+  private @Interned String ioa_name_cached = null; // interned
 
   /**
    * Reeturns the string representation of this name in IOA format.
@@ -291,7 +291,7 @@ public abstract /*@Interned*/ class VarInfoName
    * @return the string representation (interned) of this name, in the
    * java style output format
    **/
-  public /*@Interned*/ String java_name(VarInfo v) {
+  public @Interned String java_name(VarInfo v) {
     if (java_name_cached == null) {
       try {
         java_name_cached = java_name_impl(v).intern();
@@ -302,7 +302,7 @@ public abstract /*@Interned*/ class VarInfoName
     }
     return java_name_cached;
   }
-  private /*@Interned*/ String java_name_cached = null; // interned
+  private @Interned String java_name_cached = null; // interned
 
   /**
    * Return the String representation of this name in java format.
@@ -314,7 +314,7 @@ public abstract /*@Interned*/ class VarInfoName
    * Return the String representation of this name in the JML style output
    * format
    */
-  public /*@Interned*/ String jml_name(VarInfo v) {
+  public @Interned String jml_name(VarInfo v) {
     if (jml_name_cached == null) {
       try {
         jml_name_cached = jml_name_impl(v).intern();
@@ -326,7 +326,7 @@ public abstract /*@Interned*/ class VarInfoName
     // System.out.println("jml_name = " + jml_name_cached + " for " + name() + " of class " + this.getClass().getName());
     return jml_name_cached;
   }
-  private /*@Interned*/ String jml_name_cached = null; // interned
+  private @Interned String jml_name_cached = null; // interned
   /**
    * Returns the name in JML style output format.  Cached and interned by
    * jml_name()
@@ -364,7 +364,7 @@ public abstract /*@Interned*/ class VarInfoName
    * @return the string representation (interned) of this name, in the
    * dbc style output format.
    **/
-  public /*@Interned*/ String dbc_name(VarInfo var) {
+  public @Interned String dbc_name(VarInfo var) {
     if (dbc_name_cached == null) {
       try {
         dbc_name_cached = dbc_name_impl(var).intern();
@@ -376,7 +376,7 @@ public abstract /*@Interned*/ class VarInfoName
     return dbc_name_cached;
   }
 
-  private /*@Interned*/ String dbc_name_cached = null; // interned
+  private @Interned String dbc_name_cached = null; // interned
   /**
    * Return the name in the DBC style output format.  If v is null, uses
    * JML style instead.  Cached and interned by dbc_name()
@@ -387,7 +387,7 @@ public abstract /*@Interned*/ class VarInfoName
    * Return the String representation of this name using only letters,
    * numbers, and underscores.
    */
-  public /*@Interned*/ String identifier_name() {
+  public @Interned String identifier_name() {
     if (identifier_name_cached == null) {
       try {
         identifier_name_cached = identifier_name_impl().intern();
@@ -399,7 +399,7 @@ public abstract /*@Interned*/ class VarInfoName
     // System.out.println("identifier_name = " + identifier_name_cached + " for " + name() + " of class " + this.getClass().getName());
     return identifier_name_cached;
   }
-  private /*@Interned*/ String identifier_name_cached = null; // interned
+  private @Interned String identifier_name_cached = null; // interned
 
   /**
    * Returns the name using only letters, numbers, and underscores.  Cached
@@ -479,7 +479,7 @@ public abstract /*@Interned*/ class VarInfoName
    * @return the nodes of this, as given by an inorder traversal.
    **/
   @SuppressWarnings("interned") // generic type inference
-  public Collection<VarInfoName> inOrderTraversal(/*>>> @Interned VarInfoName this*/) {
+  public Collection<VarInfoName> inOrderTraversal(@Interned VarInfoName this) {
     return Collections.unmodifiableCollection(new InorderFlattener(this).nodes());
   }
 
@@ -531,7 +531,7 @@ public abstract /*@Interned*/ class VarInfoName
    * @return true if the given node is in a prestate context within
    * this tree; the node must be a member of this tree.
    **/
-  public boolean inPrestateContext(/*>>> @Interned VarInfoName this, */ VarInfoName node) {
+  public boolean inPrestateContext(@Interned VarInfoName this,  VarInfoName node) {
     return (new NodeFinder(this, node)).inPre();
   }
 
@@ -539,7 +539,7 @@ public abstract /*@Interned*/ class VarInfoName
    * @return true if every variable in the name is an orig(...)
    * variable.
    **/
-  public boolean isAllPrestate(/*>>> @Interned VarInfoName this*/) {
+  public boolean isAllPrestate(@Interned VarInfoName this) {
     return new IsAllPrestateVisitor(this).result();
   }
 
@@ -547,7 +547,7 @@ public abstract /*@Interned*/ class VarInfoName
    * @return true if this VarInfoName contains a simple variable whose
    * name is NAME.
    **/
-  public boolean includesSimpleName(/*>>> @Interned VarInfoName this, */ String name) {
+  public boolean includesSimpleName(@Interned VarInfoName this,  String name) {
     return new SimpleNamesVisitor(this).simples().contains(name);
   }
 
@@ -558,7 +558,7 @@ public abstract /*@Interned*/ class VarInfoName
    * Replace the first instance of node by replacement, in the data
    * structure rooted at this.
    **/
-  public VarInfoName replace(/*>>> @Interned VarInfoName this, */ VarInfoName node, VarInfoName replacement) {
+  public VarInfoName replace(@Interned VarInfoName this,  VarInfoName node, VarInfoName replacement) {
     if (node == replacement)    // "interned": equality optimization pattern
       return this;
     Replacer r = new Replacer(node, replacement);
@@ -569,7 +569,7 @@ public abstract /*@Interned*/ class VarInfoName
    * Replace all instances of node by replacement, in the data structure
    * rooted at this.
    **/
-  public VarInfoName replaceAll(/*>>> @Interned VarInfoName this, */VarInfoName node, VarInfoName replacement) {
+  public VarInfoName replaceAll(@Interned VarInfoName this, VarInfoName node, VarInfoName replacement) {
     if (node == replacement)    // "interned": equality optimization pattern
       return this;
 
@@ -594,7 +594,7 @@ public abstract /*@Interned*/ class VarInfoName
     return (o instanceof VarInfoName) && equals((VarInfoName) o);
   }
 
-  public boolean equals(/*>>> @Interned VarInfoName this, */ VarInfoName other) {
+  public boolean equals(@Interned VarInfoName this,  VarInfoName other) {
     return ((other == this)     // "interned": equality optimization pattern
             || ((other != null)
                 && (this.repr().equals(other.repr()))));
@@ -683,7 +683,7 @@ public abstract /*@Interned*/ class VarInfoName
   // Static inner classes that form the expression langugage
 
   /** A simple identifier like "a", etc. **/
-  public static /*@Interned*/ class Simple extends VarInfoName {
+  public static @Interned class Simple extends VarInfoName {
     // We are Serializable, so we specify a version to allow changes to
     // method signatures without breaking serialization.  If you add or
     // remove fields, you should change this number to the current date.
@@ -792,7 +792,7 @@ public abstract /*@Interned*/ class VarInfoName
    * Returns a name for the size of this (this object should be a
    * sequence).  Form is like "size(a[])" or "a.length".
    **/
-  public VarInfoName applySize(/*>>> @Interned VarInfoName this*/ ) {
+  public VarInfoName applySize(@Interned VarInfoName this ) {
     // The simple approach:
     //   return (new SizeOf((Elements) this)).intern();
     // is wrong because this might be "orig(a[])".
@@ -831,7 +831,7 @@ public abstract /*@Interned*/ class VarInfoName
    * and upper bounds, which can be subtracted to get one less than
    * its size.
    */
-  public VarInfoName /*@Interned*/[] getSliceBounds(/*>>> @Interned VarInfoName this*/) {
+  public VarInfoName @Interned[] getSliceBounds(@Interned VarInfoName this) {
     VarInfoName vin = this;
     boolean inPrestate = false;
     if (vin instanceof Prestate) {
@@ -844,7 +844,7 @@ public abstract /*@Interned*/ class VarInfoName
     if (!(vin instanceof Slice))
       return null;
     Slice slice = (Slice)vin;
-    VarInfoName /*@Interned*/ [] ret = new VarInfoName /*@Interned*/ [2];
+    VarInfoName @Interned [] ret = new VarInfoName @Interned [2];
     if (slice.i != null)
       ret[0] = slice.i;
     else
@@ -864,7 +864,7 @@ public abstract /*@Interned*/ class VarInfoName
    * The size of a contained sequence; form is like "size(sequence)"
    * or "sequence.length".
    **/
-  public static /*@Interned*/ class SizeOf extends VarInfoName {
+  public static @Interned class SizeOf extends VarInfoName {
     // We are Serializable, so we specify a version to allow changes to
     // method signatures without breaking serialization.  If you add or
     // remove fields, you should change this number to the current date.
@@ -964,7 +964,7 @@ public abstract /*@Interned*/ class VarInfoName
    * Returns a name for a unary function applied to this object.
    * The result is like "sum(this)".
    **/
-  public VarInfoName applyFunction(/*>>> @Interned VarInfoName this, */ String function) {
+  public VarInfoName applyFunction(@Interned VarInfoName this,  String function) {
     return (new FunctionOf(function, this)).intern();
   }
 
@@ -984,12 +984,12 @@ public abstract /*@Interned*/ class VarInfoName
    * @param function the name of the function
    * @param vars The arguments to the function
    **/
-  public static VarInfoName applyFunctionOfN(String function, VarInfoName /*@Interned*/ [] vars) {
+  public static VarInfoName applyFunctionOfN(String function, VarInfoName @Interned [] vars) {
     return applyFunctionOfN(function, Arrays.asList(vars));
   }
 
   /** A function over a term, like "sum(argument)". **/
-  public static /*@Interned*/ class FunctionOf extends VarInfoName {
+  public static @Interned class FunctionOf extends VarInfoName {
     // We are Serializable, so we specify a version to allow changes to
     // method signatures without breaking serialization.  If you add or
     // remove fields, you should change this number to the current date.
@@ -1052,7 +1052,7 @@ public abstract /*@Interned*/ class VarInfoName
 
 
   /** A function of multiple parameters. **/
-  public static /*@Interned*/ class FunctionOfN extends VarInfoName {
+  public static @Interned class FunctionOfN extends VarInfoName {
     // We are Serializable, so we specify a version to allow changes to
     // method signatures without breaking serialization.  If you add or
     // remove fields, you should change this number to the current date.
@@ -1162,7 +1162,7 @@ public abstract /*@Interned*/ class VarInfoName
    * Returns a name for the intersection of with another sequence, like
    * "intersect(a[], b[])".
    **/
-  public VarInfoName applyIntersection(/*>>> @Interned VarInfoName this, */ VarInfoName seq2) {
+  public VarInfoName applyIntersection(@Interned VarInfoName this,  VarInfoName seq2) {
     Assert.assertTrue(seq2 != null);
     return (new Intersection(this, seq2)).intern();
   }
@@ -1171,7 +1171,7 @@ public abstract /*@Interned*/ class VarInfoName
    * Intersection of two sequences.  Extends FunctionOfN, and the
    * only change is that it does special formatting for IOA.
    **/
-  public static /*@Interned*/ class Intersection extends FunctionOfN {
+  public static @Interned class Intersection extends FunctionOfN {
     // We are Serializable, so we specify a version to allow changes to
     // method signatures without breaking serialization.  If you add or
     // remove fields, you should change this number to the current date.
@@ -1191,7 +1191,7 @@ public abstract /*@Interned*/ class VarInfoName
    * Returns a name for the union of this with another sequence, like
    * "union(a[], b[])".
    **/
-  public VarInfoName applyUnion(/*>>> @Interned VarInfoName this, */ VarInfoName seq2) {
+  public VarInfoName applyUnion(@Interned VarInfoName this,  VarInfoName seq2) {
     Assert.assertTrue(seq2 != null);
     return (new Union(this, seq2)).intern();
   }
@@ -1200,7 +1200,7 @@ public abstract /*@Interned*/ class VarInfoName
    * Union of two sequences.  Extends FunctionOfN, and the
    * only change is that it does special formatting for IOA.
    **/
-  public static /*@Interned*/ class Union extends FunctionOfN {
+  public static @Interned class Union extends FunctionOfN {
     // We are Serializable, so we specify a version to allow changes to
     // method signatures without breaking serialization.  If you add or
     // remove fields, you should change this number to the current date.
@@ -1222,12 +1222,12 @@ public abstract /*@Interned*/ class VarInfoName
    * Returns a 'getter' operation for some field of this name, like
    * a.foo if this is a.
    **/
-  public VarInfoName applyField(/*>>> @Interned VarInfoName this, */ String field) {
+  public VarInfoName applyField(@Interned VarInfoName this,  String field) {
     return (new Field(this, field)).intern();
   }
 
   /** A 'getter' operation for some field, like a.foo. **/
-  public static /*@Interned*/ class Field extends VarInfoName {
+  public static @Interned class Field extends VarInfoName {
     // We are Serializable, so we specify a version to allow changes to
     // method signatures without breaking serialization.  If you add or
     // remove fields, you should change this number to the current date.
@@ -1407,12 +1407,12 @@ public abstract /*@Interned*/ class VarInfoName
    * Returns a name for the type of this object; form is like
    * "this.getClass()" or "\typeof(this)".
    **/
-  public VarInfoName applyTypeOf(/*>>> @Interned VarInfoName this*/) {
+  public VarInfoName applyTypeOf(@Interned VarInfoName this) {
     return (new TypeOf(this)).intern();
   }
 
   /** The type of the term, like "term.getClass()" or "\typeof(term)". **/
-  public static /*@Interned*/ class TypeOf extends VarInfoName {
+  public static @Interned class TypeOf extends VarInfoName {
     // We are Serializable, so we specify a version to allow changes to
     // method signatures without breaking serialization.  If you add or
     // remove fields, you should change this number to the current date.
@@ -1472,7 +1472,7 @@ public abstract /*@Interned*/ class VarInfoName
    * Returns a name for a the prestate value of this object; form is
    * like "orig(this)" or "\old(this)".
    **/
-  public VarInfoName applyPrestate(/*>>> @Interned VarInfoName this*/) {
+  public VarInfoName applyPrestate(@Interned VarInfoName this) {
     if (this instanceof Poststate) {
       return ((Poststate)this).term;
     } else if ((this instanceof Add) && ((Add)this).term instanceof Poststate) {
@@ -1485,7 +1485,7 @@ public abstract /*@Interned*/ class VarInfoName
   }
 
   /** The prestate value of a term, like "orig(term)" or "\old(term)". **/
-  public static /*@Interned*/ class Prestate extends VarInfoName {
+  public static @Interned class Prestate extends VarInfoName {
     // We are Serializable, so we specify a version to allow changes to
     // method signatures without breaking serialization.  If you add or
     // remove fields, you should change this number to the current date.
@@ -1565,7 +1565,7 @@ public abstract /*@Interned*/ class VarInfoName
    * Returns a name for a the poststate value of this object; form is
    * like "new(this)" or "\new(this)".
    **/
-  public VarInfoName applyPoststate(/*>>> @Interned VarInfoName this*/) {
+  public VarInfoName applyPoststate(@Interned VarInfoName this) {
     return (new Poststate(this)).intern();
   }
 
@@ -1573,7 +1573,7 @@ public abstract /*@Interned*/ class VarInfoName
    * The poststate value of a term, like "new(term)".  Only used
    * within prestate, so like "orig(this.myArray[new(index)]".
    **/
-  public static /*@Interned*/ class Poststate extends VarInfoName {
+  public static @Interned class Poststate extends VarInfoName {
     // We are Serializable, so we specify a version to allow changes to
     // method signatures without breaking serialization.  If you add or
     // remove fields, you should change this number to the current date.
@@ -1623,7 +1623,7 @@ public abstract /*@Interned*/ class VarInfoName
    * Returns a name for the this term plus a constant, like "this-1"
    * or "this+1".
    **/
-  public VarInfoName applyAdd(/*>>> @Interned VarInfoName this, */ int amount) {
+  public VarInfoName applyAdd(@Interned VarInfoName this,  int amount) {
     if (amount == 0) {
       return this;
     } else {
@@ -1632,7 +1632,7 @@ public abstract /*@Interned*/ class VarInfoName
   }
 
   /** An integer amount more or less than some other value, like "x+2". **/
-  public static /*@Interned*/ class Add extends VarInfoName {
+  public static @Interned class Add extends VarInfoName {
     // We are Serializable, so we specify a version to allow changes to
     // method signatures without breaking serialization.  If you add or
     // remove fields, you should change this number to the current date.
@@ -1691,12 +1691,12 @@ public abstract /*@Interned*/ class VarInfoName
   }
 
   /** Returns a name for the decrement of this term, like "this-1". **/
-  public VarInfoName applyDecrement(/*>>> @Interned VarInfoName this*/) {
+  public VarInfoName applyDecrement(@Interned VarInfoName this) {
     return applyAdd(-1);
   }
 
   /** Returns a name for the increment of this term, like "this+1". **/
-  public VarInfoName applyIncrement(/*>>> @Interned VarInfoName this*/) {
+  public VarInfoName applyIncrement(@Interned VarInfoName this) {
     return applyAdd(+1);
   }
 
@@ -1704,12 +1704,12 @@ public abstract /*@Interned*/ class VarInfoName
    * Returns a name for the elements of a container (as opposed to the
    * identity of the container) like "this[]" or "(elements this)".
    **/
-  public VarInfoName applyElements(/*>>> @Interned VarInfoName this*/) {
+  public VarInfoName applyElements(@Interned VarInfoName this) {
     return (new Elements(this)).intern();
   }
 
   /** The elements of a container, like "term[]". **/
-  public static /*@Interned*/ class Elements extends VarInfoName {
+  public static @Interned class Elements extends VarInfoName {
     // We are Serializable, so we specify a version to allow changes to
     // method signatures without breaking serialization.  If you add or
     // remove fields, you should change this number to the current date.
@@ -1839,7 +1839,7 @@ public abstract /*@Interned*/ class VarInfoName
    * Returns a name for an element selected from a sequence, like
    * "this[i]".
    **/
-  public VarInfoName applySubscript(/*>>> @Interned VarInfoName this, */ VarInfoName index) {
+  public VarInfoName applySubscript(@Interned VarInfoName this,  VarInfoName index) {
     Assert.assertTrue(index != null);
     ElementsFinder finder = new ElementsFinder(this);
     Elements elems = finder.elems();
@@ -1868,7 +1868,7 @@ public abstract /*@Interned*/ class VarInfoName
   }
 
   /** An element from a sequence, like "sequence[index]". **/
-  public static /*@Interned*/ class Subscript extends VarInfoName {
+  public static @Interned class Subscript extends VarInfoName {
     // We are Serializable, so we specify a version to allow changes to
     // method signatures without breaking serialization.  If you add or
     // remove fields, you should change this number to the current date.
@@ -1942,7 +1942,7 @@ public abstract /*@Interned*/ class VarInfoName
    * like "this[i..j]".  If an endpoint is null, it means "from the
    * start" or "to the end".
    **/
-  public VarInfoName applySlice(/*>>> @Interned VarInfoName this, */ VarInfoName i, VarInfoName j) {
+  public VarInfoName applySlice(@Interned VarInfoName this,  VarInfoName i, VarInfoName j) {
     // a[] -> a[index..]
     // orig(a[]) -> orig(a[post(index)..])
     ElementsFinder finder = new ElementsFinder(this);
@@ -1961,7 +1961,7 @@ public abstract /*@Interned*/ class VarInfoName
   }
 
   /** A slice of elements from a sequence, like "sequence[i..j]". **/
-  public static /*@Interned*/ class Slice extends VarInfoName {
+  public static @Interned class Slice extends VarInfoName {
     // We are Serializable, so we specify a version to allow changes to
     // method signatures without breaking serialization.  If you add or
     // remove fields, you should change this number to the current date.
@@ -2971,7 +2971,7 @@ public abstract /*@Interned*/ class VarInfoName
           index_vin = new Simple(index_off + "");
         }
         VarInfoName to_replace = unquants.get(0);
-        VarInfoName /*@Interned*/ [] replace_result = replace(root, to_replace, index_vin);
+        VarInfoName @Interned [] replace_result = replace(root, to_replace, index_vin);
         return replace_result[0];
       } else {
         Assert.assertTrue(false, "Can't handle multi-dim array in " +
@@ -3047,8 +3047,8 @@ public abstract /*@Interned*/ class VarInfoName
      * Record type for return value of the quantify method below.
      **/
     public static class QuantifyReturn {
-      public VarInfoName /*@Interned*/ [] root_primes;
-      public Vector<VarInfoName /*@Interned*/ []> bound_vars; // each element is VarInfoName[3] = <variable, lower, upper>
+      public VarInfoName @Interned [] root_primes;
+      public Vector<VarInfoName @Interned []> bound_vars; // each element is VarInfoName[3] = <variable, lower, upper>
     }
 
     // <root*> -> <root'*, <index, lower, upper>*>

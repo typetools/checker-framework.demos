@@ -22,7 +22,7 @@ public final class ValueTuple implements Cloneable {
   public static Logger debug = Logger.getLogger("daikon.ValueTuple");
 
   // These arrays are interned, and so are their elements.
-  public /*@Interned*/ Object /*@Interned*/ [] vals;
+  public @Interned Object @Interned [] vals;
 
   // consider putting this in the first slot of "vals", to avoid the Object
   // overhead of a pair of val and mods.  Do I need to worry about trickery
@@ -39,7 +39,7 @@ public final class ValueTuple implements Cloneable {
    * vals field.  Don't use a single int because that won't scale to (say)
    * more than 16 values.
   **/
-  public /*@Interned*/ int[] mods;
+  public @Interned int[] mods;
 
 
   // Right now there are only three meaningful values for a mod:
@@ -201,7 +201,7 @@ public final class ValueTuple implements Cloneable {
    * @param vi the variable whose value is to be returned
    * @return the value of the variable at this ValueTuple
    **/
-  public /*@Interned*/ Object getValue(VarInfo vi) {
+  public @Interned Object getValue(VarInfo vi) {
     assert vi.value_index < vals.length : vi;
     return vi.getValue(this);   // this looks like a checker bug
   }
@@ -211,11 +211,11 @@ public final class ValueTuple implements Cloneable {
    * Note: For clients, getValue(VarInfo) is preferred to getValue(int).
    * @see #getValue(VarInfo)
    **/
-  /*@Interned*/ Object getValue(int val_index) { return vals[val_index]; }
+  @Interned Object getValue(int val_index) { return vals[val_index]; }
 
 
   /** Default constructor that interns its argument. */
-  public ValueTuple(Object /*@Interned*/ [] vals, int /*@Interned*/ [] mods) {
+  public ValueTuple(Object @Interned [] vals, int @Interned [] mods) {
     this.vals = Intern.intern(vals); // checker error due to checker weakness.  The type of intern needs to be polymorphic.  It is Intern.intern (Object[]) -> @Interned Object[], but we want Intern.intern (Object[@Interned]) -> @Interned Object[@Interned]
     this.mods = Intern.intern(mods);
   }
@@ -251,7 +251,7 @@ public final class ValueTuple implements Cloneable {
 
 
   /** Constructor that takes already-interned arguments. */
-  static ValueTuple makeFromInterned(/*@Interned*/ Object /*@Interned*/ [] vals, int[] mods) {
+  static ValueTuple makeFromInterned(@Interned Object @Interned [] vals, int[] mods) {
     return new ValueTuple(vals, mods, true);
   }
 

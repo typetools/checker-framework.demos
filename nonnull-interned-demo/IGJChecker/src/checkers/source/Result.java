@@ -51,7 +51,7 @@ public final class Result {
      * @return the failure result
      */
     public static Result failure(String messageKey,
-            /*@Nullable*/ Object... args) {
+            @Nullable Object... args) {
         return new Result(Type.FAILURE, Collections
                 .singleton(new DiagMessage(messageKey, args)));
     }
@@ -66,7 +66,7 @@ public final class Result {
      * @return the warning result
      */
     public static Result warning(String messageKey,
-            /*@Nullable*/ Object... args) {
+            @Nullable Object... args) {
         return new Result(Type.WARNING, Collections
                 .singleton(new DiagMessage(messageKey, args)));
     }
@@ -77,7 +77,7 @@ public final class Result {
         if (messagePairs != null)
         for (DiagMessage msg : messagePairs) {
             String message = msg.getMessageKey();
-            /*@Nullable*/ Object[] args = msg.getArgs();
+            @Nullable Object[] args = msg.getArgs();
             if (args != null)
                 args = Arrays.copyOf(msg.getArgs(), args.length);
             this.messages.add(new DiagMessage(message, args));
@@ -137,14 +137,14 @@ public final class Result {
 	    for (DiagMessage msg : getDiagMessages())
 	        msgKeys.add(msg.getMessageKey());
 	    
-		return Collections.</*@NonNull*/ String>unmodifiableList(msgKeys);
+		return Collections.<@NonNull String>unmodifiableList(msgKeys);
 	}
 	
     /**
      * @return an unmodifiable list of the message pairs
      */
     public List<DiagMessage> getDiagMessages() {
-        return Collections.</*@NonNull*/ DiagMessage>unmodifiableList(messages);
+        return Collections.<@NonNull DiagMessage>unmodifiableList(messages);
     }
 
     @Override

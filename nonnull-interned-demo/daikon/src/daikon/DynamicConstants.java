@@ -93,7 +93,7 @@ public class DynamicConstants implements Serializable {
     static final long serialVersionUID = 20030913L;
 
     /** The value of the constant. **/
-    public /*@Interned*/ Object val;
+    public @Interned Object val;
 
     /** The sample count of the constant. **/
     public int count;
@@ -221,7 +221,7 @@ public class DynamicConstants implements Serializable {
     // Check each constant, destroy any that are missing or different
     for (Iterator<Constant> i = con_list.iterator(); i.hasNext(); ) {
       Constant con = i.next();
-      /*@Interned*/ Object val = con.vi.getValue (vt);
+      @Interned Object val = con.vi.getValue (vt);
       if (Debug.logDetail())
         Debug.log (getClass(), ppt, Debug.vis(con.vi), "Adding "
                    + Debug.toString(val) +
@@ -247,7 +247,7 @@ public class DynamicConstants implements Serializable {
       Constant con = i.next();
       if (con.vi.missingOutOfBounds())
         continue;
-      /*@Interned*/ Object val = con.vi.getValue (vt);
+      @Interned Object val = con.vi.getValue (vt);
       if (!missing (con.vi, vt)) {
         i.remove();
         con.always_missing = false;

@@ -1397,7 +1397,7 @@ public final class UtilMDE {
    * delimiter between them.
    * @see java.util.AbstractCollection#toString()
    **/
-  public static String join(List<? extends /*@NonNull*/ Object> v, String delim) {
+  public static String join(List<? extends @NonNull Object> v, String delim) {
     if (v.size() == 0) return "";
     if (v.size() == 1) return v.get(0).toString();
     // This should perhaps use an iterator rather than get().

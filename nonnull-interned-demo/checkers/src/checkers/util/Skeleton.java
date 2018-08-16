@@ -164,7 +164,7 @@ public class Skeleton implements ClassVisitor {
      * @param visited the set of visited classes that should not be read
      */
     public static void read(final String className, final String base, final
-            String tab, PrintWriter pw, /*@NonNull*/ Set<String> visited) throws Exception {
+            String tab, PrintWriter pw, @NonNull Set<String> visited) throws Exception {
 
         if (visited.contains(className))
             return;
@@ -185,7 +185,7 @@ public class Skeleton implements ClassVisitor {
      * @param visited the set of visited classes that should not be read
      */
     public static void read(final InputStream classStream, String className, final String base, final
-            String tab, PrintWriter pw, /*@NonNull*/ Set<String> visited) throws Exception {
+            String tab, PrintWriter pw, @NonNull Set<String> visited) throws Exception {
 
         if (visited.contains(className))
             return;
