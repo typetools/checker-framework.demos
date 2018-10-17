@@ -26,7 +26,7 @@ cd $t && \
 cp -R checker-framework-branch-master checker-framework-optional-demo && \
 rm -f checker-framework && \
 ln -s checker-framework-optional-demo checker-framework && \
-(cd $cf && ./gradlew build javadoc) && \
+(cd $cf && ./gradlew assemble javadoc) && \
 (make -C $cf/docs/manual) && \
 (cd && javadoc-index-to-alist > ~/.javadoc-index.el)
 
