@@ -3,7 +3,7 @@ Notes for the taintness demo
 1. personalblog-demo
 
 Open
-  checker-framework/tutorial/eclipse-projects/personalblog-demo/src/net/eyde/personalblog/service/PersonalBlogService.java
+  checker-framework/docs/tutorial/src/personalblog-demo/src/net/eyde/personalblog/service/PersonalBlogService.java
 
 which is in the main Checker Framework repository, not this one.
 
