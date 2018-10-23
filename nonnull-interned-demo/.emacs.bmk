@@ -21,7 +21,7 @@
   ((filename . "~/research/types/checker-framework/docs/tutorial/eclipse-projects/personalblog-demo/src/net/eyde/personalblog/service/PersonalBlogService.java")
    (front-context-string . "    private <T> ")
    (rear-context-string . "({\"unchecked\"})\n")
-   (position . 6750)))
+   (position . 6596)))
  ("7 iCalendar preconditions"
   ((filename . "~/bin/src/plume-lib-for-demo/java/src/plume/ICalAvailable.java")
    (front-context-string . " * Given one or ")
