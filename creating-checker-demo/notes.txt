@@ -34,7 +34,7 @@ ln -s checker-framework-optional-demo checker-framework && \
 (let ((default-directory (substitute-in-file-name "$t/checker-framework-optional-demo")))
   (compile "./gradlew assemble"))
 
-## Stub file with @Present annotations removed.
+## Stub file with @Present annotations removed and @EnsuresQualifierIf commented
 cp $ch/jdk/optional/src/java/util/Optional.java $ch/src/main/java/org/checkerframework/checker/optional/jdk.astub
 sed -i 's/@Present //' $ch/src/main/java/org/checkerframework/checker/optional/jdk.astub
 sed -i 's/@EnsuresQualifierIf/\/\/ @EnsuresQualifierIf/' $ch/src/main/java/org/checkerframework/checker/optional/jdk.astub
