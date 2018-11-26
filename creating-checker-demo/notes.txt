@@ -28,7 +28,7 @@ rm -f checker-framework && \
 ln -s checker-framework-optional-demo checker-framework && \
 (cd $cf && ./gradlew assemble javadoc) && \
 (make -C $cf/docs/manual) && \
-(cd && javadoc-index-to-alist > ~/.javadoc-index.el)
+(cd && $HOME/emacs/javadoc-index-to-alist > ~/.javadoc-index.el)
 
 ## Warm up the gradle daemon:
 (let ((default-directory (substitute-in-file-name "$t/checker-framework-optional-demo")))
@@ -191,7 +191,7 @@ public final @NonNull class Optional<T extends @NonNull Object> {
 ----------------
 
 If there is more time, implement rule #7 "Don’t use Optional to wrap any collection type".
-Show the source code for the TypeValidator, in OptionalVisitor.java
+Show the source code for the TypeValidator, in OptionalVisitor.java (search for "Rules 6")
 $ch/src/main/java/org/checkerframework/checker/optional/OptionalVisitor.java-ORIG
 
 ----------------
