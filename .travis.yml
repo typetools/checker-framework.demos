@@ -2,7 +2,6 @@ language: java
 
 script: ./.travis-build.sh
 
-sudo: false
 ## Reinstate when the build can use a standard jtreg install
 # addons:
 #   apt:
