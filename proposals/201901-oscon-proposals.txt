@@ -1,0 +1,113 @@
+https://conferences.oreilly.com/oscon/oscon-or/user/proposal/propose/cfp/694
+
+===========================================================================
+
+
+> Proposed title
+Implement your own type system
+
+> Description of the presentation
+
+Description
+
+A type system detects errors at compile time.  Your built-in type system still permits bugs such as null pointer exceptions and SQL injections.  In this session, we will see that designing a type system is simple.  We will live-code a type system that prevents misuse of Java's Optional type.
+
+> Track: Live coding ONLY
+> 40-minute session
+
+Abstract
+
+Don't let programming language designers have all the fun: you can design your own type system that is better than the current one.
+
+Many developers view type theory as abstruse and confusing. It's not! This talk will show you the four simple components of a type system: the types, their subtyping relationships, how to give a type to each expression in your program, and what operations are illegal. If you specify these four things, you have designed a type system.
+
+We will do exactly that during the course of the presentation. Starting from nothing, in 40 minutes we will create a full-fledged type-checker that detects real errors in real programs. For concreteness, we will implement our type-checker for the Java language, and it will handle all Java constructs, such as generics, subtyping, and lambdas. Our type system will be better than the built-in Java type system: it will detect errors that the Java compiler permits and that would otherwise go undetected until run time.
+
+Although our example will use Java, the ideas translate to other languages. Even if you don't want to implement your own type system, you will come away with a better understanding of type systems and of compile-time verification in general.
+If you are a Java developer, you will also be ready to use dozens of freely-available pluggable type-systems to improve code quality, which are used daily at companies such as Amazon, Google, and Uber.
+
+> Type: 40-minute session or 3-hour tutorial
+> Suggested main topic
+> Audience information: who the presentation is for
+
+Software developers and architects; QA and compliance teams
+
+> What's the takeaway for the audience?
+
+The audience will come away with improved theoretical and practical understanding of type systems.  This understanding will enable the audience to deploy pluggable type-checking in their own projects, which improves reliability, documentation, and design.
+
+> Prerequisite knowledge and/or requirements needed by attendees
+Working knowledge of Java.
+
+===========================================================================
+
+> Proposed title
+
+Preventing run-time errors at compile time:  program verification for the masses
+
+> Track: Emerging languages and frameworks
+> Type: 3-hour tutorial
+
+> Description of the presentation
+
+Description:
+
+Are you tired of null pointer exceptions, SQL injections, concurrency errors, mistaken equality tests, data leaks, and other run-time errors?  Are your users tired of them in your code?  In this tutorial, you will learn how to guarantee, at compile time, that these run-time exceptions cannot occur.  You have nothing to lose but your bugs!
+
+
+Abstract:
+
+Formal verification is attractive because it provides a guarantee of correct behavior.  No amount of testing can provide such a guarantee.  Unfortunately, most formal verification tools are difficult to use, do not scale to large programs, and/or do not work on popular programming languages.
+
+Type-checking is the shining success of formal verification.  Types are used and understood by programmers.  Therefore, creating custom type systems ("pluggable-type-checking") is an effective way to achieve formal verification on a large scale.  This approach and our open-source tool, called the Checker Framework, is in daily use at companies such as Amazon, Google, and Uber, among many others.
+
+The Java language supports the creation of custom type systems to formally verify correctness and security properties.  You can download type systems that prevent null pointer exceptions, SQL injections, concurrency errors, mistaken equality tests, data leaks, wrong string formats, invalid regular expressions, and more.
+
+This tutorial will:
+
+ * Review the concepts of type-checking from a user perspective.
+ * Show the (simple!) theory that explains its formal guarantees.
+ * Give practice in using pluggable type-systems to prevent run-time errors.
+ * Teach how to design and implement a new type system, which checks consistent use of encryption.
+ * Present the design and usage of more advanced checkers.
+
+Although this talk is presented in the context of Java, it is appropriate for the Emerging Languages And Frameworks track.  The talk is about about an emerging framework that is industrial-strength and is recently gaining increased adoption.  The talk shows how each user can change Java into a more expressive language, according to that user's need.  The concepts apply beyond the Java language.  Furthermore, our work has influenced the design of Java (the type annotation feature of Java 8 was introduced to support pluggable type-checking) of other languages such as Kotlin.
+
+> Type: 40-minute session or 3-hour tutorial
+> Suggested main topic
+> Audience information: who the presentation is for
+
+Software developers and architects; QA and compliance teams
+
+> What's the takeaway for the audience?
+
+The main takeaway is a new perspective on formal verification.  Verification is a complement to testing, for the properties that are most important to a development team.  Lightweight verification based on type systems can be scalable, precise, effective, and fit into developer workflows.  The specifciations can be both more concise and more precise than English documentation, and are guaranteed to be accurate.
+
+Another takeaway is an appreciation for type systems.  The limitations of built-in type systems have turned off many programmers to types, but they can be much more expressive and powerful without added complexity.
+
+A final takeaway is exposure to an industrial-strength, open-source tool that programmers can use to improve their code.
+
+> For tutorial proposals: hardware installation, materials, and/or downloads attendees will need in advance
+
+A laptop with Java installed.
+
+> Prerequisite knowledge and/or requirements needed by attendees
+Knowledge of some statically-typed object-oriented programming language, such as C++, Java, Kotlin, Rust, Scala, or Swift.
+
+===========================================================================
+
+Biography and headshot:
+
+> Speaker(s): biography and hi-res headshot (minimum 1400 pixels wide; required)
+
+Michael Ernst is an open-source developer who was the specification lead for Java's type annotations feature.  He has won multiple Rock Star awards at the JavaOne conference for his engaging presentations.  As his day job, he is a Professor of Computer Science & Engineering at the University of Washington.
+
+In both roles, he designs and builds tools to make software more reliable, more secure, and easier (and more fun!) to produce.  Ernst's research combines strong theoretical foundations with realistic experimentation and tool-building, with an eye to changing the way that software developers work.  Sample topics include software engineering, programming languages, type theory, security, program analysis, bug prediction, testing, and verification.
+
+More information is available at his homepage: "http://homes.cs.washington.edu/~mernst/":http://homes.cs.washington.edu/~mernst/
+
+> Headshot
+~/public_html/images/mernst-headshot-200307-2.jpg
+
+> A video of the speaker
+https://www.youtube.com/watch?v=6E1CSydgzQc&t=245s https://www.youtube.com/watch?v=-1jjJf5C-Fc https://www.youtube.com/watch?v=uS-QAv400ps
