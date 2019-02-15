@@ -1,3 +1,11 @@
+src/daikon/VarInfo.java:276: error: [super.invocation.invalid] Constructor of type @Interned cannot call super() of type @UnknownInterned.
+  public VarInfo (VarDefinition vardef) {
+         ^
+
+src/daikon/VarInfo.java:503: error: [super.invocation.invalid] Constructor of type @Interned cannot call super() of type @UnknownInterned.
+  private VarInfo (VarInfoName name, ProglangType type,
+          ^
+
 src/daikon/VarInfo.java:3589: error: [assignment.type.incompatible] incompatible types in assignment.
     vi.str_name = seq.apply_subscript (String.format ("%s..%s", begin_str,
                                       ^
@@ -13,10 +21,10 @@ src/daikon/VarInfo.java:3805: error: [assignment.type.incompatible] incompatible
                                 ^
   found   : String
   required: @Interned String
-3 errors
+5 errors
 
 BUILD FAILED
 build.xml:9: The following error occurred while executing this line:
 ant.xml:16: Java returned: 1
 
-Total time: 6 seconds
+Total time: 13 seconds
