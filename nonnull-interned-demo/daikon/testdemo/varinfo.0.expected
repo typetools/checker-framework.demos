@@ -21,7 +21,7 @@ src/daikon/VarInfo.java:3805: error: [assignment.type.incompatible] incompatible
                                 ^
   found   : String
   required: @Interned String
-5 errors
+3 errors
 
 BUILD FAILED
 build.xml:9: The following error occurred while executing this line:
