@@ -12,10 +12,14 @@ ROOT=$TRAVIS_BUILD_DIR/..
 export CHECKERFRAMEWORK=`readlink -f ${CHECKERFRAMEWORK:-$ROOT/checker-framework}`
 
 ## Build Checker Framework
-SLUGOWNER=${TRAVIS_REPO_SLUG%/*}
+SLUGOWNER=${TRAVIS_PULL_REQUEST_SLUG%/*}
+if [[ "$SLUGOWNER" == "" ]]; then
+  SLUGOWNER=${TRAVIS_REPO_SLUG%/*}
+fi
 if [[ "$SLUGOWNER" == "" ]]; then
   SLUGOWNER=typetools
 fi
+echo SLUGOWNER=$SLUGOWNER
 
 ## Build Checker Framework
 if [ -d $CHECKERFRAMEWORK ] ; then
