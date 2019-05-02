@@ -12,9 +12,11 @@ We will do exactly that during the course of the presentation. Starting from not
 
 Although our example will use Java, the ideas translate to other languages. Even if you don't want to implement your own type system, you will come away with a better understanding of type systems and of compile-time verification in general.  If you are a Java programmer, you will be ready to use the dozens of available pluggable type-systems that others have already implemented and that are in use at companies such as Amazon, Google, and Uber to improve code quality.
 
+
 What will the attendee learn?
 
 The attendee will learn type system fundamentals, the type-checking mindset (which goes beyond using a language  with a type system), and how to do practical verification of real-world code.
+
 
 History:
 
@@ -32,27 +34,51 @@ My research interests are in safe and productive software development. I combine
 ===========================================================================
 
 Title [55 characters max]:
-Practical formal verification via pluggable types
 
-Pluggable type systems: practical formal verification
+
 [56 characters] Practical formal verification via pluggable type systems
 [56 characters] Pluggable type systems: formal verification for everyone
 [too cutesy] Preventing errors before they happen
-[clumsy] Pluggable type systems: formal verification for all
+[awkward] Pluggable type systems: practical formal verification
+[awkward] Pluggable type systems: formal verification for all
+[uses obscure vocabulary] Practical formal verification via pluggable types
 
 Session type: Tutorial (2h)
 Level: Intro
 
-Abstract:
+Abstract [max length 1500 characters]
 
-Are you tired of null pointer exceptions, unintended side effects, SQL injections, race conditions, mistaken equality tests, incorrect internationalization, and other run-time errors?  Are your users tired of them in your code?  Testing can never find all such errors.  This presentation shows you how to guarantee, at compile time, that these run-time exceptions will not occur.
+Are you tired of null pointer exceptions, unintended side effects, SQL injections, race conditions, mistaken equality tests, incorrect internationalization, and other run-time errors? Are your users tired of them in your code? Testing can never find all bugs. This presentation shows you how to guarantee, at compile time, that these run-time exceptions will not occur.
 
-A guarantee requires formal verification.  In this talk, we use the only type of verification that has been widely adopted and successful:  type systems.  A pluggable, or optional, type checker is run in addition to the language's built-in type checker.  The pluggable type system gives additional guarantees, or it identifies potentially-incorrect code.  This verification occurs at compile time and without any run-time overhead.
+A guarantee requires formal verification. We will use the only type of verification that has been widely adopted and successful: type systems. A pluggable, or optional, type checker runs in addition to the language's built-in type checker. The pluggable type system gives additional guarantees, or it identifies potentially-incorrect code. This verification occurs at compile time and without any run-time overhead.
 
-New programming languages frequently introduce new type systems.  Pluggable type systems are a way to apply even more powerful type systems to legacy code.  A programmer can pick and choose the pluggable type system that addresses the greatest business need.  Pluggable types are the best path forward to formal verification, since they are modular, transparent, and easy to use, and familiar to programmers.  Formal verification is no longer an abstruse art.  Companies such as Amazon, Google, and Uber use it in their build process.
-
-In this talk, you will learn the basics of type theory.  You will learn type-theoretic thinking, which enables you to express many different problems as a type system.  (For example, over 60% of the top CWE/SANS Most Dangerous Software Errors can be detected and prevented with a type system.)  You will learn to interpret type system errors.  You will see how a type system promotes good design and clean code.  You will learn how a type system can soundly and precisely give one variable different types on every line of code.  You will learn how to use existing tools and how to create and implement your own type system.
+New programming languages frequently introduce new type systems. Pluggable type systems let you use even more powerful type systems, and apply them to legacy code. A programmer can pick and choose the pluggable type system that addresses the greatest business need; for example, 60% of the top CWE/SANS Most Dangerous Software Errors can be detected and prevented with a type system. Pluggable types are the best path forward to formal verification, since they are modular, transparent, easy to use, and familiar to programmers. Formal verification is no longer an abstruse art. Companies such as Amazon, Google, and Uber use pluggable types in their build process.
 
 You have nothing to lose but your bugs!
 
-===========================================================================
+
+Keywords
+
+type system, verification, security, exception
+
+
+What will the attendee learn?
+
+ * the basics of type theory
+ * type-theoretic thinking, which enables you to express many different problems as a type system
+ * how to interpret type system errors
+ * how a type system promotes good design and clean code
+ * how a type system can soundly and precisely give one variable different types on every line of code
+ * how to use existing tools
+ * how to create and implement your own type system
+
+
+History:
+
+We have presented variants of this tutorial at the Java One and Code One conferences every year for the past several years.  I don't think they were videotaped.
+
+
+Dietl bio:
+
+My research interests are in safe and productive software development. I combine theoretical results with practical tools so developers can create high-quality, trustworthy software and reduce the enormous impact of software defects. To achieve this goal, I combine my knowledge of programming languages and software engineering with the verification, security, and systems expertise of my collaborators.
+
