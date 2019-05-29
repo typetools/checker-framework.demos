@@ -19,6 +19,8 @@ import java.io.ObjectInputStream;
 import java.io.IOException;
 import java.util.*;
 
+import org.checkerframework.checker.interning.qual.Interned;
+
 // This class is deprecated.  It should be removed as soon as Daikon no
 // longer supports the old decl format.
 

@@ -22,6 +22,8 @@ import java.util.logging.Level;
 import java.util.*;
 import java.io.*;
 
+import org.checkerframework.checker.interning.qual.Interned;
+
 /**
  * Represents information about a particular variable for a program
  * point.  This object doesn't hold the value of the variable at a
