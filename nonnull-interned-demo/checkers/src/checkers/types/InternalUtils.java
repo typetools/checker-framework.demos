@@ -10,6 +10,10 @@ import com.sun.tools.javac.code.*;
 import com.sun.tools.javac.tree.*;
 import com.sun.tools.javac.tree.JCTree.*;
 
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.checker.nullness.qual.NonNull;
+import org.checkerframework.checker.nullness.qual.Nullable;
+
 /**
  * Static utility methods used by annotation abstractions in this package. Some
  * methods in this class depend on the use of Sun javac internals; any procedure

@@ -13,6 +13,10 @@ import javax.lang.model.type.*;
 import com.sun.source.tree.ParameterizedTypeTree;
 import com.sun.source.tree.Tree;
 
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.checker.nullness.qual.NonNull;
+import org.checkerframework.checker.nullness.qual.Nullable;
+
 /**
  * Represents the location of an annotation within a type.  For example, consider
  *

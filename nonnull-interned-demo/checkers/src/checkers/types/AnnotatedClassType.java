@@ -11,6 +11,10 @@ import checkers.util.ElementUtils;
 
 import com.sun.source.tree.Tree;
 
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.checker.nullness.qual.NonNull;
+import org.checkerframework.checker.nullness.qual.Nullable;
+
 /**
  * {@link AnnotatedClassType} represents a type along with all its annotations.
  * Given a use of a type, clients can obtain an {@link AnnotatedClassType} and

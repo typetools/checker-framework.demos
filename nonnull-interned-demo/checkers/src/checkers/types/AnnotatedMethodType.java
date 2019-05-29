@@ -5,6 +5,10 @@ import java.util.List;
 import javax.annotation.processing.ProcessingEnvironment;
 import javax.lang.model.element.*;
 
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.checker.nullness.qual.NonNull;
+import org.checkerframework.checker.nullness.qual.Nullable;
+
 /**
  * Provides a way to obtain annotated class types for the parts of a
  * method declaration (return type, throws clauses, method receiver,

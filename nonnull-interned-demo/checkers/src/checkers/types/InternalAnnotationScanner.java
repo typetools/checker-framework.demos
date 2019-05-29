@@ -14,6 +14,8 @@ import com.sun.source.util.*;
 
 import com.sun.tools.javac.comp.AnnotationTarget;
 
+import org.checkerframework.checker.nullness.qual.Nullable;
+
 /**
  * A scanner for obtaining groups of annotations from a source tree.
  */

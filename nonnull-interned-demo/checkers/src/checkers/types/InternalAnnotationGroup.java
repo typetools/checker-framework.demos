@@ -8,6 +8,9 @@ import javax.lang.model.element.Element;
 
 import com.sun.source.util.TreeScanner;
 
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.checker.nullness.qual.NonNull;
+
 /**
  * Represents a group of annotations and their associated element. Useful for
  * {@link TreeScanner}s.

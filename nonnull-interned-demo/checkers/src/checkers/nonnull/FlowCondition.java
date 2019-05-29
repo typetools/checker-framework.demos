@@ -3,6 +3,10 @@ package checkers.nonnull;
 import com.sun.source.tree.*;
 import com.sun.source.util.*;
 
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.checker.nullness.qual.NonNull;
+import org.checkerframework.checker.nullness.qual.Nullable;
+
 /**
  * Represents a conditional expression that performs a nonnull check.
  * Specifically, it consists of the operand that is being checked, and whether

@@ -3,6 +3,10 @@ package checkers.nonnull;
 import javax.annotation.processing.*;
 import javax.lang.model.element.*;
 
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.checker.nullness.qual.NonNull;
+import org.checkerframework.checker.nullness.qual.Nullable;
+
 /**
  * Represents the range for which a variable is "valid" with respect to some
  * property (for instance, the range for which a variable is nonnull).

@@ -15,6 +15,11 @@ import com.sun.source.tree.*;
 import com.sun.source.util.*;
 import com.sun.tools.javac.tree.*;
 
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.checker.nullness.qual.NonNull;
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.checker.initialization.qual.Initialized;
+
 /**
  * Adds support for the {@code @NonNull} type annotation to
  * {@link AnnotatedTypeFactory}. This means that the
