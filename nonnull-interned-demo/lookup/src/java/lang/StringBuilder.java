@@ -1,5 +1,7 @@
 package java.lang;
 
+import org.checkerframework.checker.nullness.qual.NonNull;
+
 public final class StringBuilder{
   public StringBuilder() { throw new RuntimeException("skeleton method"); }
   public StringBuilder(int a1) { throw new RuntimeException("skeleton method"); }

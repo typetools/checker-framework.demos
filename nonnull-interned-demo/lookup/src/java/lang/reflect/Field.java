@@ -2,7 +2,7 @@ package java.lang.reflect;
 
 import java.lang.annotation.Annotation;
 
-
+import org.checkerframework.checker.nullness.qual.NonNull;
 
 public final class Field{
   public @NonNull Class<?> getDeclaringClass() { throw new RuntimeException("skeleton method"); }

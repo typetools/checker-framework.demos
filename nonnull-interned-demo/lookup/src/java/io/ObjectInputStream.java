@@ -1,5 +1,7 @@
 package java.io;
 
+import org.checkerframework.checker.nullness.qual.NonNull;
+
 public class ObjectInputStream extends InputStream implements ObjectInput, ObjectStreamConstants {
   public static abstract class GetField{
     public GetField() { throw new RuntimeException("skeleton method"); }

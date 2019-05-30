@@ -1,5 +1,8 @@
 package java.lang;
 
+import org.checkerframework.checker.nullness.qual.NonNull;
+import org.checkerframework.checker.nullness.qual.Nullable;
+
 public class Object{
   public Object() { throw new RuntimeException("skeleton method"); }
   public boolean equals(@Nullable Object a1) { throw new RuntimeException("skeleton method"); }

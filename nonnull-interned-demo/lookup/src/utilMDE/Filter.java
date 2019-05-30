@@ -1,6 +1,7 @@
 package utilMDE;
 
-
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.checker.nullness.qual.NonNull;
 
 /**
  * Interface for things that make boolean decisions.

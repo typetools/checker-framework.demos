@@ -1,5 +1,7 @@
 package java.io;
 
+import org.checkerframework.checker.nullness.qual.NonNull;
+
 public class ByteArrayOutputStream extends OutputStream {
   public ByteArrayOutputStream() { throw new RuntimeException("skeleton method"); }
   public ByteArrayOutputStream(int a1) { throw new RuntimeException("skeleton method"); }

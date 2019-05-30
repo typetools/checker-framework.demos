@@ -1,5 +1,9 @@
 package java.lang;
 
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.checker.nullness.qual.NonNull;
+import org.checkerframework.checker.nullness.qual.Nullable;
+
 @DefaultQualifier(NonNull.class)
 public final class String implements java.io.Serializable, java.lang.Comparable<java.lang.String>, java.lang.CharSequence {
   private static final long serialVersionUID = 0;

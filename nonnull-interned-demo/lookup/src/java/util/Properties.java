@@ -7,7 +7,8 @@ import java.io.OutputStream;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 
-
+import org.checkerframework.checker.nullness.qual.NonNull;
+import org.checkerframework.checker.nullness.qual.Nullable;
 
 public class Properties extends java.util.Hashtable<java.lang.Object, java.lang.Object> {
   public Properties() { throw new RuntimeException("skeleton method"); }

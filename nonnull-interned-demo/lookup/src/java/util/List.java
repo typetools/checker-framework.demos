@@ -1,6 +1,6 @@
 package java.util;
 
-
+import org.checkerframework.checker.nullness.qual.NonNull;
 
 public abstract interface List<E> extends java.util.Collection<E> {
   public abstract int size();
