@@ -1,6 +1,6 @@
 package daikon.inv;
 
-
+import org.checkerframework.checker.interning.qual.Interned;
 
 /**
  * This class is an enumerated type representing the possible results of

@@ -10,6 +10,9 @@ import javax.lang.model.element.*;
 import javax.lang.model.type.*;
 import javax.lang.model.util.*;
 
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.checker.nullness.qual.NonNull;
+
 /**
  * Represents an annotation that was not written as part of a source or class
  * file, but rather was generated. This is primarily useful for annotations

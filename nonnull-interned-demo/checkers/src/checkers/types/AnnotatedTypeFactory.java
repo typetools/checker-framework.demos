@@ -17,6 +17,11 @@ import com.sun.source.util.TreeScanner;
 import com.sun.tools.javac.comp.*;
 import com.sun.tools.javac.tree.*;
 
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+import org.checkerframework.checker.nullness.qual.NonNull;
+import org.checkerframework.checker.nullness.qual.Nullable;
+
 /**
  * A factory for generating annotated types. It is capable of
  * creating annotated class and method types from Tree API nodes. It is designed

@@ -15,6 +15,11 @@ import javax.lang.model.type.*;
 import javax.lang.model.type.TypeKind;
 import javax.lang.model.util.*;
 
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.framework.qual.TypeUseLocation;
+import org.checkerframework.checker.nullness.qual.NonNull;
+import org.checkerframework.checker.nullness.qual.Nullable;
+
 /**
  * A utility class for working with annotations.
  */

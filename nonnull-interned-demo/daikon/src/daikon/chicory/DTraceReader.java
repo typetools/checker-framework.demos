@@ -5,6 +5,8 @@ import utilMDE.*;
 import java.util.*;
 import java.io.*;
 
+import org.checkerframework.checker.interning.qual.Interned;
+
 /**
  * Reads dtrace files and provides methods to access the information
  * within them.  A dtrace file contains both declarations and data.

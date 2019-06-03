@@ -1,5 +1,8 @@
 package java.lang;
 
+import org.checkerframework.checker.nullness.qual.NonNull;
+import org.checkerframework.checker.nullness.qual.Nullable;
+
 public final class Integer extends java.lang.Number implements java.lang.Comparable<java.lang.Integer> {
   public final static int MIN_VALUE = -2147483648;
   public final static int MAX_VALUE = 2147483647;

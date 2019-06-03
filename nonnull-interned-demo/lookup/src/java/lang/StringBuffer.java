@@ -1,5 +1,8 @@
 package java.lang;
 
+import org.checkerframework.checker.nullness.qual.NonNull;
+import org.checkerframework.checker.nullness.qual.Nullable;
+
 public final class StringBuffer{
   public StringBuffer() { throw new RuntimeException("skeleton method"); }
   public StringBuffer(int a1) { throw new RuntimeException("skeleton method"); }

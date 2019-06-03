@@ -10,6 +10,10 @@ import java.util.*;
 import javax.annotation.processing.*;
 import javax.lang.model.element.*;
 
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.checker.nullness.qual.NonNull;
+import org.checkerframework.checker.nullness.qual.Nullable;
+
 import static checkers.types.InternalUtils.*;
 
 /**

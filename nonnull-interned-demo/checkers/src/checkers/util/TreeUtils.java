@@ -11,6 +11,10 @@ import checkers.types.AnnotatedMethodType;
 import com.sun.source.tree.*;
 import com.sun.source.util.TreePath;
 
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.checker.nullness.qual.NonNull;
+import org.checkerframework.checker.nullness.qual.Nullable;
+
 /**
  * A utility class made for helping to analyze a given {@code Tree}.
  */

@@ -5,6 +5,8 @@ import java.io.Serializable;
 import java.io.IOException;
 import utilMDE.*;
 
+import org.checkerframework.checker.interning.qual.Interned;
+
 /**
  * PptName is an immutable ADT that represents naming data associated with a
  * given program point, such as the class or method.

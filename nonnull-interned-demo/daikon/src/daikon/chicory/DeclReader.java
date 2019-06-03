@@ -5,6 +5,8 @@ import utilMDE.*;
 import java.util.*;
 import java.io.*;
 
+import org.checkerframework.checker.interning.qual.Interned;
+
 /**
  * Reads declaration files and provides methods to access the information
  * within them.  A declaration file consists of a number of program points

@@ -1,6 +1,6 @@
 package java.util;
 
-
+import org.checkerframework.checker.nullness.qual.NonNull;
 
 public abstract interface Iterator<E> {
   public abstract boolean hasNext();

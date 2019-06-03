@@ -15,6 +15,10 @@ import javax.lang.model.type.*;
 import javax.lang.model.type.TypeKind;
 import javax.lang.model.util.*;
 
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.checker.nullness.qual.NonNull;
+import org.checkerframework.checker.nullness.qual.Nullable;
+
 /**
  * Utilities for working with annotated generic types, and particularly,
  * applying annotations from annotated type arguments to type variables.

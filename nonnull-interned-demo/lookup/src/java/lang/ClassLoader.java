@@ -1,5 +1,7 @@
 package java.lang;
 
+import org.checkerframework.checker.nullness.qual.NonNull;
+
 public abstract class ClassLoader{
   public Class<?> loadClass(String a1) throws ClassNotFoundException { throw new RuntimeException("skeleton method"); }
   public java.net.URL getResource(String a1) { throw new RuntimeException("skeleton method"); }

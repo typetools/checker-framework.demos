@@ -7,6 +7,9 @@ import java.util.*;
 import javax.lang.model.element.*;
 import javax.lang.model.type.*;
 
+import org.checkerframework.framework.qual.DefaultQualifier;
+import org.checkerframework.checker.nullness.qual.NonNull;
+
 /**
  * A general representation for annotations used as type qualifiers.
  * Annotations in this representation will most typically come from annotations

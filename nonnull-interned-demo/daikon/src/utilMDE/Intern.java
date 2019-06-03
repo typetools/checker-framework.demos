@@ -3,6 +3,8 @@ package utilMDE;
 import java.lang.ref.WeakReference;
 import java.util.*;
 
+import org.checkerframework.checker.interning.qual.Interned;
+
 /**
  * Utilities for interning objects.
  **/

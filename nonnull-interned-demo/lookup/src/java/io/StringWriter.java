@@ -1,5 +1,8 @@
 package java.io;
 
+import org.checkerframework.checker.nullness.qual.NonNull;
+import org.checkerframework.checker.nullness.qual.Nullable;
+
 public class StringWriter extends Writer {
   public StringWriter() { throw new RuntimeException("skeleton method"); }
   public StringWriter(int a1) { throw new RuntimeException("skeleton method"); }

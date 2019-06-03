@@ -21,6 +21,8 @@ import java.io.Serializable;
 import java.net.*;
 import java.util.*;
 
+import org.checkerframework.checker.interning.qual.Interned;
+
 public final class FileIO {
 
   /** Nobody should ever instantiate a FileIO. **/
