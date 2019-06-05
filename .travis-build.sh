@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Entering checker-framework-demos/.travis-build.sh"
+echo "Entering `pwd`/.travis-build.sh"
 
 # Fail the whole script if any command fails
 set -e
