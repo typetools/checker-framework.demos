@@ -19,6 +19,7 @@ public class InvariantTester extends TestCase {
     super(name);
   }
 
+  @SuppressWarnings("interning")
   public VarInfo newIntVarInfo(String name) {
     return new VarInfo(name,
                        ProglangType.INT,
