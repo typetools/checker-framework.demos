@@ -32,7 +32,6 @@ import org.checkerframework.checker.interning.qual.Interned;
  * also includes info about the variable's name, its declared type, its
  * file representation type, its internal type, and its comparability.
  **/
-// @SuppressWarnings("interned.object.creation")
 @SuppressWarnings("inconsistent.constructor.type")
 public final @Interned class VarInfo implements Cloneable, Serializable {
   // We are Serializable, so we specify a version to allow changes to
