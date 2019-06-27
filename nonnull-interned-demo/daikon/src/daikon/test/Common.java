@@ -28,6 +28,7 @@ public class Common
   }
 
 
+  @SuppressWarnings("interning")
   public static VarInfo makeIntArrayVarInfo(String name) {
     return new VarInfo(name,
                        ProglangType.INT_ARRAY,
@@ -36,6 +37,7 @@ public class Common
                        VarInfoAux.getDefault());
   }
 
+  @SuppressWarnings("interning")
   public static VarInfo makeHashcodeArrayVarInfo(String name) {
     return new VarInfo(name,
                        ProglangType.HASHCODE_ARRAY,
