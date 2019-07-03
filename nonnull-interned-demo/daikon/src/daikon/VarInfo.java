@@ -32,6 +32,7 @@ import org.checkerframework.checker.interning.qual.Interned;
  * also includes info about the variable's name, its declared type, its
  * file representation type, its internal type, and its comparability.
  **/
+@SuppressWarnings("inconsistent.constructor.type")
 public final @Interned class VarInfo implements Cloneable, Serializable {
   // We are Serializable, so we specify a version to allow changes to
   // method signatures without breaking serialization.  If you add or
@@ -276,7 +277,7 @@ public final @Interned class VarInfo implements Cloneable, Serializable {
 
   /** Create VarInfo from VarDefinition **/
   @SuppressWarnings("super.invocation.invalid")
-  public VarInfo (VarDefinition vardef) {
+  public @Interned VarInfo (VarDefinition vardef) {
 
     // Basic checking for sensible input
     assert vardef.name != null;
@@ -504,7 +505,7 @@ public final @Interned class VarInfo implements Cloneable, Serializable {
 
   /** Create the specified VarInfo **/
   @SuppressWarnings("super.invocation.invalid")
-  private VarInfo (VarInfoName name, ProglangType type,
+  private @Interned VarInfo (VarInfoName name, ProglangType type,
                    ProglangType file_rep_type, VarComparability comparability,
                    boolean is_static_constant, @Interned Object static_constant_value,
                    VarInfoAux aux) {
@@ -554,7 +555,7 @@ public final @Interned class VarInfo implements Cloneable, Serializable {
   }
 
   /** Create the specified VarInfo **/
-  public VarInfo (String name, ProglangType type,
+  public @Interned VarInfo (String name, ProglangType type,
                   ProglangType file_rep_type, VarComparability comparability,
                   boolean is_static_constant, @Interned Object static_constant_value,
                   VarInfoAux aux) {
@@ -565,14 +566,14 @@ public final @Interned class VarInfo implements Cloneable, Serializable {
   }
 
   /** Create the specified non-static VarInfo **/
-  private VarInfo (VarInfoName name, ProglangType type,
+  private @Interned VarInfo (VarInfoName name, ProglangType type,
                   ProglangType file_rep_type, VarComparability comparability,
                   VarInfoAux aux) {
     this(name, type, file_rep_type, comparability, false, null, aux);
   }
 
   /** Create the specified non-static VarInfo **/
-  public VarInfo (String name, ProglangType type,
+  public @Interned VarInfo (String name, ProglangType type,
                   ProglangType file_rep_type, VarComparability comparability,
                   VarInfoAux aux) {
     this(name, type, file_rep_type, comparability, false, null, aux);
@@ -581,7 +582,7 @@ public final @Interned class VarInfo implements Cloneable, Serializable {
   }
 
   /** Create a VarInfo with the same values as vi **/
-  public VarInfo (VarInfo vi) {
+  public @Interned VarInfo (VarInfo vi) {
     this (vi.name(), vi.type, vi.file_rep_type, vi.comparability,
           vi.is_static_constant, vi.static_constant_value, vi.aux);
     str_name = vi.str_name;

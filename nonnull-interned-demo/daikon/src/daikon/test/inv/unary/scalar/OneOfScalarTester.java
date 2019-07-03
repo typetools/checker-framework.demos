@@ -19,6 +19,7 @@ public class OneOfScalarTester extends TestCase {
     junit.textui.TestRunner.run(new TestSuite(OneOfScalarTester.class));
   }
 
+  @SuppressWarnings("interning")
   public static VarInfo newIntVarInfo(String name) {
     VarInfo result = new VarInfo(name,
                                  ProglangType.INT,
@@ -28,6 +29,7 @@ public class OneOfScalarTester extends TestCase {
     return result;
   }
 
+  @SuppressWarnings("interning")
   public static VarInfo newHashcodeVarInfo(String name) {
     VarInfo result = new VarInfo(name,
                                  ProglangType.HASHCODE,
