@@ -78,6 +78,7 @@ Open some files in my editor, and use a TAGS table:
 ----------------
 
 Present the slides.
+(The example code can replace the examples.)
 Then, follow the "Tips for creating a checker" chapter of the manual:
 https://checkerframework.org/manual/#creating-a-checker
 
