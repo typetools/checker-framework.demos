@@ -11,15 +11,9 @@ ROOT=`readlink -f ..`
 
 export CHECKERFRAMEWORK=`readlink -f ${CHECKERFRAMEWORK:-$ROOT/checker-framework}`
 
-## Build Checker Framework
-SLUGOWNER=${TRAVIS_PULL_REQUEST_SLUG%/*}
-if [[ "$SLUGOWNER" == "" ]]; then
-  SLUGOWNER=${TRAVIS_REPO_SLUG%/*}
-fi
-if [[ "$SLUGOWNER" == "" ]]; then
-  SLUGOWNER=typetools
-fi
-echo SLUGOWNER=$SLUGOWNER
+git -C /tmp/plume-scripts pull > /dev/null 2>&1 \
+  || git -C /tmp clone --depth 1 -q https://github.com/plume-lib/plume-scripts.git
+SLUGOWNER=`/tmp/plume-scripts/git-organization typetools`
 
 ## Build Checker Framework
 if [ -d $CHECKERFRAMEWORK ] ; then
