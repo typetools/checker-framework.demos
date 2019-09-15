@@ -4,9 +4,9 @@
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("1 framework"
   ((filename . "~/research/types/checker-framework-demos/nonnull-interned-demo/checkers/src/checkers/types/InternalAnnotationScanner.java")
-   (front-context-string . "        Element ")
-   (rear-context-string . "th(root, node);\n")
-   (position . 7235)))
+   (front-context-string . "    public InternalAnnotationGroup visitNewArray(")
+   (rear-context-string . "\"new C[]\".    @Override\n")
+   (position . 7038)))
  ("2 JUnit test"
   ((filename . "~/research/types/checker-framework-demos/nonnull-interned-demo/junit/tests/JUnitTests.java")
    (front-context-string . "		Assert.assertE")
