@@ -202,6 +202,7 @@ class InternalAnnotationScanner extends SimpleTreeVisitor<InternalAnnotationGrou
     @Override
     public InternalAnnotationGroup visitNewArray(NewArrayTree node, Void p) {
         TreePath path = trees.getPath(root, node);
+        // The method that contains the "new C[]" expression.
         Element method = InternalUtils.enclosingSymbol(path);
 
         return annotationsFromElement(method, node);
