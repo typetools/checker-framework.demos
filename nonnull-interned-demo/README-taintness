@@ -24,6 +24,7 @@ which is in the main Checker Framework repository, not this one.
   which is a client of getPostsByCategory:
   reqCategory is accepted from the user (from request object) without
     validation.
+  (This is in a completely different file.)
   solution: apply the following diff to line 48
 -    String reqCategory = cleanNull(request.getParameter("cat"));
 +    String reqCategory = validate(cleanNull(request.getParameter("cat")));
