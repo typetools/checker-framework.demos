@@ -16,9 +16,8 @@
     <echo message="Running Interning on the daikon demo"/>
     <test-project project="daikon"/>
 
-<!--  TODO: This is broken.
-     <echo message="Running Nullness on the daikon demo"/>
-    <test-project project="junit"/>-->
+    <echo message="Running Nullness on the JUnit demo"/>
+    <test-project project="junit"/>
 
     <echo message="Running Nullness on the lookup demo"/>
     <test-project project="lookup"/>
