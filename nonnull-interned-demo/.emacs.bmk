@@ -3,28 +3,28 @@
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("1 framework"
-  ((filename . "~/research/types/checker-framework-demos/nonnull-interned-demo/checkers/src/checkers/types/InternalAnnotationScanner.java")
-   (front-context-string . "        Element ")
-   (rear-context-string . "th(root, node);\n")
-   (position . 7235)))
- ("2 JUnit test"
-  ((filename . "~/research/types/checker-framework-demos/nonnull-interned-demo/junit/tests/JUnitTests.java")
-   (front-context-string . "		Assert.assertE")
-   (rear-context-string . "estEquality() {\n")
-   (position . 193)))
- ("3 JUnit 4.3"
-  ((filename . "~/research/types/checker-framework-demos/nonnull-interned-demo/junit/src/org/junit/Assert.java")
-   (front-context-string . "package org.juni")
-   (rear-context-string)
-   (position . 1)))
- ("6 taintness"
-  ((filename . "~/research/types/checker-framework/docs/tutorial/eclipse-projects/personalblog-demo/src/net/eyde/personalblog/service/PersonalBlogService.java")
-   (front-context-string . "    private <T> ")
-   (rear-context-string . "({\"unchecked\"})\n")
-   (position . 6596)))
- ("7 iCalendar preconditions"
-  ((filename . "~/bin/src/plume-lib-for-demo/java/src/plume/ICalAvailable.java")
-   (front-context-string . " * Given one or ")
-   (rear-context-string . "see below)\n\n/**\n")
-   (position . 1507)))
- )
+ (filename . "~/research/types/checker-framework-demos/nonnull-interned-demo/checkers/src/checkers/types/InternalAnnotationScanner.java")
+ (front-context-string . "    public Inter")
+ (rear-context-string . ".\n    @Override\n")
+ (position . 7038))
+("2 JUnit test"
+ ((filename . "~/research/types/checker-framework-demos/nonnull-interned-demo/junit/tests/JUnitTests.java")
+  (front-context-string . "		Assert.assertE")
+  (rear-context-string . "estEquality() {\n")
+  (position . 193)))
+("3 JUnit 4.3"
+ ((filename . "~/research/types/checker-framework-demos/nonnull-interned-demo/junit/src/org/junit/Assert.java")
+  (front-context-string . "package org.juni")
+  (rear-context-string)
+  (position . 1)))
+("6 taintness"
+ ((filename . "~/research/types/checker-framework/docs/tutorial/src/personalblog-demo/src/net/eyde/personalblog/service/PersonalBlogService.java")
+  (front-context-string . "    private <T> ")
+  (rear-context-string . "({\"unchecked\"})\n")
+  (position . 6596)))
+("7 iCalendar preconditions"
+ ((filename . "~/bin/src/plume-lib-for-demo/java/src/plume/ICalAvailable.java")
+  (front-context-string . " * Given one or ")
+  (rear-context-string . "see below)\n\n/**\n")
+  (position . 1507)))
+)

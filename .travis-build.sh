@@ -19,7 +19,7 @@ if [ -d $CHECKERFRAMEWORK ] ; then
     # Fails if not currently on a branch
     git -C $CHECKERFRAMEWORK pull || true
 else
-    /tmp/plume-scripts/git-clone-related typetools checker-framework
+    /tmp/plume-scripts/git-clone-related typetools checker-framework ${CHECKERFRAMEWORK}
 fi
 
 # This also builds annotation-tools and jsr308-langtools
