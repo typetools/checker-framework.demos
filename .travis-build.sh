@@ -28,4 +28,4 @@ fi
 ## Run test
 ant -Djsr308.home=$ROOT
 
-echo "Exiting checker-framework-demos/.travis-build.sh"
+echo "Exiting checker-framework.demos/.travis-build.sh"

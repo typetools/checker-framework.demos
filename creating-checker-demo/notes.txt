@@ -75,7 +75,7 @@ Open some files in my editor, and use a TAGS table:
 (find-file (substitute-in-file-name "$t/checker-framework-optional-demo/checker/src/main/java/org/checkerframework/checker/optional/"))
 ;; Test cases
 (find-file (substitute-in-file-name "$t/checker-framework-optional-demo/checker/tests/optional/"))
-(find-file (substitute-in-file-name "$t/checker-framework-demos/creating-checker-demo/"))
+(find-file (substitute-in-file-name "$t/checker-framework.demos/creating-checker-demo/"))
 ;; TAGS table
 (visit-tags-table (substitute-in-file-name "$t/checker-framework-optional-demo/"))
 )
