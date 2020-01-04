@@ -1,5 +1,5 @@
 Task:  Improve and re-package the Checker Framework tutorial that currently
-appears in checker-framework-demos/2012-OSCON/.  Turn this into a
+appears in checker-framework.demos/2012-OSCON/.  Turn this into a
 self-study webpage with clear steps and tasks, and that is missing none of
 the information that is needed to follow the tutorial.
 
@@ -172,7 +172,7 @@ The tutorial should be put in its own well-named directory (for example,
 checker-framework/tutorial), and be prominently linked (with downloads)
 from both early in the manual and from the main Checker Framework webpage,
 http://types.cs.washington.edu/checker-framework/.
-Then, some of the material in checker-framework-demos can perhaps be
+Then, some of the material in checker-framework.demos can perhaps be
 eliminated or better-organized.
 
 Here is an example of part of the solution that didn't appear on a slide:

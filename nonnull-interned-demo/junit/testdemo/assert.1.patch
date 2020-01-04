@@ -11,17 +11,10 @@ Index: src/org/junit/Assert.java
  		return expected.equals(actual);
  	}
  
-@@ -142,13 +142,13 @@
+@@ -142,6 +142,13 @@
  		for (int i= 0; i < expecteds.length; i++) {
  			Object o1= expecteds[i];
  			Object o2= actuals[i];
--// 			if (o1 == o2)
--// 				continue;
--// 			else if (o1 == null) {
--// 				fail("actuals expected null");
--// 			} else if (o2 == null) {
--// 				fail("expecteds expected null");
--// 			} else
 +			if (o1 == o2)
 +				continue;
 +			else if (o1 == null) {
@@ -32,18 +25,14 @@ Index: src/org/junit/Assert.java
  			if (o1.getClass().isArray() && o2.getClass().isArray()) {
  				Object[] expected= (Object[]) o1;
  				Object[] actual= (Object[]) o2;
-@@ -356,11 +356,11 @@
+@@ -356,9 +356,9 @@
  		String actualString= String.valueOf(actual);
  		if (expectedString.equals(actualString))
  			return formatted + "expected: "
 -				+ expected.getClass().getName()
--// 				+ (expected == null ? "null" : expected.getClass().getName())
-+// 				+ expected.getClass().getName()
 + 				+ (expected == null ? "null" : expected.getClass().getName())
  				+ "<" + expectedString + "> but was: "
 -				+ actual.getClass().getName()
--// 				+ (actual == null ? "null" : actual.getClass().getName())
-+// 				+ actual.getClass().getName()
 + 				+ (actual == null ? "null" : actual.getClass().getName())
  				+ "<" + actualString + ">";
  		else
