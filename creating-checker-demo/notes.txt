@@ -3,8 +3,8 @@ It creates a simple variant of the Optional Checker.
 
 ===========================================================================
 
-Google Docs Slides are at:
-https://docs.google.com/presentation/d/1nXCt9-oNYy-QGb2gmSHpY2tsGJdKHN_DoeNtXi_44B4
+Google Docs Slides are in this folder:
+https://drive.google.com/drive/u/1/folders/0B-veGEefpdeYcFdSSWJ6emxpMUE
 
 ===========================================================================
 
@@ -19,7 +19,6 @@ some changes undone.  The API documentation is generated from Javadoc
 before undoing the changes, so it includes the Optional Checker.
 
 ## Create the new version; make Javadoc that includes the new version.
-## This takes a long time because it runs all the tests.
 # Optionally, first blow away the old version:
 # \rm -rf $t/checker-framework-optional-demo && \
 cd $t && \
@@ -35,7 +34,7 @@ ln -s checker-framework-optional-demo checker-framework && \
   (compile "./gradlew assemble"))
 
 ## Stub file with @Present annotations removed and @EnsuresQualifierIf commented
-cp $ch/jdk/optional/src/java/util/Optional.java $ch/src/main/java/org/checkerframework/checker/optional/jdk.astub
+cp $t/jdk/src/java.base/share/classes/java/util/Optional.java $ch/src/main/java/org/checkerframework/checker/optional/jdk.astub
 sed -i 's/@Present //' $ch/src/main/java/org/checkerframework/checker/optional/jdk.astub
 sed -i 's/@EnsuresQualifierIf/\/\/ @EnsuresQualifierIf/' $ch/src/main/java/org/checkerframework/checker/optional/jdk.astub
 
@@ -47,44 +46,44 @@ for FILE in `find . -name '*.java'`; do mv $FILE $FILE-ORIG; done
 
 ;; Open presentation and searches
 (progn
-(browse-url "https://docs.google.com/presentation/d/1nXCt9-oNYy-QGb2gmSHpY2tsGJdKHN_DoeNtXi_44B4")
-(sit-for 1)
-(browse-url "https://www.google.com/search?q=rules+for+using+optional+java")
-(sit-for 1)
-(browse-url "https://stuartmarks.wordpress.com/2016/09/27/vjug24-session-on-optional/"))
+ ;; Edit this for the current presentation
+ (browse-url "https://docs.google.com/presentation/d/1pBGcJtFyuEcQdziasgRfQ4d-5emEPSgHo7fdSUwwJDc")
+ (sit-for 1)
+ (browse-url "https://www.google.com/search?q=rules+for+using+optional+java")
+ (sit-for 1)
+ (browse-url "https://stuartmarks.wordpress.com/2016/09/27/vjug24-session-on-optional/"))
 
 ;; Open manual in two browser tabs:  one for creating a
 ;; checker, one for the Optional Checker manual chpapter.
 ;; Note that file URLs do not work in WSL.
 ;; Version with file URLs:
 (progn
-(browse-url "/home/mernst/research/types/checker-framework-optional-demo/docs/manual/manual.html")
-(sit-for 1)
-(browse-url "file:///home/mernst/research/types/checker-framework-optional-demo/docs/manual/manual.html#optional-checker"))
+ (browse-url "/home/mernst/research/types/checker-framework-optional-demo/docs/manual/manual.html")
+ (sit-for 1)
+ (browse-url "file:///home/mernst/research/types/checker-framework-optional-demo/docs/manual/manual.html#optional-checker"))
 ;; Version with http URLs:
 (progn
-(browse-url "https://checkerframework.org/manual/")
-(sit-for 1)
-(browse-url "https://checkerframework.org/manual/#optional-checker"))
+ (browse-url "https://checkerframework.org/manual/")
+ (sit-for 1)
+ (browse-url "https://checkerframework.org/manual/#optional-checker"))
 
 ----------------
 
 Open some files in my editor, and use a TAGS table:
 (progn
-;; Source code directory
-(find-file (substitute-in-file-name "$t/checker-framework-optional-demo/checker/src/main/java/org/checkerframework/checker/optional/"))
-;; Test cases
-(find-file (substitute-in-file-name "$t/checker-framework-optional-demo/checker/tests/optional/"))
-(find-file (substitute-in-file-name "$t/checker-framework.demos/creating-checker-demo/"))
-;; TAGS table
-(visit-tags-table (substitute-in-file-name "$t/checker-framework-optional-demo/"))
-)
+ ;; Source code directory
+ (find-file (substitute-in-file-name "$t/checker-framework-optional-demo/checker/src/main/java/org/checkerframework/checker/optional/"))
+ ;; Test cases
+ (find-file (substitute-in-file-name "$t/checker-framework-optional-demo/checker/tests/optional/"))
+ (find-file (substitute-in-file-name "$t/demos/creating-checker-demo/"))
+ ;; TAGS table
+ (visit-tags-table (substitute-in-file-name "$t/checker-framework-optional-demo/"))
+ )
 
 ----------------
 
-Present the slides.
-(The example code in this directory can replace the examples:
- * Start out by asking whether anyone has ever suffered a null pointer exception.
+Present the slides.  (Start out by asking whether anyone has ever suffered a null pointer exception.)
+(The example code in this directory can replace the examples on the slides, perhaps.)
  * For the withNullable/ directory
     * Show Person.java
     * Show Client.java
@@ -116,7 +115,7 @@ QUALIFIERS
 
 Create Present, MaybePresent [skip polymorphism]
 in $ch/src/main/java/org/checkerframework/checker/optional/qual/
-by cut-and-paste-and edit from the manual.  Change:
+by cut-and-paste-and-edit from the manual.  Change:
  * package
  * Javadoc
  * @SubtypeOf
@@ -163,7 +162,7 @@ cd $ch/tests/optional && $ch/bin/javac -processor optional JdkCheck.java
 # $ch/src/main/java/org/checkerframework/checker/optional/jdk.astub
 of  return type
 get  receiver
-orElseThrow  receiver
+orElseThrow  receiver  (two occurrences)
 
 # RECOMPILE:
 
@@ -215,7 +214,7 @@ public final @NonNull class Optional<T extends @NonNull Object> {
 ----------------
 
 If there is more time, implement rule #7 "Don’t use Optional to wrap any collection type".
-Show the source code for the TypeValidator, in OptionalVisitor.java (search for "Rules 6")
+Show the source code for the TypeValidator, in OptionalVisitor.java (search for "Rule #6")
 $ch/src/main/java/org/checkerframework/checker/optional/OptionalVisitor.java-ORIG
 
 ----------------
