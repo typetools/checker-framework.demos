@@ -46,17 +46,17 @@ public class IGJChecker extends SourceChecker {
         msgDefaults.put("assignment.invalid.ROMethod", "ReadOnly and Immutable methods cannot mutate fields");
 
         msgDefaults.put("type.invalid","Invalid IGJ type for given class/object.\nfound   : %s\nrequired: %s");
-        msgDefaults.put("readonly.type.invalid", "Cannot annotate class with @ReadOnly");
+        msgDefaults.put("readonly", "Cannot annotate class with @ReadOnly");
         msgDefaults.put("methodinvocation.invalid","Cannot invoke a %s method from a %s method.");
         msgDefaults.put("param.invalid", "Invalid Param for required method.\nfound   : %s\nrequired: %s");
         msgDefaults.put("cast.invalid", "Cannot cast expression to given type");
-        msgDefaults.put("method.receiver.invalid", "invalid type for receiver");
+        msgDefaults.put("method.receiver", "invalid type for receiver");
 
-        msgDefaults.put("override.return.invalid", 
+        msgDefaults.put("override.return", 
                 "%s in %s cannot override %s in %s; attempting to use incompatable return type.\nfound   : %s\nrequired: %s");
-        msgDefaults.put("override.param.invalid", 
+        msgDefaults.put("override.param", 
                 "%s in %s cannot override %s in %s; attempting to use incompatable parameter type.\nfound   : %s\nrequired: %s");
-        msgDefaults.put("override.receiver.invalid", 
+        msgDefaults.put("override.receiver", 
                 "%s in %s cannot override %s in %s; attempting to use incompatable return type.\nfound   : %s\nrequired: %s");
         
         msgDefaults.put("@AssignsFields", "@ReadOnly");

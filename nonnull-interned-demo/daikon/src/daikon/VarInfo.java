@@ -276,7 +276,7 @@ public final @Interned class VarInfo implements Cloneable, Serializable {
   }
 
   /** Create VarInfo from VarDefinition **/
-  @SuppressWarnings("super.invocation.invalid")
+  @SuppressWarnings("super.invocation")
   public @Interned VarInfo (VarDefinition vardef) {
 
     // Basic checking for sensible input
@@ -504,7 +504,7 @@ public final @Interned class VarInfo implements Cloneable, Serializable {
   }
 
   /** Create the specified VarInfo **/
-  @SuppressWarnings("super.invocation.invalid")
+  @SuppressWarnings("super.invocation")
   private @Interned VarInfo (VarInfoName name, ProglangType type,
                    ProglangType file_rep_type, VarComparability comparability,
                    boolean is_static_constant, @Interned Object static_constant_value,

@@ -51,14 +51,14 @@ public class JavariChecker extends SourceChecker {
         Properties msgDefaults = new Properties();
         msgDefaults.setProperty("assignment.invalid", "cannot assign a ReadOnly expression to a Mutable variable");
         msgDefaults.setProperty("argument.invalid", "cannot pass ReadOnly argument as Mutable parameter");
-        msgDefaults.setProperty("receiver.invalid", "cannot declare a method with Mutable receiver inside a ReadOnly type");
+        msgDefaults.setProperty("receiver", "cannot declare a method with Mutable receiver inside a ReadOnly type");
         msgDefaults.setProperty("return.invalid", "cannot return a ReadOnly value as Mutable");
         msgDefaults.setProperty("extends.invalid", "cannot reduce mutability of superclass");
         msgDefaults.setProperty("implements.invalid", "cannot reduce mutability of interface");
-        msgDefaults.setProperty("override.param.invalid", "cannot override parameter increasing mutability");
-        msgDefaults.setProperty("override.return.invalid", "cannot override return value reducing mutability");
+        msgDefaults.setProperty("override.param", "cannot override parameter increasing mutability");
+        msgDefaults.setProperty("override.return", "cannot override return value reducing mutability");
         msgDefaults.setProperty("override.throws.invalid", "cannot override throw type reducing mutability");
-        msgDefaults.setProperty("override.receiver.invalid", "cannot override receiver type increasing mutability");
+        msgDefaults.setProperty("override.receiver", "cannot override receiver type increasing mutability");
         msgDefaults.setProperty("mutable.cast", "cast increases mutability access");
         msgDefaults.setProperty("supertype.loss", "mutability constraints are lost when assigning to supertype");
         msgDefaults.setProperty("primitive.ro", "cannot declare primitives as ReadOnly");

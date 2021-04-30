@@ -196,7 +196,7 @@ public class JavariVisitor extends SourceVisitor<Void, VisitorState> {
              || receiverType.hasAnnotationAt(RoMaybe.class,
                                              AnnotationLocation.RAW))
             && p.classState == State.READONLY)
-            checker.report(Result.failure("receiver.invalid"), node);
+            checker.report(Result.failure("receiver"), node);
 
         // check if constructor
         {
@@ -224,7 +224,7 @@ public class JavariVisitor extends SourceVisitor<Void, VisitorState> {
                     if (!checker.isSubtype(omParamTypes.get(i),
                                            mParamTypes.get(i)))
                         checker.report(Result
-                                       .failure("override.param.invalid"),
+                                       .failure("override.param"),
                                        mParamTypes.get(i).getElement());
                 }
             }
@@ -248,7 +248,7 @@ public class JavariVisitor extends SourceVisitor<Void, VisitorState> {
                     omReceiverType = oMethod.getAnnotatedReceiverType();
                 if (!checker.isSubtype(omReceiverType, mReceiverType))
                     checker.report(Result
-                                   .failure("override.receiver.invalid"),
+                                   .failure("override.receiver"),
                                    mReceiverType.getElement());
             }
             // check return
@@ -258,7 +258,7 @@ public class JavariVisitor extends SourceVisitor<Void, VisitorState> {
                     omReturnType = oMethod.getAnnotatedReturnType();
                 if (!checker.isSubtype(mReturnType, omReturnType))
                     checker.report(Result
-                                   .failure("override.return.invalid"),
+                                   .failure("override.return"),
                                    mReturnType.getElement());
 
             }

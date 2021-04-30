@@ -51,25 +51,25 @@ public abstract class BaseTypeChecker extends SourceChecker {
         Properties properties = new Properties();
         properties.put("assignability.invalid", 
                 "Cannot (re-)assign %s through the reference: %s");
-        properties.put("receiver.invalid",
+        properties.put("receiver",
                 "incompatible types.\nfound   : %s\nrequired: %s");
         properties.put("type.incompatible", 
                 "incompatible types.\nfound   : %s\nrequired: %s");
         properties.put("type.invalid",
                 "%s may not be applied to the type \"%s\"");
-        properties.put("override.return.invalid", 
+        properties.put("override.return", 
                 "%s in %s cannot override %s in %s; " + 
                 "attempting to use an incompatible return type" + 
                 "\nfound   : %s\nrequired: %s");
-        properties.put("override.param.invalid", 
+        properties.put("override.param", 
                 "%s in %s cannot override %s in %s; " +
                 "attempting to use an incompatible parameter type" +
                 "\nfound   : %s\nrequired: %s");
-        properties.put("override.receiver.invalid", 
+        properties.put("override.receiver", 
                 "%s in %s cannot override %s in %s; " +
                 "attempting to use an incompatible receiver type" +
                 "\nfound   : %s\nrequired: %s");
-        properties.put("method.invocation.invalid", 
+        properties.put("method.invocation", 
                 "call to %s not allowed on the given receiver." + 
                 "\nfound   : %s\nrequired: %s");
         properties.put("generic.argument.invalid", 

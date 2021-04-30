@@ -174,7 +174,7 @@ public class BaseTypeVisitor<R, P> extends SourceVisitor<R, P> {
 
             // receiver type needs to a supertype of
 //            if (!checker.isValidUse(method.getReceiverType(), enclosingType))
-//                checker.report(Result.failure("receiver.invalid",
+//                checker.report(Result.failure("receiver",
 //                        method.getReceiverType(), enclosingType), node);
         }
 
@@ -437,7 +437,7 @@ public class BaseTypeVisitor<R, P> extends SourceVisitor<R, P> {
         if ((overrider.getReturnType().getKind() != TypeKind.VOID)
             && !checker.isSubtype(overridden.getReturnType(),
                 overrider.getReturnType())) {
-            checker.report(Result.failure("override.return.invalid",
+            checker.report(Result.failure("override.return",
                     overriderMeth, overriderTyp, overridenMeth, overridenTyp,
                     overrider.getReturnType().toString(),
                     overridden.getReturnType().toString()),
@@ -453,7 +453,7 @@ public class BaseTypeVisitor<R, P> extends SourceVisitor<R, P> {
             overridden.getParameterTypes();
         for (int i = 0; i < overriderParams.size(); ++i) {
             if (!checker.isSubtype(overriderParams.get(i), overriddenParams.get(i))) {
-                checker.report(Result.failure("override.param.invalid",
+                checker.report(Result.failure("override.param",
                         overriderMeth, overriderTyp, overridenMeth, overridenTyp,
                         overriderParams.get(i).toString(),
                         overriddenParams.get(i).toString()
@@ -466,7 +466,7 @@ public class BaseTypeVisitor<R, P> extends SourceVisitor<R, P> {
         // Check the receiver type.
         if (!checker.isSubtype(overrider.getReceiverType().getErased(),
                 overridden.getReceiverType().getErased())) {
-            checker.report(Result.failure("override.receiver.invalid",
+            checker.report(Result.failure("override.receiver",
                     overriderMeth, overriderTyp, overridenMeth, overridenTyp,
                     overrider.getReceiverType(),
                     overridden.getReceiverType()),
@@ -577,7 +577,7 @@ public class BaseTypeVisitor<R, P> extends SourceVisitor<R, P> {
         AnnotatedTypeMirror treeReceiver = factory.getReceiver(node).getErased();
         
         if (!checker.isSubtype(methodReceiver, treeReceiver)) {
-            checker.report(Result.failure("method.invocation.invalid",
+            checker.report(Result.failure("method.invocation",
                 factory.elementFromUse(node),
                 treeReceiver.toString(), methodReceiver.toString()), node);
             return false;

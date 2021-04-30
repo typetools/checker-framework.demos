@@ -298,7 +298,7 @@ public class IGJVisitor extends SourceVisitor<Void, VisitorState> {
         AnnotatedClassType receiverType = method.getAnnotatedReceiverType();
         if (!encClass.hasAnnotationAt(I.class, AnnotationLocation.RAW)) {
             if (!isSubtypeAt(encClass, receiverType, AnnotationLocation.RAW))
-                checker.report(Result.failure("method.receiver.invalid"), 
+                checker.report(Result.failure("method.receiver"), 
                         tree);
         }
         
@@ -341,7 +341,7 @@ public class IGJVisitor extends SourceVisitor<Void, VisitorState> {
         if (!isSubtype(method.getAnnotatedReturnType(), superMethod
                 .getAnnotatedReturnType())) {
             // Report error
-            checker.report(Result.failure("override.return.invalid",
+            checker.report(Result.failure("override.return",
                     overrider.toString(),
                     overrider.getEnclosingElement().toString(),
                     overriden.toString(),
@@ -363,7 +363,7 @@ public class IGJVisitor extends SourceVisitor<Void, VisitorState> {
             // The parameters in the OVERRIDEN method need to be
             // subtypes of the OVERRIDING one
             if (!isSubtype(superMethodParams.get(i), methodParams.get(i))) {
-                checker.report(Result.failure("override.param.invalid",
+                checker.report(Result.failure("override.param",
                         overrider.toString(),
                         overrider.getEnclosingElement().toString(),
                         overriden.toString(),
@@ -379,7 +379,7 @@ public class IGJVisitor extends SourceVisitor<Void, VisitorState> {
         // Check receiver
         if (!isSubtype(superMethod.getAnnotatedReceiverType(), method
                 .getAnnotatedReceiverType())) {
-            checker.report(Result.failure("override.receiver.invalid",
+            checker.report(Result.failure("override.receiver",
                     overrider.toString(),
                     overrider.getEnclosingElement().toString(),
                     overriden.toString(),
