@@ -157,7 +157,7 @@ public abstract class SubtypeVisitor extends SourceVisitor<Void, Void> {
             }
 
             if (!checker.isSubtypeIgnoringTypeParameters(receiver, method.getAnnotatedReceiverType()))
-                checker.report(Result.failure("receiver.invalid",
+                checker.report(Result.failure("receiver",
                             method.getAnnotatedReturnType().toCondensedString(),
                             receiver.toCondensedString()), ms);
         }
@@ -354,7 +354,7 @@ public abstract class SubtypeVisitor extends SourceVisitor<Void, Void> {
 
         for (AnnotationData a : superReturn)
             if (!methodReturn.contains(a)) {
-                checker.report(Result.failure("override.return.invalid"),
+                checker.report(Result.failure("override.return"),
                         overrider);
                 break;
             }
@@ -386,7 +386,7 @@ public abstract class SubtypeVisitor extends SourceVisitor<Void, Void> {
             Set<AnnotationData> intersection = new HashSet<AnnotationData>();
             intersection.addAll(superAnnos);
             if (intersection.retainAll(methodAnnos))
-                checker.report(Result.failure("override.param.invalid"),
+                checker.report(Result.failure("override.param"),
                         methodParam.getElement());
         }
     }

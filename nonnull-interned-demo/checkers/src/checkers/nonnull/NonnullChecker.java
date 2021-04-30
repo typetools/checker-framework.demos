@@ -51,10 +51,10 @@ public class NonnullChecker extends SubtypeChecker {
         msgDefaults.setProperty("assignment.compound.invalid", 
                 "invalid compound assignment type");
         msgDefaults.setProperty("argument.invalid", "invalid argument: expected %s, found %s");
-        msgDefaults.setProperty("receiver.invalid", "invalid receiver: expected %s, found %s");
+        msgDefaults.setProperty("receiver", "invalid receiver: expected %s, found %s");
         msgDefaults.setProperty("return.invalid", "invalid return: expected %s, found %s");
-        msgDefaults.setProperty("override.param.invalid", "invalid overriding parameter type");
-        msgDefaults.setProperty("override.return.invalid", "invalid overriding return type");
+        msgDefaults.setProperty("override.param", "invalid overriding parameter type");
+        msgDefaults.setProperty("override.return", "invalid overriding return type");
         msgDefaults.setProperty("cast.annotated", "annotated cast");
         msgDefaults.setProperty("cast.redundant", "redundant cast");
         msgDefaults.setProperty("unary.invalid", "invalid unary expression type");
