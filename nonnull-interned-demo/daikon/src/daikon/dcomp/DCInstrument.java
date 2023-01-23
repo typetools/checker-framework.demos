@@ -2400,7 +2400,7 @@ class DCInstrument {
 
   /**
    * Modify a doubled native method to call its original method.  It pops
-   * all of the paramter tags off of the tag stack.  If there is a
+   * all of the parameter tags off of the tag stack.  If there is a
    * primitive return value it puts a new tag value on the stack for
    * it.
    *
