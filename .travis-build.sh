@@ -11,10 +11,10 @@ ROOT=`readlink -f ..`
 
 export CHECKERFRAMEWORK=`readlink -f ${CHECKERFRAMEWORK:-$ROOT/checker-framework}`
 
-if [ -d "/tmp/plume-scripts" ] ; then
-  (cd /tmp/plume-scripts && git pull -q) > /dev/null 2>&1
+if [ -d "/tmp/git-scripts" ] ; then
+  (cd /tmp/git-scripts && git pull -q) > /dev/null 2>&1
 else
-  (cd /tmp && git clone --filter=blob:none -q https://github.com/plume-lib/plume-scripts.git)
+  (cd /tmp && git clone --filter=blob:none -q https://github.com/plume-lib/git-scripts.git)
 fi
 
 ## Build Checker Framework
@@ -22,7 +22,7 @@ if [ -d $CHECKERFRAMEWORK ] ; then
     # Fails if not currently on a branch
     git -C $CHECKERFRAMEWORK pull || true
 else
-    /tmp/plume-scripts/git-clone-related typetools checker-framework ${CHECKERFRAMEWORK}
+    /tmp/git-scripts/git-clone-related typetools checker-framework ${CHECKERFRAMEWORK}
 fi
 
 # This also builds annotation-tools and jsr308-langtools
