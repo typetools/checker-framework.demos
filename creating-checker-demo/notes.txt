@@ -21,20 +21,30 @@ before undoing the changes, so it includes the Optional Checker.
 (Do not run "manual" in parallel with any other gradle tasks.)
 
 ## Create the new version; make Javadoc that includes the new version.
+# Optionally, set the $cf and $t environment variables.
+# export cf="$CHECKERFRAMEWORK"
+# export t=$(realpath "$CHECKERFRAMEWORK/..")
 # Optionally, first blow away the old version:
 # \rm -rf $t/checker-framework-optional-demo && \
-export cf="$CHECKERFRAMEWORK" && \
-export t=$(realpath "$CHECKERFRAMEWORK/..") && \
 cd $t && \
 cp -R checker-framework-branch-master checker-framework-optional-demo && \
 rm -f checker-framework && \
 ln -s checker-framework-optional-demo checker-framework && \
-(cd $cf && rm -rf checker-qual-android) && \
-(cd $cf && sed -i 's/include .checker-qual-android.//' $cf/settings.gradle) && \
-(cd $cf && ./gradlew assembleForJavac) && \
-(cd $cf && ./gradlew javadoc) && \
-(cd $cf && ./gradlew manual) && \
+cd $cf && \
+rm -rf checker-qual-android && \
+./gradlew wrapper --gradle-version 8.11.1 && \
+sed -i 's/include .checker-qual-android.//' $cf/settings.gradle && \
+./gradlew assembleForJavac && \
+./gradlew javadoc && \
+./gradlew manual && \
 (cd && java -cp $HOME/java/plume-lib/javadoc-lookup/build/libs/javadoc-lookup-all.jar org.plumelib.javadoclookup.CreateJavadocIndex > ~/.javadoc-index.el-NEW && mv ~/.javadoc-index.el-NEW ~/.javadoc-index.el)
+
+The `./gradlew wrapper ...` is hopefully temporary.
+It also requires this edit:
+$t/checker-framework-optional-demo/buildSrc/src/main/groovy/CloneTask.groovy
+-        timeout = Duration.ofMinutes(1)
++        timeout =  6000
+
 
 ## Warm up the gradle daemon:
 (let ((default-directory (substitute-in-file-name "$t/checker-framework-optional-demo")))
@@ -57,8 +67,9 @@ cd $cf/checker/src/main/java/org/checkerframework/checker/nonempty/
 for FILE in `find . -name '*.java'`; do mv $FILE $FILE-ORIG; done
 cd $cf/checker-qual/src/main/java/org/checkerframework/checker/nonempty/qual/
 for FILE in `find . -name '*.java'`; do mv $FILE $FILE-ORIG; done
+cd $cf/checker-qual/src/main/java
+sed -i 's/exports org.checkerframework.checker.optional.qual;/\/\/ exports org.checkerframework.checker.optional.qual;/' module-info.java
 (cd $cf && sed -i 's/.-Werror.,//' build.gradle)
-# Comment out optional.qual in $cf/checker-qual/src/main/java/module-info.java
 (cd $cf && ./gradlew assembleForJavac tags)
 
 ;; Open presentation and searches
@@ -134,7 +145,7 @@ Notes:
 QUALIFIERS
 
 Create Present, MaybePresent [skip polymorphism]
-in $ch/src/main/java/org/checkerframework/checker/optional/qual/
+in $cf/checker-qual/src/main/java/org/checkerframework/checker/optional/qual/
 by cut-and-paste-and-edit from the manual.  Change:
  * package
  * Javadoc
