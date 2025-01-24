@@ -61,7 +61,7 @@ for FILE in `find . -name '*.java'`; do mv $FILE $FILE-ORIG; done
  (browse-url "https://stuartmarks.wordpress.com/2016/09/27/vjug24-session-on-optional/"))
 
 ;; Open manual in two browser tabs:  one for creating a
-;; checker, one for the Optional Checker manual chpapter.
+;; checker, one for the Optional Checker manual chapter.
 ;; Note that file URLs do not work in WSL.
 ;; Version with file URLs:
 (progn
@@ -167,9 +167,9 @@ cd $ch/tests/optional && $ch/bin/javac -processor optional JdkCheck.java
 
 # Add just 3 @Present annotations to
 # $ch/src/main/java/org/checkerframework/checker/optional/jdk.astub
-of  return type
-get  receiver
-orElseThrow  receiver  (two occurrences)
+of() :  return type
+get():  receiver
+orElseThrow():  receiver  (two occurrences)
 
 # RECOMPILE:
 
