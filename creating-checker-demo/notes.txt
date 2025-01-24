@@ -23,12 +23,14 @@ before undoing the changes, so it includes the Optional Checker.
 ## Create the new version; make Javadoc that includes the new version.
 # Optionally, first blow away the old version:
 # \rm -rf $t/checker-framework-optional-demo && \
+export cf="$CHECKERFRAMEWORK" && \
+export t=$(realpath "$CHECKERFRAMEWORK/..") && \
 cd $t && \
 cp -R checker-framework-branch-master checker-framework-optional-demo && \
 rm -f checker-framework && \
 ln -s checker-framework-optional-demo checker-framework && \
 (cd $cf && rm -rf checker-qual-android) && \
-# Edit settings.gradle to remove checker-qual-android.
+(cd $cf && sed -i 's/include .checker-qual-android.//' $cf/settings.gradle) && \
 (cd $cf && ./gradlew assembleForJavac) && \
 (cd $cf && ./gradlew javadoc) && \
 (cd $cf && ./gradlew manual) && \
@@ -38,23 +40,32 @@ ln -s checker-framework-optional-demo checker-framework && \
 (let ((default-directory (substitute-in-file-name "$t/checker-framework-optional-demo")))
   (compile "./gradlew assembleForJavac"))
 
-## Stub file with @Present annotations removed and @EnsuresQualifierIf commented
+## Stub file with @Present annotations removed and @EnsuresPresent[If] commented
 cp $t/jdk/src/java.base/share/classes/java/util/Optional.java $ch/src/main/java/org/checkerframework/checker/optional/jdk.astub
 sed -i 's/@Present //' $ch/src/main/java/org/checkerframework/checker/optional/jdk.astub
-sed -i 's/@EnsuresQualifierIf/\/\/ @EnsuresQualifierIf/' $ch/src/main/java/org/checkerframework/checker/optional/jdk.astub
+sed -i 's/@EnsuresPresent/\/\/ @EnsuresPresent/' $ch/src/main/java/org/checkerframework/checker/optional/jdk.astub
 
 ## Move orginal .java files aside (leave messages.properties file).
 ## Leave compiler interface, since the test references it.
 cd $cf/checker/src/main/java/org/checkerframework/checker/optional/
 for FILE in `find . -name '*.java'`; do mv $FILE $FILE-ORIG; done
-cd $cf/checker-qual/src/main/java/org/checkerframework/checker/optional/
+cd $cf/checker-qual/src/main/java/org/checkerframework/checker/optional/qual/
 for FILE in `find . -name '*.java'`; do mv $FILE $FILE-ORIG; done
+cd $cf/checker-util/src/main/java/org/checkerframework/checker/optional/util
+for FILE in `find . -name '*.java'`; do mv $FILE $FILE-ORIG; done
+cd $cf/checker/src/main/java/org/checkerframework/checker/nonempty/
+for FILE in `find . -name '*.java'`; do mv $FILE $FILE-ORIG; done
+cd $cf/checker-qual/src/main/java/org/checkerframework/checker/nonempty/qual/
+for FILE in `find . -name '*.java'`; do mv $FILE $FILE-ORIG; done
+(cd $cf && sed -i 's/.-Werror.,//' build.gradle)
+# Comment out optional.qual in $cf/checker-qual/src/main/java/module-info.java
 (cd $cf && ./gradlew assembleForJavac tags)
 
 ;; Open presentation and searches
 (progn
  ;; Edit this for the current presentation
- (browse-url "https://docs.google.com/presentation/d/1pBGcJtFyuEcQdziasgRfQ4d-5emEPSgHo7fdSUwwJDc")
+ ;; (browse-url "https://docs.google.com/presentation/d/1pBGcJtFyuEcQdziasgRfQ4d-5emEPSgHo7fdSUwwJDc")
+ (browse-url "https://docs.google.com/presentation/d/1nXCt9-oNYy-QGb2gmSHpY2tsGJdKHN_DoeNtXi_44B4")
  (sit-for 1)
  (browse-url "https://www.google.com/search?q=rules+for+using+optional+java")
  (sit-for 1)
