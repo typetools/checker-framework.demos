@@ -41,19 +41,23 @@ must be interned (that is, the design must be sound). (This should take
 
 Typically, expect answers like:
 
+```hierarchy
    T
    |
 Interned
    |
    丄
+```
 
-or 
+or
 
+```hierarchy
          T
-    /	     \
+    /        \
 Interned   Not interned
-    \	     /
+    \        /
         丄
+```
 
 Glance at their papers, and **ask one student who drew each candidate
 lattice to draw it on the board**. Ask the class to discuss which makes
@@ -61,9 +65,11 @@ the most sense for the problem at hand.
 
 Next, **explain that the CF chooses this lattice**:
 
+```hierarchy
 Maybe interned
      |
  Interned
+```
 
 **Ask** them which lattice they drew on the board it’s most like.
 
@@ -94,7 +100,8 @@ are a few things to point out/explain here:
 
 * Lattice points are expressed declaratively, via meta-annotations.
 
-* `@SubtypeOf{}` means that this is top (remind them of the relationship between subtyping and lattice subsumption that was covered earlier)
+* `@SubtypeOf{}` means that this is top (remind them of the relationship
+  between subtyping and lattice subsumption that was covered earlier)
 
 * Note the comment that says “not written by programmers”; why? What
   would `@UnknownInterned Object` mean that’s different than `Object`
