@@ -32,14 +32,14 @@ rm -f checker-framework && \
 ln -s checker-framework-optional-demo checker-framework && \
 cd $cf && \
 rm -rf checker-qual-android && \
-./gradlew wrapper --gradle-version 8.11.1 && \
+./gradlew wrapper --gradle-version 8.14.3 && \
 sed -i 's/include .checker-qual-android.//' $cf/settings.gradle && \
 ./gradlew assembleForJavac && \
 ./gradlew javadoc && \
 ./gradlew manual && \
 (cd && java -cp $HOME/java/plume-lib/javadoc-lookup/build/libs/javadoc-lookup-all.jar org.plumelib.javadoclookup.CreateJavadocIndex > ~/.javadoc-index.el-NEW && mv ~/.javadoc-index.el-NEW ~/.javadoc-index.el)
 
-The `./gradlew wrapper ...` is hopefully temporary.
+The `./gradlew wrapper ...` is hopefully temporary, until a new Checker Framework Gradle Plugin is released.
 It also requires this edit:
 $t/checker-framework-optional-demo/buildSrc/src/main/groovy/CloneTask.groovy
 -        timeout = Duration.ofMinutes(1)
