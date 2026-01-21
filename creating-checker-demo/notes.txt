@@ -31,9 +31,7 @@ cp -R checker-framework-branch-master checker-framework-optional-demo && \
 rm -f checker-framework && \
 ln -s checker-framework-optional-demo checker-framework && \
 cd $cf && \
-rm -rf checker-qual-android && \
 ./gradlew wrapper --gradle-version 8.14.3 && \
-sed -i 's/include .checker-qual-android.//' $cf/settings.gradle && \
 ./gradlew assembleForJavac && \
 ./gradlew javadoc && \
 ./gradlew manual && \
