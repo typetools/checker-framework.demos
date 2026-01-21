@@ -38,10 +38,6 @@ cd $cf && \
 (cd && java -cp $HOME/java/plume-lib/javadoc-lookup/build/libs/javadoc-lookup-all.jar org.plumelib.javadoclookup.CreateJavadocIndex > ~/.javadoc-index.el-NEW && mv ~/.javadoc-index.el-NEW ~/.javadoc-index.el)
 
 The `./gradlew wrapper ...` is hopefully temporary, until a new Checker Framework Gradle Plugin is released.
-It also requires this edit:
-$t/checker-framework-optional-demo/buildSrc/src/main/groovy/CloneTask.groovy
--        timeout = Duration.ofMinutes(1)
-+        timeout =  6000
 
 
 ## Warm up the gradle daemon:
@@ -113,15 +109,16 @@ Open some files in my editor, and use a TAGS table:
 
 Present the slides.  (Start out by asking whether anyone has ever suffered a null pointer exception.)
 (The example code in this directory can replace the examples on the slides, perhaps.)
- * For the withNullable/ directory
+ * For the withNullable/ directory in this repository:
     * Show Person.java
     * Show Client.java
     * Compile and run: `make`
-    * NullPointerException
+      * It crashes with a NullPointerException
     * Add a test against null
     * Compile and run: `make`
- * Same for withOptional/ directory
- * In withNullable/ directory:
+ * Same for withOptional/ directory in this repository.
+    * When fixing, must add `import java.util.Optional;`
+ * In withNullable/ directory in this repository:
     * In Client.java, comment out my change
     * Run the Nullness Checker: see the warning
     * Uncomment the change

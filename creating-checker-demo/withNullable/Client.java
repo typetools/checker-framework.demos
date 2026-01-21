@@ -2,7 +2,8 @@ public class Client {
 
   /** Return true if this person might be Jackie O. */
   public static boolean isJackieO(Person p) {
-    return p.getMaidenName().equals("Bouvier");
+    String mname = p.getMaidenName();
+    return mname.equals("Bouvier");
   }
 
   public static void main(String[] args) {

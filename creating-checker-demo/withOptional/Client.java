@@ -1,8 +1,11 @@
+import java.util.Optional;
+
 public class Client {
 
   /** Return true if this person might be Jackie O. */
   public static boolean isJackieO(Person p) {
-    return p.getMaidenName().get().equals("Bouvier");
+    Optional<String> mname = p.getMaidenName();
+    return mname.get().equals("Bouvier");
   }
 
   public static void main(String[] args) {
