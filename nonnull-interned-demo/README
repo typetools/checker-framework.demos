@@ -98,8 +98,6 @@ A few things to note:
 - OOPSLA 2007 demo slides:  in SVN annotations/papers/oopsla07-nonnull/demo-slides/
 - J-Spring 2008 slides:  in this directory as checkers-demo-jspring2008.ppt
 - ISSTA 2008 & other non-demo slides: in SVN annotations/papers/checker-framework/
-- The picture of the website with the NullPointerException comes from
-  http://tinyurl.com/6l6y5o
 
 - In Eclipse, you can switch to Emacs keybindings (so incremental search is C-s instead of
   Eclipse's C-j) by doing Window -> Preferences -> General -> Keys ->
